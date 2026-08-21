@@ -15,6 +15,7 @@ from typing import Any
 import numpy as np
 
 from docs.core.uet_o2_action_1pi_sunset_tensor import (
+    SUNSET_SYMMETRY_FACTOR,
     expected_sunset_tensor_prefactor,
 )
 
@@ -23,7 +24,14 @@ FINITE_T_SCATTERING_SK_KMS_STATUS = (
     "PASS_ACTION_DERIVED_O2_FINITE_T_SCATTERING_SUNSET_SK_KMS_LANE"
 )
 FINITE_T_SCATTERING_CONVERGENCE_THRESHOLD = 2.0e-2
-SCATTERING_CHANNEL_SYMMETRY_FACTOR = 0.5
+# The representative integral carries the graph-summed weight from the
+# three positive-energy 2<->2 sign permutations: 3*(1/6)=1/2.
+SCATTERING_SIGN_PERMUTATION_COUNT = 3
+SCATTERING_GRAPH_CUT_WEIGHT = (
+    SCATTERING_SIGN_PERMUTATION_COUNT * SUNSET_SYMMETRY_FACTOR
+)
+# Retain the old public name for backward-compatible artifact readers.
+SCATTERING_CHANNEL_SYMMETRY_FACTOR = SCATTERING_GRAPH_CUT_WEIGHT
 
 
 @dataclass(frozen=True)
@@ -108,8 +116,8 @@ def _thermal_scattering_phase_space(
     The cut is ``P + k3 = k1 + k2`` in the external rest frame.  The pair
     ``Q=P+k3`` is integrated in its own center-of-mass frame, while the bath
     momentum ``k3`` is integrated on ``[0,infinity)``.  The explicit factor
-    ``SCATTERING_CHANNEL_SYMMETRY_FACTOR`` is retained in the measure rather
-    than hidden in a fitted normalization.
+    ``SCATTERING_CHANNEL_SYMMETRY_FACTOR`` is the graph-summed weight in the measure;
+    it equals three signed-cut permutations times the sunset graph symmetry factor and is not a fitted transport coefficient.
     """
 
     invariant_s = _positive(invariant_s, "invariant_s")
@@ -526,7 +534,8 @@ def finite_temperature_scattering_sunset_sk_kms_contract() -> dict[str, Any]:
             "pole_subtraction_kernel": (
                 "K_sub(S)=1/(S-s)-1/(S-r)-(s-r)/(S-r)^2; r=-s_E"
             ),
-            "scattering_channel_symmetry": "S_22=1/2 for one labeled identical-pair channel",
+            "scattering_channel_graph_weight": "S_22^graph=3*(1/6)=1/2 for the representative ++- integral",
+            "physical_final_state_weight": "w_final(c,d)=1/(1+delta_cd) belongs to the separate action scattering comparator",
         },
         "unit_contract": {
             "unit_lane": "natural vacuum 3+1",
@@ -567,8 +576,8 @@ def finite_temperature_scattering_sunset_sk_kms_contract() -> dict[str, Any]:
             "Xie_2026_holdout": True,
         },
         "claim_boundary": (
-            "This closes only a labeled action-derived finite-temperature 2<->2 "
-            "sunset scattering cut and its channel-level SK/KMS/FDT/PV interface. "
+            "This closes only a representative action-derived finite-temperature 2<->2 "
+            "sunset scattering integral with its graph-summed cut weight and channel-level SK/KMS/FDT/PV interface. "
             "It does not close the other thermal cuts, full finite-temperature 1PI, "
             "all-channel real-part subtraction, unique physical renormalization, "
             "transport, entropy-current balance, SI Phi mapping, alpha_Phi_K, TTG, "
@@ -579,6 +588,8 @@ def finite_temperature_scattering_sunset_sk_kms_contract() -> dict[str, Any]:
 
 __all__ = [
     "FINITE_T_SCATTERING_CONVERGENCE_THRESHOLD",
+    "SCATTERING_GRAPH_CUT_WEIGHT",
+    "SCATTERING_SIGN_PERMUTATION_COUNT",
     "FINITE_T_SCATTERING_SK_KMS_STATUS",
     "FiniteTemperatureScatteringSunsetSKKMSState",
     "finite_temperature_scattering_sunset_sk_kms_contract",

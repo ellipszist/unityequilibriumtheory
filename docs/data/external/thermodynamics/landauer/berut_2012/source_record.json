@@ -18,8 +18,17 @@
   "doi": "10.1038/nature10872",
   "publisher_url": "https://www.nature.com/articles/nature10872",
   "doi_url": "https://doi.org/10.1038/nature10872",
-  "local_raw_file_status": "not_stored",
-  "local_raw_file_reason": "Publisher article/supplement was not downloaded during this standards pass; topic uses checked summary values only.",
+  "local_raw_file_status": "official_figure_binary_archived_numeric_table_missing",
+  "local_raw_file_reason": "The official Figure 3 PowerPoint binary is archived for provenance; it is not a raw experimental table and does not close source-grade measurement uncertainty.",
+  "local_archived_assets": [
+    {
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/berut_2012_figure3_source.ppt",
+      "locator": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fnature10872/MediaObjects/41586_2012_BFnature10872_MOESM77_ESM.ppt",
+      "bytes": 479744,
+      "sha256": "e4bab6be849a093b7578bc52ce6df9be95dc25d83d51ecb718b4f798a37d50fa",
+      "role": "official Figure 3 binary; not a raw numeric table"
+    }
+  ],
   "verified_from": [
     {
       "label": "Nature article page",

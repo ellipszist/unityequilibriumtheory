@@ -1,4 +1,4 @@
-﻿﻿# Verification Spec
+# Verification Spec
 
 - Primary command:
   - `.venv\Scripts\python.exe docs\topics\0.13_Thermodynamic_Bridge\Code\03_Research\Research_Landauer.py`
@@ -92,3 +92,55 @@ Artifact:
 - `docs/core/artifacts/t13_ding_pbte_numeric_input_availability_audit.json`
 
 Acceptance requires archived hash/size parity, OA identity/license/retraction checks, a complete non-truncated 11-object prefix, media-role classification, absence of reproduction payload candidates, the author-request statement, published computational-detail locators, an explicit missing-input list, and holdout non-access. A pass closes only the captured official-OA source route.
+
+
+## Declared-Channel Retarded/Advanced/Keldysh 1PI Audit (T13-121)
+
+Run:
+
+```powershell
+.venv\Scripts\python.exe docs\scripts\audit\audit_topic13_uet_o2_finite_temperature_declared_channel_retarded_advanced_keldysh_1pi.py
+```
+
+Artifact:
+
+- `docs/core/artifacts/t13_uet_o2_finite_temperature_declared_channel_retarded_advanced_keldysh_1pi_audit.json`
+
+Acceptance requires retarded/advanced conjugacy, the declared spectral discontinuity, Keldysh component convention, Keldysh FDT residual, finite state, declared channel completion, and no-fit/no-holdout guards. The result is `CLOSED_FOR_LANE` only. Complete all-channel off-shell 1PI, physical renormalization, physical Kubo, entropy/heat-flux balance, SI `Phi` mapping, `alpha_Phi_K`, TTG validation, and Full Topic 13 remain blocked.
+
+## T13-122 Threshold-Crossing Verification Contract
+- Require a grid with at least one point below and one point above `s_th=9*m^2`.
+- Require `rho_13=0` below threshold and a positive declared `rho_13` witness above threshold.
+- Require a positive declared `rho_22` witness below threshold.
+- Require retarded/advanced conjugacy, discontinuity, Keldysh component identity, FDT, and PV convergence without changing the existing numerical gate.
+- Require no fit, no holdout access, no clipping, no cone padding, and no change to the ontology of `C`, `Phi`, `R_gen`, or `R_obs`.
+- A passing lane must still project `full_core_unlock=false` while complete off-shell 1PI and physical renormalization remain open.
+## T13-123 All 2-to-2 Permutation Verification Contract
+- Require exactly the three allowed two-plus/one-minus signs `++-`, `+-+`, and `-++`.
+- Require a unit-Jacobian relabeling map from each pattern to the reference `++-` kernel.
+- Require the equal-mass aggregate graph-weight identity `3*(1/6)=1/2`.
+- Require response identity, KMS/FDT, and PV convergence checks without changing the existing gate.
+- Require no external data, no fit, no holdout access, and no physical Kubo or `alpha_Phi_K` emission.
+- A passing permutation lane must still leave complete off-shell 1PI and physical renormalization open.
+## T13-124 source comparator verification
+
+- Source command: `.\\.venv\\Scripts\\python.exe docs/scripts/audit/audit_topic13_iaea_gr280_same_state_cp_source.py`.
+- Gate command: `.\\.venv\\Scripts\\python.exe docs/scripts/audit/audit_topic13_full_bridge_gate.py`.
+- Focused regression: `.\\.venv\\Scripts\\python.exe -m pytest -q docs/core/test/test_topic13_iaea_gr280_same_state_cp_source.py docs/core/test/test_topic13_bipm_specific_heat_source.py docs/core/test/test_topic13_iaea_graphite_constant_volume_source.py docs/core/test/test_topic13_iaea_cv_uncertainty_boundary.py docs/core/test/test_topic13_gatech_volumetric_cp_independence.py docs/core/test/test_topic13_mp48_temperature_volume_uncertainty_boundary.py`.
+- Acceptance: raw PDF presence, exact hash, package size, source locators, 300 C row identity, Cp uncertainty interpolation, conditional volumetric conversion, no invented density standard uncertainty, no c_v/alpha emission, and no holdout access.
+- Current result: source audit `PASS_SCOPED_IAEA_GR280_SAME_STATE_CP_COMPARATOR`; focused regression `10 passed`; full gate `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL` with 10 blockers.
+## T13-125 verification contract
+
+- Audit command: `.\.venv\Scripts\python.exe docs/scripts/audit/audit_topic13_zenodo_hitrace_isotropic_graphite_cp_source.py`.
+- Acceptance: raw size/hash match; official locator and row identity present; 27 rows and laboratory counts `10/6/11`; LNE/PTB uncertainty reconstruction passes; VINCA missing uncertainty remains explicit; no `c_v`, density, alpha, calibration, fit, or holdout output.
+- Integration: `.\.venv\Scripts\python.exe docs/scripts/audit/audit_topic13_full_bridge_gate.py` followed by `.\.venv\Scripts\python.exe docs/scripts/audit/sync_topic13_major_result_lanes.py`.
+- Regression: focused source/comparator suite `10 passed`.
+- Expected status: comparator `PASS_SCOPED_ZENODO_HITRACE_ISOTROPIC_GRAPHITE_CP_COMPARATOR`; full Topic 13 `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`; `claim_promotion=false`.
+
+## T13-131 public PBTE source-boundary verification
+
+- Audit: `.\.venv\Scripts\python.exe docs/scripts/audit/audit_topic13_huberman_2019_public_pbte_boundary.py`.
+- Focused regression: `.\.venv\Scripts\python.exe -m pytest -q docs/core/test/test_topic13_huberman_2019_public_pbte_boundary.py`.
+- Integration: `.\.venv\Scripts\python.exe docs/scripts/audit/audit_topic13_full_bridge_gate.py` followed by `.\.venv\Scripts\python.exe docs/scripts/audit/sync_topic13_major_result_lanes.py`.
+- Acceptance: source file, exact size/hash, 22-page inventory, no accepted machine-readable mode-resolved `C_src` or force-constant payload, no digitization, no fit, no alpha calibration, and no holdout access.
+- Current result: source boundary `PASS_HUBERMAN_PUBLIC_PBTE_BOUNDARY_NO_ACCEPTED_NUMERIC_PAYLOAD`; full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL` with 10 blockers.

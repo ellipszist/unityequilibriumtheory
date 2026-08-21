@@ -40,7 +40,7 @@
   "core_program_controller": "physical_kubo_coefficient_evidence_and_curved_3p1_solver_missing",
   "environment": {
     "platform": "Windows-11-10.0.26200-SP0",
-    "python_version": "3.14.2"
+    "python_version": "3.12.13"
   },
   "evidence_status": "THERMODYNAMIC_CONSTRAINT_EXPORTS_AVAILABLE_CORE_CLOSURE_NOT_DERIVED",
   "foundation_claim_ceiling_unchanged": "C - formula/lower-bound consistency only",
@@ -104,32 +104,32 @@
       "required_condition": "The four active Landauer source-row controllers remain independent of the core dependency lane.",
       "row_controllers": [
         {
-          "first_missing_requirement": "archived official Figure 3 binary/hash or permitted numeric package, then tick mapping and transcription",
-          "next_controller": "berut_local_raw_or_permissioned_numeric_package_missing",
+          "first_missing_requirement": "permissioned raw numeric package or source-grade measurement uncertainty for the Figure 3 rows",
+          "next_controller": "berut_permissioned_raw_numeric_package_missing",
           "row_id": "berut_2012_summary_300K",
-          "source_closure_status": "publisher_surface_classified_local_raw_package_missing_figure_route_open",
+          "source_closure_status": "official_figure_binary_archived_figure_derived_rows_raw_numeric_open",
           "uncertainty_status": "interval_present_topic_summary_only"
         },
         {
-          "first_missing_requirement": "final_prl_page_or_pdf_parity_for_arxiv_table_1_summary",
-          "next_controller": "jun_final_prl_parity_or_aps_access_resolution_required",
+          "first_missing_requirement": "machine-readable parity/transcription with locator, units, preprocessing, uncertainty, and hash",
+          "next_controller": "jun_machine_readable_numeric_row_parity_and_uncertainty_not_closed",
           "row_id": "jun_2014_summary_300K",
-          "source_closure_status": "arxiv_table_1_summary_transcribed_final_prl_parity_open",
+          "source_closure_status": "final_prl_identity_and_pdf_archived_machine_readable_row_parity_open",
           "uncertainty_status": "source_summary_interval_present_legacy_row_policy_declared"
         },
         {
-          "first_missing_requirement": "final published article page or equivalent final-source confirmation for the chosen quantity",
-          "next_controller": "final_source_confirmation_then_replace_or_remove_legacy_0p028_row",
+          "first_missing_requirement": "single selected quantity with locator, units, preprocessing, uncertainty, and hash; legacy-row policy must be explicit",
+          "next_controller": "hong_machine_readable_numeric_row_parity_and_legacy_row_policy_not_closed",
           "row_id": "hong_2016_candidate_nanometric_memory_branch",
-          "source_closure_status": "candidate_source_family_with_provisional_runtime_target_final_publisher_anchor_partial",
-          "uncertainty_status": "preprint_interval_present_provisional_runtime_target_selected"
+          "source_closure_status": "final_article_identity_and_pdf_archived_selected_row_open",
+          "uncertainty_status": "article_uncertainty_surface_present_selected_row_not_closed"
         },
         {
-          "first_missing_requirement": "exact one-paper doi_or_url that matches the local narrative",
-          "next_controller": "exact_one_paper_identity_before_any_row_capture",
+          "first_missing_requirement": "remove or quarantine the legacy row, or select one exact replacement paper in a separate preregistered package",
+          "next_controller": "peterson_legacy_label_demoted_no_admissible_row_until_exact_source_selected",
           "row_id": "peterson_2018_quantum_landauer_branch",
-          "source_closure_status": "candidate_families_separated_local_peterson_label_demoted",
-          "uncertainty_status": "not_eligible_until_source_identity_fixed"
+          "source_closure_status": "legacy_peterson_label_conflict_closed_as_no_go",
+          "uncertainty_status": "not_applicable_no_row_admitted"
         }
       ],
       "status": "PASS"
@@ -173,7 +173,7 @@
       "status": "BLOCKED"
     }
   },
-  "generated_at": "2026-08-14T12:25:56+00:00",
+  "generated_at": "2026-08-20T16:05:09+00:00",
   "limitations": [
     "No Landauer, Cattaneo, thermal pilot, or core solver is rerun.",
     "The foundation gate remains WARN and exports only class-C constraints.",
@@ -189,32 +189,32 @@
   ],
   "row_controllers_unchanged": [
     {
-      "first_missing_requirement": "archived official Figure 3 binary/hash or permitted numeric package, then tick mapping and transcription",
-      "next_controller": "berut_local_raw_or_permissioned_numeric_package_missing",
+      "first_missing_requirement": "permissioned raw numeric package or source-grade measurement uncertainty for the Figure 3 rows",
+      "next_controller": "berut_permissioned_raw_numeric_package_missing",
       "row_id": "berut_2012_summary_300K",
-      "source_closure_status": "publisher_surface_classified_local_raw_package_missing_figure_route_open",
+      "source_closure_status": "official_figure_binary_archived_figure_derived_rows_raw_numeric_open",
       "uncertainty_status": "interval_present_topic_summary_only"
     },
     {
-      "first_missing_requirement": "final_prl_page_or_pdf_parity_for_arxiv_table_1_summary",
-      "next_controller": "jun_final_prl_parity_or_aps_access_resolution_required",
+      "first_missing_requirement": "machine-readable parity/transcription with locator, units, preprocessing, uncertainty, and hash",
+      "next_controller": "jun_machine_readable_numeric_row_parity_and_uncertainty_not_closed",
       "row_id": "jun_2014_summary_300K",
-      "source_closure_status": "arxiv_table_1_summary_transcribed_final_prl_parity_open",
+      "source_closure_status": "final_prl_identity_and_pdf_archived_machine_readable_row_parity_open",
       "uncertainty_status": "source_summary_interval_present_legacy_row_policy_declared"
     },
     {
-      "first_missing_requirement": "final published article page or equivalent final-source confirmation for the chosen quantity",
-      "next_controller": "final_source_confirmation_then_replace_or_remove_legacy_0p028_row",
+      "first_missing_requirement": "single selected quantity with locator, units, preprocessing, uncertainty, and hash; legacy-row policy must be explicit",
+      "next_controller": "hong_machine_readable_numeric_row_parity_and_legacy_row_policy_not_closed",
       "row_id": "hong_2016_candidate_nanometric_memory_branch",
-      "source_closure_status": "candidate_source_family_with_provisional_runtime_target_final_publisher_anchor_partial",
-      "uncertainty_status": "preprint_interval_present_provisional_runtime_target_selected"
+      "source_closure_status": "final_article_identity_and_pdf_archived_selected_row_open",
+      "uncertainty_status": "article_uncertainty_surface_present_selected_row_not_closed"
     },
     {
-      "first_missing_requirement": "exact one-paper doi_or_url that matches the local narrative",
-      "next_controller": "exact_one_paper_identity_before_any_row_capture",
+      "first_missing_requirement": "remove or quarantine the legacy row, or select one exact replacement paper in a separate preregistered package",
+      "next_controller": "peterson_legacy_label_demoted_no_admissible_row_until_exact_source_selected",
       "row_id": "peterson_2018_quantum_landauer_branch",
-      "source_closure_status": "candidate_families_separated_local_peterson_label_demoted",
-      "uncertainty_status": "not_eligible_until_source_identity_fixed"
+      "source_closure_status": "legacy_peterson_label_conflict_closed_as_no_go",
+      "uncertainty_status": "not_applicable_no_row_admitted"
     }
   ],
   "schema_version": "1.0",
@@ -231,7 +231,7 @@
       "hash_scope": "canonical_json_without_generated_at_generated_at_utc_timestamp_utc_or_environment",
       "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/thermodynamic_bridge_foundation_claim_gate.json",
       "role": "Topic 0.13 foundation export contract",
-      "scientific_payload_sha256": "2d574474f5187e6f6b2f1f84603a38693e98fa5ad23cc537de0ee9deb784ea4a"
+      "scientific_payload_sha256": "993dade91fb1b764dc3d9e20a48751d2448cea278d6f03aa6f8f1bfcc1cdccce"
     },
     {
       "exists": true,

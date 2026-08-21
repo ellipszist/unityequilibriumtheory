@@ -221,8 +221,8 @@
       "Topic 0.11 source/formula/estimator policy remains blocked",
       "Xie 2026 remains locked holdout and was not consumed",
       "alpha_Phi_K has no independent derivation or calibration with uncertainty",
-      "full original conserved-C candidate remains blocked; named coupled C/Phi lane passes the locked normalized causal checks",
       "current simplified comparator result is below its internal speed threshold",
+      "full original conserved-C candidate remains blocked; named coupled C/Phi lane passes the locked normalized causal checks",
       "full_candidate_prearrival_leakage_and_open_alpha_Phi_K_calibration"
     ]
   },
@@ -248,11 +248,11 @@
     "claim_promotion": false,
     "contract": {
       "path": "docs/core/artifacts/uet_research_room_wave1_contract.json",
-      "sha256": "de17402ae12472837da0dcabdab5f27663b4e57330d465d4312b24483a6a660d"
+      "sha256": "2da8f72335fc05fb00394e57caafaca3d34b410cf2f7fb18ff1ce3e4208e3fee"
     },
     "integration_gate": {
       "path": "docs/core/artifacts/uet_research_room_wave1_integration_gate.json",
-      "sha256": "68bb0110d8c0f4e72e3dfaed1abe047e199b45f7cf520f5994a7809ef0a5691d"
+      "sha256": "6b62d063fd4ec4bcb7f7a9d3ab2a47c83613203c550566f57b22d918f748d211"
     },
     "required_mapping_fields": [
       "ontology",
@@ -272,8 +272,8 @@
         "claim_boundary": "candidate effective theory; no global closure"
       },
       "topic_0_13": {
-        "verification_status": "SOURCE_ROUTE_PASS_ALPHA_OPEN",
-        "controlling_blocker": "alpha_Phi_K_independent_calibration_missing",
+        "verification_status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_FULL_CANDIDATE_LANES",
+        "controlling_blocker": "full_candidate_prearrival_leakage_and_open_alpha_Phi_K_calibration",
         "next_action": "derive or independently calibrate alpha_Phi_K with uncertainty using training/calibration data only; do not read or tune on Xie 2026",
         "claim_boundary": "permitted figure-derived source route and normalized internal controls; not raw author data, temperature prediction, external validation, or global closure"
       },
@@ -302,8 +302,8 @@
       "Topic 0.11 source/formula/estimator policy remains blocked",
       "Xie 2026 remains locked holdout and was not consumed",
       "alpha_Phi_K has no independent derivation or calibration with uncertainty",
-      "full original conserved-C candidate remains blocked; named coupled C/Phi lane passes the locked normalized causal checks",
       "current simplified comparator result is below its internal speed threshold",
+      "full original conserved-C candidate remains blocked; named coupled C/Phi lane passes the locked normalized causal checks",
       "full_candidate_prearrival_leakage_and_open_alpha_Phi_K_calibration"
     ],
     "next_action": "resolve the listed blockers in their owning rooms, then rerun this integration audit; do not start Gravity or full constitutive transport yet",

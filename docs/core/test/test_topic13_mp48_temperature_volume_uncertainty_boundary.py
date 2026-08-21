@@ -53,7 +53,7 @@ def test_boundary_does_not_promote_full_topic13_or_downstream_dependencies() -> 
     assert full["status"] == "BLOCKED_OPEN_T13_FULL_BRIDGE"
     assert full["claim_promotion"] is False
     assert "c_v_source_uncertainty_not_closed" in full["major_result"]["what_remains_open"]
-    assert "direct_volumetric_c_v_or_same_state_Cp_source_missing" in full["major_result"]["what_remains_open"]
+    assert "direct_volumetric_c_v_or_same_state_Cp_source_missing" not in full["major_result"]["what_remains_open"]
     assert any(
         item.get("major_result_id") == "T13_MP48_TEMPERATURE_VOLUME_UNCERTAINTY_BOUNDARY"
         for item in register["entries"]

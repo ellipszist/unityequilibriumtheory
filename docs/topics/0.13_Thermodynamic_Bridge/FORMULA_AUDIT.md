@@ -986,3 +986,246 @@ VERIFICATION: Numerical uncertainty bound `3.500054507989025e-06`; loop-bubble c
 CONTROLLING_BLOCKER: `physical_Kubo_coefficient_record_missing`.
 NEXT_ACTION: Obtain accepted state-matched physical Kubo/vertex provenance and uncertainty.
 CLAIM_BOUNDARY: This is not full 1PI, physical Kubo, SI, alpha, TTG, or Full Topic 13 closure.
+## 2026-08-20 - State-matched Kubo admission and condensed SK/KMS match (T13-115/T13-116)
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_CONDENSED_RELATIVE_FLOW_KUBO_ADMISSION_LANE` and `T13_UET_O2_CONDENSED_SK_KMS_KUBO_MATCH_LANE`.
+WHAT_IS_ACTUALLY_CLOSED: One declared condensed relative-flow contact channel now has a machine-readable state-matched natural-unit Kubo record, plus a matched retarded lower-half-plane pole, positive spectral matrix, KMS ratio, FDT identity, zero-frequency Kubo match, and nonnegative entropy witness.
+WHAT_REMAINS_OPEN: Full finite-temperature retarded 1PI self-energy, all-channel renormalization, complete two-fluid transport, SI conversion, independent physical vertex anchor, dimensional Phi map, independent alpha_Phi_K, Ding-compatible C_src, and Full Topic 13 remain open.
+DEPENDENCY_UNLOCKED: Declared-channel Kubo and SK/KMS/FDT lanes only; `full_core_unlock=false`; no physical global coefficient, Core, Gravity, Galaxy, SI, or external-validation dependency is unlocked.
+STATUS: `PASS_KUBO_MATCHED_DECLARED_CONDENSED_RELATIVE_FLOW_CHANNEL` and `PASS_ACTION_DERIVED_CONDENSED_SK_KMS_KUBO_MATCH_LANE`; Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`.
+WHAT_CHANGED: Added the state-matched Kubo admission builder/audit and the condensed SK/KMS/Kubo response audit, then synchronized full-gate mappings, closure register, dependency projection, and update records. No fit, synthetic replacement, target residual, or Xie 2026 holdout was used.
+EQUATION_OR_MAPPING: `K_rel^natural=lim_(omega->0) Re G_R^rel(omega)=D_rel/Gamma_rel`; `G_R^rel(omega)=2*D_rel/(2*Gamma_rel-i*omega)*P_rel`; `G^K=rho*coth(omega/(2*T))`.
+VERIFICATION: Both audits have zero failed checks. Kubo coefficient `2.713283847206443e-05` with quadrature uncertainty `3.500054507989025e-06` is `KUBO_MATCHED` in natural units only. SK/KMS residuals are KMS `0`, FDT `2.1815250606323664e-16`, retarded reality `0`, spectral PSD minimum `0`, and zero-frequency match `0`; focused tests `4 passed`. Wave 1 integrity is `PASS_WITH_BLOCKED_LANES` with no hash errors and holdout access clean.
+CONTROLLING_BLOCKER: `full_finite_temperature_retarded_1PI_self_energy_missing`, `independent_physical_condensed_vertex_anchor_missing`, and the full-bridge dimensional/alpha, Ding C_src, EOS/transport/KMS/entropy closure groups.
+NEXT_ACTION: Derive the full finite-temperature condensed retarded self-energy and all-channel SK/KMS kernel, or source-lock an independent physical condensed vertex anchor. Keep this coefficient scoped to the declared natural-unit lane and do not promote it to SI or Full Topic 13.
+CLAIM_BOUNDARY: Action-derived declared-channel result only; not an external measurement, complete interacting 1PI theory, SI thermal transport, alpha_Phi_K calibration, TTG prediction, external validation, or global UET closure.
+DATA_ROLE: `DERIVED_INTERNAL_NATURAL_UNIT`; the admitted coefficient is not a calibration, training, comparison, or holdout record. No external numeric source was consumed by these two lanes.
+EVIDENCE_PATHS: `docs/core/uet_o2_condensed_relative_flow_kubo_admission.py`; `docs/core/artifacts/t13_uet_o2_condensed_relative_flow_kubo_admission_audit.json`; `docs/core/uet_o2_condensed_sk_kms_kubo_match.py`; `docs/core/artifacts/t13_uet_o2_condensed_sk_kms_kubo_match_audit.json`.
+EVIDENCE_HASHES: Kubo module `92dea65cf85d2fc2054e4f5c0b293712d2ea0b8b0df65ffa5e4b95de9dd2df67`; Kubo audit `5e909ff97aa0476619235460c012313f36b6065e642bbe4f7fba63f36bd8c7f6`; SK/KMS module `ab6fabaca6d2a19f8185535928638ecf4f1581cd2ad89ada78ed89e5341aff72`; SK/KMS audit `d13d59760f9ebe0a3d2471ad984ec95c6729846d08b2b9ce011e2e8eb2fcaf1c`; registry `ae143f9bd06738ae777415b46d39752c8fbb4a96b17f31de94eac3e563a7be44`; full gate `4b69d2f13ef9827f11898edc63b254dd837943b3ccdf4b88f7fe52b2ea0d2415`; register `6d41189d970ba4b17bb889176412fc66ed4b9cbcd02a8520d014ddc61800ddb0`; dependency `83f6351dc2ccee0f3ba80a593c2081ca82e04d0b0b9d5b69ec9ad91754bfff1d`.
+## 2026-08-20 - Declared finite-temperature retarded 1PI response grid (T13-117)
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_FINITE_T_DECLARED_RETARDED_1PI_RESPONSE_GRID_LANE`.
+WHAT_IS_ACTUALLY_CLOSED: The audited action-derived 1<->3 and labeled 2<->2 finite-temperature sunset channels are evaluated on one matched timelike invariant grid. The assembled pole-subtracted retarded response has a positive spectral grid, lower-half-plane imaginary part, grid-level KMS/FDT checks, retarded i0 consistency, and PV convergence.
+WHAT_REMAINS_OPEN: Complete finite-temperature retarded 1PI self-energy, all sunset cuts, unique physical renormalization, physical Kubo transport, covariant entropy/heat-flux closure, dimensional Phi mapping, independent alpha_Phi_K, Ding C_src, and Full Topic 13 remain open.
+DEPENDENCY_UNLOCKED: Declared retarded response-grid lane only; `full_core_unlock=false`; no physical Kubo, SI, alpha, Core, Gravity, Galaxy, or external-validation dependency is unlocked.
+STATUS: `PASS_ACTION_DERIVED_O2_FINITE_T_DECLARED_RETARDED_1PI_RESPONSE_GRID_LANE`; Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`; `claim_promotion=false`.
+WHAT_CHANGED: Added the multi-invariant state-matched retarded response builder, focused regression, audit artifact, full-gate mapping, closure-register entry, dependency projection, and wave record. No target data, fit, synthetic replacement data, Landauer shortcut, or Xie 2026 holdout was used.
+EQUATION_OR_MAPPING: `Sigma_R,T^declared(s+i0)=Re Sigma_R,T^declared,sub(s)-i*pi*rho_T^declared(s)`; `rho_T^declared=rho_>,13+rho_>,22-rho_<,13-rho_<,22`; `log(rho_>/rho_<)=sqrt(s)/T`; `N_T=rho_T*coth(sqrt(s)/(2*T))`.
+VERIFICATION: Audit has zero failed checks on `s={4.75,5.0,5.5}` with threshold `4.5`. Maximum KMS residual `8.881784197001252e-16`; maximum FDT residual `0.003942955405912313`; maximum PV inner/outer residuals `0.0004183177470783957` / `0.00028892386785935357`; retarded i0 residual `6.776263578034403e-21`; focused regression `3 passed`. Wave 1 integrity remains `PASS_WITH_BLOCKED_LANES`, with no hash errors and no holdout consumption.
+CONTROLLING_BLOCKER: `complete_finite_temperature_1pi_self_energy_and_all_channel_physical_renormalization_missing`; independent physical vertex/Kubo provenance, dimensional Phi anchor, alpha_Phi_K, Ding C_src, and EOS/transport/KMS/entropy completion remain full-bridge blockers.
+NEXT_ACTION: Derive the remaining finite-temperature interacting 1PI channels and an independent physical renormalization/vertex anchor. Keep this grid as a declared natural-unit lane and do not promote it to physical SI transport.
+CLAIM_BOUNDARY: Action-derived internal evidence for the declared two-channel response grid only; not a complete interacting 1PI theory, physical Kubo coefficient, SI thermal transport, alpha_Phi_K calibration, TTG prediction, external validation, or global UET closure.
+DATA_ROLE: `ACTION_DERIVED_FINITE_T_DECLARED_RETARDED_1PI_RESPONSE_GRID_NO_HOLDOUT`.
+EVIDENCE_HASHES: module `f635e131e00c295cb90bf51607a8c41b392fef4af610682d9c4d3bc99e504885`; audit script `c2c379f776a48d0c4daad099696042e3c205ded0f51dcc7893a959ebe9d2c281`; audit artifact `f22d74b88c82e62bb0dc984bc96b1171bc2b7579d563d693fa3559ac199e3861`; full gate `53f40cd31b9cba7d608aeb5e8a3d48d3dc204302c478c16d4bb165a96f66a9ee`; register `8561401dec879ebc1b3c98f438e0ea774e8a8bacaf9cbe6cacae0ab1b25b985c`; dependency `cc3ef8f07c4e16037d9d232f40487f5de6cd841f9b12ddc8f163541bc7f820fd`.
+## T13-118: Finite-Temperature Signed-Cut Kinematic Taxonomy
+- `major_result_id`: `T13_UET_O2_FINITE_T_SIGNED_CUT_KINEMATIC_TAXONOMY_LANE`
+- `closure_level`: `CLOSED_FOR_LANE`
+- `equation`: `P0=sigma_1 E_1+sigma_2 E_2+sigma_3 E_3`, with all eight sign assignments enumerated for positive external energy.
+- `classification`: one `1<->3` assignment above `sqrt(s)>=3m`; three `2<->2` assignments `-++`, `+-+`, `++-`; one-plus/two-minus and all-negative assignments are forbidden for `P0>0`.
+- `multiplicity_boundary`: current scattering implementation is labeled to `++-` only; two kinematic permutations remain outside the current action-level multiplicity contract.
+- `units`: natural vacuum 3+1; external energy and mass in energy units; `mass_squared` in energy squared.
+- `derivation_class`: action-compatible future-timelike kinematic classification; no fitted coefficient and no external data.
+- `observable`: sign-assignment inventory, process-class counts, threshold witness, and labeled-channel gap.
+- `verification`: `t13_uet_o2_finite_temperature_signed_cut_coverage_audit.json`, zero failed checks.
+- `claim_boundary`: closes taxonomy only; does not close full 1PI, physical renormalization, Kubo, entropy, dimensional `Phi` mapping, independent `alpha_Phi_K`, TTG, or Full Topic 13.
+## T13-119: Action-Level Sunset Cut Multiplicity
+- `major_result_id`: `T13_UET_O2_FINITE_T_SUNSET_CUT_MULTIPLICITY_LANE`
+- `closure_level`: `CLOSED_FOR_LANE`
+- `equations`: `S_sunset=1/6`; `N_13=1`; `N_22=3`; `w_13=1/6`; `w_22=3/6=1/2`; `w_final(c,d)=1/(1+delta_cd)` in the separate physical scattering comparator.
+- `mapping`: current representative scattering factor `SCATTERING_CHANNEL_SYMMETRY_FACTOR=0.5` equals the graph-summed `2<->2` weight; this is not a proof of physical Kubo normalization.
+- `units`: natural vacuum 3+1; weights dimensionless; tensor prefactor has energy-squared units per loop integral.
+- `derivation_class`: action-derived graph symmetry and signed-cut permutation count; species-resolved final-state convention kept separate.
+- `verification`: `t13_uet_o2_finite_temperature_sunset_cut_multiplicity_audit.json`, zero failed checks.
+- `claim_boundary`: closes action-level multiplicity only; full 1PI, physical renormalization, Kubo, entropy, dimensional `Phi`, independent `alpha_Phi_K`, TTG, and Full Topic 13 remain open.
+## T13-120: All Positive-Energy On-Shell Cut Spectral Response
+- `major_result_id`: `T13_UET_O2_FINITE_T_ALL_ONSHELL_CUT_SPECTRAL_RESPONSE_LANE`
+- `closure_level`: `CLOSED_FOR_LANE`
+- `equations`: `rho_all=rho_(+++)+rho_(-++)+rho_(+-+)+rho_(++-)`; `rho_(2<->2,all)=(3/6)rho_(++-)`; `Sigma_R=Re Sigma_sub-i*pi*rho_all`; `N=rho_all*coth(sqrt(s)/(2*T))`.
+- `grid`: `s={4.75,5.0,5.5}` with threshold `4.5`.
+- `units`: natural vacuum 3+1; spectral/self-energy lane remains energy-squared convention.
+- `derivation_class`: action-derived signed-cut taxonomy plus graph multiplicity plus state-matched retarded response grid.
+- `verification`: `t13_uet_o2_finite_temperature_all_onshell_cut_response_audit.json`, zero failed checks.
+- `claim_boundary`: closes on-shell spectral response only; off-shell 1PI, physical renormalization, Kubo, entropy, dimensional `Phi`, independent `alpha_Phi_K`, TTG, and Full Topic 13 remain open.
+
+## T13-121 - Declared-Channel Retarded/Advanced/Keldysh 1PI
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE`.
+WHAT_IS_ACTUALLY_CLOSED: Numerical real-time component construction for the declared action-derived finite-temperature 1<->3 and representative 2<->2 sunset channels.
+WHAT_REMAINS_OPEN: Complete off-shell all-channel 1PI, physical renormalization, physical Kubo, entropy/heat-flux balance, dimensional `Phi`, independent `alpha_Phi_K`, Ding `C_src`, and Full Topic 13.
+DEPENDENCY_UNLOCKED: Declared-channel retarded/advanced/Keldysh interface only.
+STATUS: `PASS_ACTION_DERIVED_O2_FINITE_T_DECLARED_CHANNEL_RETARDED_ADVANCED_KELDYSH_1PI_LANE`.
+WHAT_CHANGED: Added an explicit component convention and numerical residual checks over the matched invariant grid.
+EQUATION_OR_MAPPING: `rho=rho_>-rho_<`; `N=rho_>+rho_<`; `Sigma_R=Re Sigma_sub-i*pi*rho`; `Sigma_A=Sigma_R^*`; `Sigma_K=-2*i*pi*N`; `N/rho=coth(sqrt(s)/(2*T))`.
+UNITS: Natural vacuum 3+1; `s`, self-energy components, spectral and noise measures use the declared energy-squared lane; `Phi` is not temperature or metric.
+DERIVATION_CLASS: Action-derived numerical composition of audited greater/lesser/PV channels; no fitted coefficient and no external source.
+OBSERVABLE: Retarded/advanced conjugacy, discontinuity, Keldysh convention, FDT, and convergence residuals.
+VERIFICATION: Audit zero failed checks; maximum Keldysh FDT residual `1.1620995061153706e-16`; focused regression `3 passed`.
+CONTROLLING_BLOCKER: `complete_off_shell_all_channel_1pi_and_physical_renormalization_anchor_missing`.
+NEXT_ACTION: Evaluate the remaining off-shell all-channel object and source-lock an independent physical renormalization condition.
+CLAIM_BOUNDARY: Declared natural-unit component lane only; not full 1PI, physical renormalization, transport, SI `Phi` mapping, `alpha_Phi_K`, TTG prediction, or Full Topic 13 closure.
+FORMULA_ORIGIN: `rho`, `N`, and the component relations are action-derived real-time definitions over the audited channel measures; FDT is an equilibrium KMS identity in the declared normalization.
+VERIFICATION_ROLE: Lane-level numerical audit; no external validation and no holdout access.
+
+## T13-122: Off-Shell Threshold-Crossing 1PI Lane
+- `major_result_id`: `T13_UET_O2_FINITE_T_OFFSHELL_THRESHOLD_CROSSING_1PI_LANE`
+- `closure_level`: `CLOSED_FOR_LANE`
+- `ontology`: `C` remains a collective system-behaviour coordinate; `Phi` remains an effective response variable; `R_gen` remains a derived history trace; `R_obs` remains an observer record.
+- `equations`: `s_th=9*m^2`; `rho_13(s)=0` below the three-body threshold and positive above it; `rho_22(s)` is nonzero on selected below-threshold points; `Sigma_R=Re Sigma_sub-i*pi*rho`; `Sigma_A=Sigma_R^*`; `Sigma_K=-2*i*pi*N`; `N/rho=coth(sqrt(s)/(2*T))`.
+- `units`: natural vacuum 3+1; `s`, spectral measures, noise measures, and self-energy components use the declared energy-squared lane; no SI `Phi` mapping is asserted.
+- `derivation_class`: action-derived equal-mass threshold support, graph-summed `2<->2` scattering response, pole-subtracted PV continuation, and real-time component identities.
+- `observable`: below/above-threshold support, PV convergence, retarded/advanced relations, Keldysh component identity, and equilibrium FDT over the crossing grid.
+- `verification`: `t13_uet_o2_finite_temperature_offshell_threshold_crossing_1pi_audit.json`, zero failed checks; focused regression `3 passed`.
+- `claim_boundary`: closes the declared threshold-crossing natural-unit lane only; it does not close complete all-channel 1PI, physical renormalization, Kubo, entropy, heat-flux, dimensional `Phi`, `alpha_Phi_K`, TTG, or Full Topic 13.
+## T13-123: All 2-to-2 Permutation Identity
+- `major_result_id`: `T13_UET_O2_FINITE_T_ALL_22_PERMUTATION_IDENTITY_LANE`
+- `closure_level`: `CLOSED_FOR_LANE`
+- `equations`: `P+k_minus=k_plus,1+k_plus,2`; `k_ref=(k_plus,1,k_plus,2,k_minus)`; `|det J|=1`; `I_22^(++-)=I_22^(+-+)=I_22^(-++)`; `w_single=1/6`; `w_22=3/6=1/2`.
+- `ontology`: `C` remains a collective system-behaviour coordinate; `Phi` remains an effective response variable; `R_gen` remains a derived history trace; `R_obs` remains separate observer data.
+- `units`: natural vacuum 3+1; invariant, spectral, noise, and self-energy quantities remain on the declared energy-squared lane; no SI `Phi` mapping is asserted.
+- `derivation_class`: exact equal-mass dummy-line relabeling with unit Jacobian plus action-level sunset graph weight.
+- `observable`: three permutation maps, aggregate response identity, KMS/FDT, and PV convergence.
+- `verification`: `t13_uet_o2_finite_temperature_all_22_permutation_identity_audit.json`, zero failed checks; focused regression `3 passed`.
+- `claim_boundary`: closes action-level permutation coverage only; complete off-shell 1PI, physical renormalization, transport, entropy, dimensional `Phi`, `alpha_Phi_K`, TTG, and Full Topic 13 remain open.
+## T13-124 same-state Cp and density mapping
+
+- Source mapping: `C_p^V = rho*C_p`.
+- Conditional uncertainty mapping: `u(C_p^V | rho fixed) = rho*u(C_p)`.
+- Constant-volume correction remains `c_v^V = C_p^V - T*alpha_V^2*K_T` and is not evaluated by this lane because matched alpha_V and K_T are not source-locked.
+- Units: `C_p` in `J kg^-1 K^-1`, `rho` in `kg m^-3`, `C_p^V` in `J m^-3 K^-1`, `alpha_V` in `K^-1`, and `K_T` in `Pa`.
+- Derivation class: source transcription, exact 300 C row matching, standard mass-to-volume identity, and conditional one-input uncertainty propagation. This is not a UET derivation.
+- Claim boundary: the comparator does not map `Phi` to kelvin, does not emit `alpha_Phi_K`, and does not close the thermodynamic bridge.
+## T13-125 Cp-only source boundary
+
+- Ontology: the package records a standard-material comparator; it does not redefine `C`, `Phi`, `R_gen`, or `R_obs`.
+- Quantity: `C_p(T)` is a mass-specific heat capacity, not `c_v` and not a volumetric observable.
+- Units: `C_p` uses `J kg^-1 K^-1`; temperature is retained in K with source Celsius coordinates.
+- Mapping boundary: `c_v^V = rho*(C_p - T*alpha_V^2*K_T)` is the declared correction, but it is not evaluated because the required same-state inputs are absent.
+- Derivation class: source transcription plus uncertainty reconstruction from reported absolute Cp uncertainty; no UET derivation and no Phi calibration.
+- Status: `CLOSED_FOR_LANE` only for source identity, row identity, and Cp uncertainty boundary; full thermodynamic bridge remains open.
+
+## T13-126 - IG210 expansion comparator formula contract
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_ZENODO_HITRACE_IG210_ALPHA_L_COMPARATOR`.
+WHAT_IS_ACTUALLY_CLOSED: Source transcription of the mean linear expansion coefficient and an explicit, conditional isotropic volume-expansion mapping.
+WHAT_REMAINS_OPEN: `K_T`, density, `Cp/Cv`, Ding material equivalence, `C_src`, and `alpha_Phi_K` remain open.
+EQUATION_OR_MAPPING: `alpha_l^mean(T;23 C)=mean(Delta_L/L)/(T-23 C)` as source quantity; `alpha_l[K^-1]=alpha_l[10^-6 K^-1]*10^-6`; `alpha_V=3*alpha_l` only under the declared isotropic geometry assumption; `c_p^V-c_v^V=T*alpha_V^2*K_T` remains an open conversion contract.
+VERIFICATION: 15 rows have sheet/cell identity and four replicate values; the source model column remains separate; the source reports expanded uncertainty 10 percent at `k=2`, which is retained as a source-level bound rather than relabelled as an independent standard uncertainty.
+CONTROLLING_BLOCKER: This is not a matched `alpha_V/K_T` pair and cannot close the volumetric heat-capacity correction.
+NEXT_ACTION: Find a same-state `alpha_V` and isothermal `K_T` pair with material-regime mapping and uncertainty, then propagate only within the declared thermodynamic contract.
+CLAIM_BOUNDARY: Source comparator and conditional geometry relation only; no UET derivation, `alpha_Phi_K`, TTG prediction, or Full Topic 13 claim.
+DATA_ROLE: `EXTERNAL_SOURCE_COMPARATOR_NOT_CALIBRATION`.
+EVIDENCE_PATHS: `docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/zenodo_5799133_ig210_alpha_l_source_package.json`; `docs/core/artifacts/t13_zenodo_ig210_alpha_l_source_audit.json`.
+## T13-128 - IG210 thermophysical source formula contract
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_FAROOQUI_IG210_THERMOPHYSICAL_SOURCE`.
+WHAT_IS_ACTUALLY_CLOSED: Source-level property rows and uncertainty contracts are auditable without changing the UET ontology.
+WHAT_REMAINS_OPEN: The thermodynamic conversion from `C_p` to `C_v` needs a source-matched `K_T`; no UET SI anchor or `alpha_Phi_K` is emitted.
+DEPENDENCY_UNLOCKED: Source comparator lane only.
+STATUS: `PASS_SCOPED_FAROOQUI_IG210_THERMOPHYSICAL_SOURCE`; full Topic 13 remains blocked.
+WHAT_CHANGED: Added a published-source formula and unit audit for IG-210.
+EQUATION_OR_MAPPING: `c_v^V = rho*(C_p - T*alpha_V^2*K_T)`; `alpha_V=3*alpha_l` only under isotropic geometry; `kappa=rho*C_p*D` remains source context.
+VERIFICATION: Three rows at 500/700/1000 C, units are declared, expanded bounds use `k=2`, and all 15 source checks pass.
+CONTROLLING_BLOCKER: Missing same-state `K_T` and independent `alpha_Phi_K`.
+NEXT_ACTION: Acquire `K_T` or record a no-go; keep the lane outside calibration and holdout paths.
+CLAIM_BOUNDARY: No `C_v`, Ding `C_src`, UET transport derivation, temperature prediction, or Full Topic 13 claim.
+
+## T13-129 IG210 K_T formula boundary
+MAJOR_RESULT_CLOSURE: CLOSED_FOR_LANE for the source-compatibility boundary only.
+WHAT_IS_ACTUALLY_CLOSED: The IG210 package supplies source-traceable C_p, density, alpha_l, and conductivity rows; it does not supply the K_T term required to evaluate c_v^V.
+WHAT_REMAINS_OPEN: The formula c_v^V = rho*(C_p - T*alpha_V^2*K_T) remains unevaluated for IG210. alpha_V = 3*alpha_l remains a conditional isotropic geometry mapping, not a source-reported universal identity.
+DEPENDENCY_UNLOCKED: Formula audit boundary only; no volumetric c_v, UET SI map, calibration, or full bridge dependency is unlocked.
+STATUS: PASS_SCOPED_GRAPHITE_ALPHA_V_K_T_MATCHED_SOURCE_BOUNDARY_NO_GO; Full Topic 13 remains BLOCKED_OPEN_T13_FULL_BRIDGE.
+WHAT_CHANGED: Added explicit IG210 absence checks for K_T, C_v, and alpha_Phi_K emission to the matched-source audit.
+EQUATION_OR_MAPPING: alpha_V has units K^-1; K_T has units Pa; c_v^V has units J m^-3 K^-1. No numeric Cp-to-Cv correction is emitted.
+VERIFICATION: All matched-source checks passed; focused regression 2 passed; full gate remains partial; holdout access remains false.
+CONTROLLING_BLOCKER: same_state_IG210_K_T_missing.
+NEXT_ACTION: Obtain a permitted same-state K_T source with uncertainty or preserve the formula as open.
+CLAIM_BOUNDARY: No UET derivation, no K_T inference, no transport coefficient, and no Full Topic 13 closure.
+## T13-130 - Covariant action symbolic SI conversion formula boundary
+MAJOR_RESULT_CLOSURE: CLOSED_FOR_LANE only.
+WHAT_IS_ACTUALLY_CLOSED: The dimensional powers and unit labels for the natural-unit to SI conversion are explicit and regression-tested, conditional on E_ref and Phi_scale.
+WHAT_REMAINS_OPEN: The physical origin and numeric value of E_ref, covariant field normalization, base Phi -> Phi_E, e0, and alpha_Phi_K remain open.
+DEPENDENCY_UNLOCKED: Formula-contract lane only; no physical calibration or Core unlock.
+STATUS: PASS_SCOPED_SYMBOLIC_ACTION_SI_CONVERSION_CONTRACT.
+WHAT_CHANGED: Added exact-constant loading, symbolic conversion helpers, audit checks, and regression coverage.
+EQUATION_OR_MAPPING: u_SI=u_nat*E_ref^4/(hbar*c)^3; C_SI=C_nat*k_B*E_ref^3/(hbar*c)^3; Delta_Tq=(E_ref/k_B)*Delta_theta; Phi_normalized=Phi_covariant/Phi_scale.
+VERIFICATION: Audit has zero failed checks; regression 4 passed; no numeric coefficient was fitted or inferred.
+CONTROLLING_BLOCKER: energy_reference_and_base_Phi_normalization_provenance_missing.
+NEXT_ACTION: Establish coefficient provenance before using the symbolic map to evaluate any SI observable.
+CLAIM_BOUNDARY: Unit algebra only; not proof of UET dynamics, thermal transport, or alpha_Phi_K.
+
+## T13-131 - Huberman public PBTE formula boundary
+
+The Huberman source method is retained as comparator context: `g_i` is a mode-specific deviational energy density, `C=sum_i c_i`, and `Delta_T=(1/C)sum_i g_i`. These are source-method relations, not UET derivations and not a numeric `C_src` import.
+
+The Topic 13 source acceptance contract remains `C_src(T)=sum_mu c_mu(T)` with units `J m^-3 K^-1` and `Delta_Tq=Delta_u_ph/C_src`. No unit-closed row, uncertainty, convergence, or `Phi` mapping is emitted by this lane.
+
+## Berut Figure 3 Local Archive (2026-08-20)
+
+MAJOR_RESULT_CLOSURE: CLOSED_FOR_LANE
+
+WHAT_IS_ACTUALLY_CLOSED: The official publisher Figure 3 route was
+download-tested. Its remote binary identity is pinned by SHA-256, byte size,
+OLE signature, retrieval date, and an explicit four-asset raster inventory.
+
+WHAT_REMAINS_OPEN: No raster is accepted as a numeric row yet. Selected panel,
+axis ticks and units, point or curve selection, digitization uncertainty,
+preprocessing, and row identity remain open.
+
+DEPENDENCY_UNLOCKED: Berut figure-acquisition route only. No numeric source,
+alpha_Phi_K, Full Topic 13, Core, Gravity, or transport dependency is unlocked.
+
+STATUS: PASS_REMOTE_FIGURE3_BINARY_IDENTITY
+
+WHAT_CHANGED: docs/core/artifacts/t13_berut_figure3_remote_binary_identity.json records the official article/download locators,
+binary hash e4bab6be849a093b7578bc52ce6df9be95dc25d83d51ecb718b4f798a37d50fa, size
+479744 bytes, and embedded raster inventory.
+The binary is archived locally at the hash-linked raw path; no raw measurement table is implied.
+
+EQUATION_OR_MAPPING: Figure 3 is a source-surface asset for the Berut
+heat-versus-erasure-duration observable; no numeric Delta_Tq or alpha_Phi_K
+mapping is emitted.
+
+VERIFICATION: Binary identity and asset inventory checks pass; accepted numeric
+rows emitted: 0; no fit, target data, calibration, or Xie 2026 holdout was used.
+
+CONTROLLING_BLOCKER: berut_selected_panel_and_axis_tick_mapping_missing
+
+NEXT_ACTION: Select one quantitative panel, record axis ticks and units, map selected points or curve with declared digitization uncertainty, and archive row identity and preprocessing before source-normalized use.
+
+CLAIM_BOUNDARY: Remote binary identity only. This is not a source-normalized
+numeric row, uncertainty result, calibration, prediction, or external validation.
+
+## Berut Source Package Availability Boundary (2026-08-20)
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE`
+
+WHAT_IS_ACTUALLY_CLOSED: The Berut working copies in the current checkout are
+classified as topic-derived summaries, not raw experimental rows. The captured
+publisher surface is recorded as a Figure 3/PPT acquisition route, while the
+absence of a local raw or separately exposed source-data package is explicit.
+
+WHAT_REMAINS_OPEN: The official Figure 3 binary/hash, selected panel and axis
+mapping, numeric transcription, row identity, preprocessing, and uncertainty
+package remain open. No Berut numeric row is eligible for calibration.
+
+DEPENDENCY_UNLOCKED: Berut source-acquisition decision only. No Full Topic 13,
+Core, Gravity, or constitutive-transport dependency is unlocked.
+
+STATUS: `PASS_SCOPED_BERUT_SOURCE_PACKAGE_BOUNDARY`
+
+WHAT_CHANGED: `docs/core/artifacts/t13_berut_source_package_availability_boundary.json` records the source identity, publisher locator,
+current local inventory, source-surface scope, and non-calibration policy.
+
+EQUATION_OR_MAPPING: `E_min = k_B T ln(2)` remains an imported standard
+constraint. No numeric `Delta_Tq = alpha_Phi_K * Delta_Phi` mapping is emitted.
+
+VERIFICATION: All source identity, summary-role, no-raw-file, surface-scope,
+holdout, no-fit, and no-calibration checks pass; accepted numeric rows emitted:
+`0`.
+
+CONTROLLING_BLOCKER: `berut_permissioned_raw_numeric_package_missing`
+
+NEXT_ACTION: Obtain a permissioned raw numeric table or numeric measurement uncertainty for the Berut rows; keep the archived Figure 3c transcription as comparison-only and outside alpha calibration.
+
+CLAIM_BOUNDARY: This is a provenance and acquisition boundary, not a closed
+Berut numeric row, uncertainty result, `alpha_Phi_K`, UET bridge, or external
+validation.

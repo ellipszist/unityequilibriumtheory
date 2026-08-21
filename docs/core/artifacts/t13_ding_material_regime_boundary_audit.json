@@ -1,7 +1,7 @@
 {
   "schema_version": "t13-ding-material-regime-boundary-audit-v1",
   "artifact": "t13_ding_material_regime_boundary_audit",
-  "generated_at": "2026-08-18",
+  "generated_at": "2026-08-20",
   "status": "PASS_SCOPED_DING_MATERIAL_REGIME_BOUNDARY_NO_GO",
   "major_result": {
     "major_result_id": "T13_DING_MATERIAL_REGIME_BOUNDARY",
@@ -33,7 +33,7 @@
       },
       {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/ding_graphite_material_regime_boundary_source_package.json",
-        "sha256": "63203826c5c5438e41505819d55b2fa9b7bca42ce652cce42a7791db5e3e621b"
+        "sha256": "94d46f1c021360e25d3f0f6c335c7ada12e2a73d0932c36708775e62affa67f6"
       },
       {
         "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/ding_2022_supplementary_information.pdf",
@@ -120,6 +120,22 @@
         "source_identity": "Huang 2023 supplementary provenance boundary",
         "regime_difference": "isotopically purified ribbon geometry and source lane; no equivalence to Ding natural crystal established",
         "equivalence_status": "NOT_ESTABLISHED"
+      },
+      {
+        "source_id": "zenodo_5799133_ig210",
+        "material": "Toyo Tanso IG210 fine-grained isotropic graphite",
+        "evidence_package": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/zenodo_5799133_ig210_alpha_l_source_package.json",
+        "source_identity": "Zenodo 10.5281/zenodo.5799133 Hi-Trace expansion/diffusivity workbook",
+        "regime_difference": "manufactured IG210 isotropic grade with mean expansion and diffusivity records; Ding uses a natural-graphite TTG/PBTE state and no same-state PBTE response or equivalence mapping is supplied",
+        "equivalence_status": "NOT_ESTABLISHED"
+      },
+      {
+        "source_id": "farooqui_2022_ig210",
+        "material": "IG-210 grade isotropic graphite from the NPL Hi-Trace thermophysical table",
+        "evidence_package": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/farooqui_2022_ig210_thermophysical_source_package.json",
+        "source_identity": "NPL eprint 9538 / DOI 10.1007/s10765-021-02928-4 published Table 1",
+        "regime_difference": "manufactured IG-210 isotropic grade with source-locked density, C_p, diffusivity, and expansion rows; Ding uses a natural-graphite TTG/PBTE state and no same-state PBTE response or equivalence mapping is supplied",
+        "equivalence_status": "NOT_ESTABLISHED"
       }
     ],
     "calorine_admission_boundary": {
@@ -138,7 +154,7 @@
     },
     "ding_raw_sha256_observed": "a50c1a6347775de72f705f4395507d3136cbf4e5cadfb6638caca2876c52b8f7",
     "package_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/ding_graphite_material_regime_boundary_source_package.json",
-    "package_sha256": "63203826c5c5438e41505819d55b2fa9b7bca42ce652cce42a7791db5e3e621b"
+    "package_sha256": "94d46f1c021360e25d3f0f6c335c7ada12e2a73d0932c36708775e62affa67f6"
   },
   "mapping_contract": {
     "Ding_C_src": "source-defined volumetric modal heat-capacity sum in the PBTE response",

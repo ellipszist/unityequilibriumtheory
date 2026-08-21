@@ -91,8 +91,8 @@
       "derivation_class": "standard observable definition plus candidate lane mapping; alpha not derived",
       "observable": "y_TTG=Delta_Tq(t)/Delta_Tq(0); y_TTG^UET=Delta_Phi(t)/Delta_Phi(0)",
       "data_role": "permitted Ding 2022 CC BY figure-derived normalized-shape source; raw author numeric route remains optional; Xie 2026 locked holdout",
-      "verification_status": "SOURCE_ROUTE_PASS_ALPHA_OPEN",
-      "controlling_blocker": "alpha_Phi_K_independent_calibration_missing",
+      "verification_status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_FULL_CANDIDATE_LANES",
+      "controlling_blocker": "full_candidate_prearrival_leakage_and_open_alpha_Phi_K_calibration",
       "claim_boundary": "permitted figure-derived source route and normalized internal controls; not raw author data, temperature prediction, external validation, or global closure",
       "next_action": "derive or independently calibrate alpha_Phi_K with uncertainty using training/calibration data only; do not read or tune on Xie 2026",
       "evidence": [
@@ -122,6 +122,15 @@
               "prearrival_leakage": false,
               "external_source_ready": false
             }
+          }
+        },
+        {
+          "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/thermal_wave1_branch_gate.json",
+          "present": true,
+          "sha256": "8159531f49b071976ac732a2d5a9a9f8bad18b1c01c2e6693019e9e149d86b87",
+          "summary": {
+            "status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_FULL_CANDIDATE_LANES",
+            "controlling_blocker": "full_candidate_prearrival_leakage_and_open_alpha_Phi_K_calibration"
           }
         },
         {
@@ -209,7 +218,7 @@
           {
             "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/thermal_wave1_branch_gate.json",
             "present": true,
-            "sha256": "23492993237ba8e6cb1377461120b234663a59d6e10fdee646e9c3feb6e45a2e",
+            "sha256": "8159531f49b071976ac732a2d5a9a9f8bad18b1c01c2e6693019e9e149d86b87",
             "summary": {
               "status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_FULL_CANDIDATE_LANES",
               "gates": {
@@ -219,6 +228,8 @@
                 "locked_threshold_unchanged": true,
                 "holdout_not_consumed": true,
                 "numeric_fitting_disabled": true,
+                "normalized_comparison_route_ready": true,
+                "raw_author_numeric_route_ready": false,
                 "provisional_source_provenance_present": true,
                 "alpha_Phi_K_independent_calibration": false
               }
@@ -371,14 +382,14 @@
     "Topic 0.11 source/formula/estimator policy remains blocked",
     "Xie 2026 remains locked holdout and was not consumed",
     "alpha_Phi_K has no independent derivation or calibration with uncertainty",
-    "full original conserved-C candidate remains blocked; named coupled C/Phi lane passes the locked normalized causal checks",
     "current simplified comparator result is below its internal speed threshold",
+    "full original conserved-C candidate remains blocked; named coupled C/Phi lane passes the locked normalized causal checks",
     "full_candidate_prearrival_leakage_and_open_alpha_Phi_K_calibration"
   ],
   "claim_boundary": "Wave 1 closes coordination ambiguity only; UET remains a candidate effective theory with blocked foundation dependencies.",
   "thermal_branch_gate": {
     "path": "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/thermal_wave1_branch_gate.json",
-    "sha256": "23492993237ba8e6cb1377461120b234663a59d6e10fdee646e9c3feb6e45a2e",
+    "sha256": "8159531f49b071976ac732a2d5a9a9f8bad18b1c01c2e6693019e9e149d86b87",
     "status": "PASS_WITH_BLOCKED_DIMENSIONAL_AND_FULL_CANDIDATE_LANES"
   },
   "hash_cycle_policy": {
@@ -395,7 +406,7 @@
     },
     "register": {
       "path": "docs/core/artifacts/uet_major_result_closure_register.json",
-      "sha256": "9170d82dd53a150b98e63011c3ea89e07c4c40c956c67cf172d453774159c3f2",
+      "sha256": "6d41189d970ba4b17bb889176412fc66ed4b9cbcd02a8520d014ddc61800ddb0",
       "generated_at": "2026-08-18"
     },
     "required_fields": [

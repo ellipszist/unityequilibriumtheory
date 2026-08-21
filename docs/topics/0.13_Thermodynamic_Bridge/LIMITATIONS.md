@@ -1,4 +1,4 @@
-﻿﻿# Limitations
+# Limitations
 
 - The root baseline comparison is present, but numeric acceptance boundaries are still provisional until a saved artifact is generated and reviewed.
 - Current data posture is source-referenced but still below a fully normalized archival dataset package.
@@ -37,3 +37,79 @@
 ## Ding 2022 OA Numeric-Input Availability (2026-08-11)
 
 The complete captured official `PMC8755757.1/` prefix has no force constants, Phonopy/ShengBTE inputs, scattering matrix, mode-resolved heat-capacity data, or numeric `C_src(T)`. The article gives computational grid/supercell details but routes supporting data to a corresponding-author request. This closes only the current official-OA search route. It does not show that author-held data are unavailable and does not permit reconstruction of `C_src(T)` from normalized TTG curves.
+
+
+## Declared finite-temperature real-time component lane (T13-121)
+
+The declared 1<->3 and representative 2<->2 natural-unit channels now have a numerical retarded/advanced/Keldysh component interface with a checked FDT relation. This remains an internal action-derived lane: it does not close the complete off-shell all-channel 1PI object, select a physical renormalization anchor, emit physical Kubo transport, provide an SI `Phi` map, calibrate `alpha_Phi_K`, validate TTG, or promote Full Topic 13.
+
+## T13-122 Threshold-Crossing Boundary
+The below/above-threshold lane is a declared natural-unit response result, not a complete finite-temperature 1PI theory. The `2<->2` below-threshold witness does not supply a physical transport coefficient, and the `1<->3` threshold witness does not select a physical renormalization scheme. No dimensional `Phi` mapping, independent `alpha_Phi_K`, TTG validation, EOS, entropy current, or external claim is promoted.
+## T13-123 All 2-to-2 Permutation Boundary
+The three equal-mass signed-cut permutations are covered by a unit-Jacobian relabeling identity. This does not prove a physical transport normalization, complete off-shell 1PI renormalization, a dimensional `Phi` map, or an independent `alpha_Phi_K`. The aggregate graph weight remains an action-level contract, not a calibrated SI coefficient.
+## T13-124 source boundary
+
+The IAEA GR-280 lane closes only the availability of a same-temperature Cp row and density row in one official source. It does not provide a standard uncertainty for density, a direct volumetric measurement, or a source-matched `c_v` correction. GR-280 reactor graphite is not treated as Ding HOPG/TTG, so the lane cannot substitute for Ding `C_src` or calibrate `alpha_Phi_K`. The result remains a comparison-only lane and does not unlock Core, Gravity, transport, Galaxy, or external validation.
+## T13-125 high-temperature Cp comparator limitations
+
+- The workbook reports `C_p`, not `c_v`; no density, `alpha_V`, or `K_T` rows are supplied for a volumetric conversion.
+- The same-block isotropic graphite material is not asserted to be Ding HOPG/TTG, so it cannot supply Ding `C_src(T)` or `alpha_Phi_K`.
+- VINCA rows have no reported row uncertainty; no uncertainty was inferred from the other laboratories.
+- LNE/PTB expanded uncertainty is not a substitute for a source-grade `c_v` uncertainty budget.
+- The comparator is not used for fit, tuning, calibration, or Xie 2026 holdout access.
+
+## T13-126 - IG210 expansion boundary
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` only.
+WHAT_IS_ACTUALLY_CLOSED: A source-traceable IG210 mean linear-expansion comparator with a conditional isotropic `alpha_V` mapping and an explicit 10 percent expanded uncertainty boundary at `k=2`.
+WHAT_REMAINS_OPEN: The workbook does not provide same-state isothermal `K_T`, density uncertainty, `Cp/Cv`, Ding TTG equivalence, or any base-`Phi` energy amplitude. The factor `3` is a geometry assumption, not an extra measurement.
+DEPENDENCY_UNLOCKED: No Cp-to-Cv, Ding `C_src`, `alpha_Phi_K`, transport, Core, Gravity, or Galaxy dependency.
+STATUS: `PASS_SCOPED_IG210_ALPHA_L_SOURCE`; global Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE`.
+WHAT_CHANGED: The source was archived, hashed, audited, and projected into the full gate/register/dependency contract.
+EQUATION_OR_MAPPING: `alpha_V=3*alpha_l` is conditional; no numerical `alpha_Phi_K` or thermal prediction is emitted.
+VERIFICATION: `17/17` source checks and `2` focused tests passed; no fit and no Xie 2026 access.
+CONTROLLING_BLOCKER: `same_state_alpha_V_K_T_and_Ding_material_regime_mapping_missing` for this source route.
+NEXT_ACTION: Continue the paired thermodynamic input route and independent dimensional `Phi` anchor route.
+CLAIM_BOUNDARY: This lane cannot be used as external validation or calibration.
+## T13-128 - IG210 published-source boundary
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` only.
+WHAT_IS_ACTUALLY_CLOSED: A source-traceable IG-210 thermophysical comparator with density, `C_p`, diffusivity, `alpha_l`, conductivity, and stated `k=2` uncertainty bounds.
+WHAT_REMAINS_OPEN: `K_T`, `C_v`, Ding TTG equivalence, Ding `C_src`, dimensional `Phi`, and independent `alpha_Phi_K` remain open.
+DEPENDENCY_UNLOCKED: None beyond the comparison lane.
+STATUS: `PASS_SCOPED_FAROOQUI_IG210_THERMOPHYSICAL_SOURCE`; global Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE`.
+WHAT_CHANGED: Published NPL PDF, package, audit, focused test, and gate projections were added.
+EQUATION_OR_MAPPING: `alpha_V=3*alpha_l` is conditional; no Cp-to-Cv correction or UET calibration is emitted.
+VERIFICATION: Audit `15/15`; focused test `3 passed`; no fit and no Xie 2026 access.
+CONTROLLING_BLOCKER: Same-state `K_T` and independent `Phi` dimensional anchor.
+NEXT_ACTION: Continue source acquisition and independent calibration research without substituting IG-210 for Ding.
+CLAIM_BOUNDARY: Comparator only; not physical UET closure or external validation.
+
+## T13-129 IG210 K_T limitation boundary
+MAJOR_RESULT_CLOSURE: CLOSED_FOR_LANE for a source-availability no-go.
+WHAT_IS_ACTUALLY_CLOSED: The public NPL IG210 thermophysical source route is now explicit: same-grade C_p and alpha_l rows exist, but the source package contains no same-state K_T or C_v.
+WHAT_REMAINS_OPEN: A missing K_T record cannot be repaired by relabeling conductivity, diffusivity, elastic bulk modulus, or a different graphite grade. Ding equivalence, C_src, alpha_Phi_K, and full thermal closure remain open.
+DEPENDENCY_UNLOCKED: None beyond the scoped source-boundary lane.
+STATUS: PASS_SCOPED_GRAPHITE_ALPHA_V_K_T_MATCHED_SOURCE_BOUNDARY_NO_GO; Full Topic 13 remains BLOCKED_OPEN_T13_FULL_BRIDGE / PARTIAL.
+WHAT_CHANGED: Added IG210 to the existing no-go inventory without changing the threshold, ontology, holdout policy, or claim boundary.
+EQUATION_OR_MAPPING: c_p^V-c_v^V=T*alpha_V^2*K_T remains a contract, not a computed result.
+VERIFICATION: Source-boundary audit passed; focused regression 2 passed; no fit, tuning, synthetic replacement, or holdout access.
+CONTROLLING_BLOCKER: same_state_IG210_K_T_missing.
+NEXT_ACTION: Search for a permissioned same-state IG210 K_T record; otherwise keep this route blocked and move to the independent Phi energy-anchor route.
+CLAIM_BOUNDARY: Comparator/no-go only; not material validation, not calibration, and not Full Topic 13 closure.
+## T13-130 - Symbolic action-to-SI conversion limitation
+MAJOR_RESULT_CLOSURE: CLOSED_FOR_LANE only.
+WHAT_IS_ACTUALLY_CLOSED: Conditional symbolic conversion factors from natural units to SI units are now explicit and audited.
+WHAT_REMAINS_OPEN: No physical E_ref, covariant Phi_scale, base Phi -> Phi_E, e0, response coefficient, or independent alpha_Phi_K calibration is established.
+DEPENDENCY_UNLOCKED: None beyond the symbolic formula lane.
+STATUS: Full Topic 13 remains BLOCKED_OPEN_T13_FULL_BRIDGE / PARTIAL.
+WHAT_CHANGED: Added an auditable conversion module and kept all physical inputs open.
+EQUATION_OR_MAPPING: u_SI=u_nat*E_ref^4/(hbar*c)^3; Delta_Tq=(E_ref/k_B)*Delta_theta; normalization requires Phi_scale.
+VERIFICATION: Scoped audit passed; full gate remains at 10 blockers; holdout access remains false.
+CONTROLLING_BLOCKER: energy_reference_and_base_Phi_normalization_provenance_missing.
+NEXT_ACTION: Search for independent action/field coefficient provenance; do not turn the symbolic contract into calibration.
+CLAIM_BOUNDARY: Conditional dimensional bookkeeping only, not SI calibration, prediction, or Full Topic 13 closure.
+
+## T13-131 - Huberman public PBTE source limitation
+
+The Huberman 2019 arXiv package is a useful graphite transport comparator and method record, but it is not an accepted Ding `C_src` input. Its embedded supplementary methods refer to Ding-derived force constants without depositing the raw force constants, scattering matrix, mode-resolved heat capacities, source-grade uncertainty, or convergence payload. The lane therefore closes only the public-source boundary and leaves the full Topic 13 source blocker unchanged.
+
+`alpha_Phi_K` remains open; no PDF-derived curve, printed value, or normalized TTG trace is permitted to calibrate it.

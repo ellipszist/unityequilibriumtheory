@@ -237,6 +237,16 @@ def main() -> int:
     parser.add_argument("--temperatures", type=parse_temperatures, default=(200.0, 300.0))
     parser.add_argument("--reuse-force-constants", action="store_true")
     parser.add_argument("--no-relax", action="store_true")
+    parser.add_argument(
+        "--structure-locator",
+        default="https://zenodo.org/api/records/21198312/files/graphite-prim.xyz/content",
+    )
+    parser.add_argument(
+        "--potential-locator",
+        default="https://zenodo.org/api/records/21198312/files/nep-C.txt/content",
+    )
+    parser.add_argument("--model-origin-locator", default=UPSTREAM_NEP_LOCATOR)
+    parser.add_argument("--related-record-locator", default=RELATED_ROTATION_DISORDER_RECORD)
     args = parser.parse_args()
 
     input_dir = args.input_dir.resolve()
@@ -246,11 +256,11 @@ def main() -> int:
     input_records = {
         "structure": source_record(
             structure_path,
-            "https://zenodo.org/api/records/21198312/files/graphite-prim.xyz/content",
+            args.structure_locator,
         ),
         "potential": source_record(
             potential_path,
-            "https://zenodo.org/api/records/21198312/files/nep-C.txt/content",
+            args.potential_locator,
         ),
         "software": {
             "calorine": "3.5",
@@ -260,9 +270,9 @@ def main() -> int:
         },
     }
     input_records["potential"]["upstream_model_origin"] = {
-        "locator": UPSTREAM_NEP_LOCATOR,
-        "role": "upstream model origin identified by the Zenodo tutorial record; local bytes remain pinned by Zenodo hash",
-        "related_record": {"locator": RELATED_ROTATION_DISORDER_RECORD, "role": "related record, not the nep-C.txt input source"},
+        "locator": args.model_origin_locator,
+        "role": "model-origin locator supplied by the source contract; local bytes remain pinned by hash",
+        "related_record": {"locator": args.related_record_locator, "role": "related source record, not necessarily the byte source"},
     }
     fc2 = run_dir / "fc2.hdf5"
     fc3 = run_dir / "fc3.hdf5"

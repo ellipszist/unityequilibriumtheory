@@ -42,7 +42,7 @@ def test_iaea_table_cv_lane_is_integrated_without_volumetric_or_topic13_promotio
     assert full["status"] == "BLOCKED_OPEN_T13_FULL_BRIDGE"
     assert full["claim_promotion"] is False
     assert "c_v_source_uncertainty_not_closed" in full["major_result"]["what_remains_open"]
-    assert "direct_volumetric_c_v_or_same_state_Cp_source_missing" in full["major_result"]["what_remains_open"]
+    assert "direct_volumetric_c_v_or_same_state_Cp_source_missing" not in full["major_result"]["what_remains_open"]
     assert any(
         item["path"] == "docs/core/artifacts/t13_iaea_graphite_constant_volume_source_audit.json"
         for item in full["evidence_artifacts"]

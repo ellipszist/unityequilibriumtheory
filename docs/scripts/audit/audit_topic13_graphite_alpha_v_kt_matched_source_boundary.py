@@ -35,6 +35,10 @@ TOHEI_TABLE = ROOT / (
     "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/"
     "tohei_2006_graphite_alpha_v_kt_table_comparator_source_package.json"
 )
+FAROOQUI_IG210 = ROOT / (
+    "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/"
+    "farooqui_2022_ig210_thermophysical_source_package.json"
+)
 
 
 def load_json(path: Path) -> dict:
@@ -76,6 +80,7 @@ def main() -> int:
     packages = {key: load_json(path) for key, path in PACKAGE_PATHS.items()}
     lowitzer = load_json(LOWITZER_CANDIDATE)
     tohei = load_json(TOHEI_TABLE)
+    farooqui = load_json(FAROOQUI_IG210)
     nist = audits["nist_alpha_v"]
     hanfland = audits["hanfland_kt"]
     bosak = audits["bosak_elastic_bulk"]
@@ -162,8 +167,39 @@ def main() -> int:
             "numeric_cp_cv_correction_emitted"
         ]
         is False,
+        "farooqui_source_is_lane_locked": farooqui["status"]
+        == "SOURCE_LOCKED_IG210_THERMOPHYSICAL_COMPARATOR_KT_OPEN",
+        "farooqui_has_same_grade_rows": farooqui["derived_comparator"][
+            "same_grade_ig210_source"
+        ]
+        is True
+        and farooqui["derived_comparator"]["row_count"] == 3,
+        "farooqui_has_alpha_l_cp_and_k": farooqui["derived_comparator"][
+            "thermal_expansion_alpha_l_present"
+        ]
+        and farooqui["derived_comparator"]["specific_heat_Cp_present"]
+        and all(
+            "thermal_conductivity_W_per_m_K" in row
+            for row in farooqui["source_rows"]
+        ),
+        "farooqui_same_state_kt_is_missing": farooqui["derived_comparator"][
+            "same_state_K_T_present"
+        ]
+        is False,
+        "farooqui_cv_is_missing": farooqui["derived_comparator"]["c_v_present"]
+        is False,
+        "farooqui_ding_mapping_is_open": farooqui["derived_comparator"][
+            "Ding_TTG_material_match_closed"
+        ]
+        is False,
+        "farooqui_does_not_emit_alpha": farooqui["derived_comparator"][
+            "alpha_Phi_K_calibration_emitted"
+        ]
+        is False,
         "holdout_is_unconsumed": all_holdout_locked(audits, packages)
-        and all_holdout_locked({"lowitzer": lowitzer, "tohei": tohei}, {}),
+        and all_holdout_locked(
+            {"lowitzer": lowitzer, "tohei": tohei, "farooqui": farooqui}, {}
+        ),
     }
     status = (
         "PASS_SCOPED_GRAPHITE_ALPHA_V_K_T_MATCHED_SOURCE_BOUNDARY_NO_GO"
@@ -177,6 +213,7 @@ def main() -> int:
         *PACKAGE_PATHS.items(),
         ("lowitzer_candidate", LOWITZER_CANDIDATE),
         ("tohei_table_comparator", TOHEI_TABLE),
+        ("farooqui_ig210_thermophysical", FAROOQUI_IG210),
     ]
     for key, path in evidence_paths:
         evidence.append(
@@ -198,13 +235,15 @@ def main() -> int:
             "closure_level": "CLOSED_FOR_LANE" if status.startswith("PASS") else "OPEN",
             "what_is_closed": (
                 "The current archived graphite source inventory, including the "
-                "screened Lowitzer P-V-T candidate and Tohei table comparator, "
-                "cannot form a same-state, same-grade alpha_V/K_T pair with "
-                "source-grade uncertainty for the Cp-to-Cv correction. The "
-                "individual alpha_V and K_T comparator lanes remain separate. "
-                "Tohei supplies a numeric same-calculation QHA pair and "
-                "separately sourced experimental table values, but neither "
-                "closes the source-grade correction contract."
+                "screened Lowitzer P-V-T candidate, Tohei table comparator, and "
+                "source-locked IG210 thermophysical comparator, cannot form a "
+                "same-state, same-grade alpha_V/K_T pair with source-grade "
+                "uncertainty for the Cp-to-Cv correction. The individual alpha_V "
+                "and K_T comparator lanes remain separate. Tohei supplies a "
+                "numeric same-calculation QHA pair and separately sourced "
+                "experimental table values, but neither closes the source-grade "
+                "correction contract. The IG210 rows supply same-grade C_p and "
+                "alpha_l values but no same-state K_T."
             ),
             "equation_or_mapping": {
                 "cp_cv_correction": "c_p^V - c_v^V = T * alpha_V^2 * K_T",
@@ -223,6 +262,7 @@ def main() -> int:
             "verification_status": status,
             "open_blockers": [
                 "same_grade_alpha_V_and_K_T_missing",
+                "same_state_IG210_K_T_missing",
                 "density_uncertainty_not_source_locked",
                 "material_regime_mapping_to_TTG_not_closed",
                 "c_v_source_uncertainty_not_closed",
@@ -315,16 +355,34 @@ def main() -> int:
                 ],
                 "source_sha256": None,
             },
+            "farooqui_ig210_thermophysical": {
+                "source_id": farooqui["source"]["source_id"],
+                "material": farooqui["source"]["material"],
+                "temperature_scope": farooqui["source"]["temperature_scope"],
+                "row_count": farooqui["derived_comparator"]["row_count"],
+                "same_grade_source": farooqui["derived_comparator"][
+                    "same_grade_ig210_source"
+                ],
+                "same_state_K_T_present": farooqui["derived_comparator"][
+                    "same_state_K_T_present"
+                ],
+                "c_v_present": farooqui["derived_comparator"]["c_v_present"],
+                "Ding_material_regime_mapping_closed": farooqui[
+                    "derived_comparator"
+                ]["Ding_TTG_material_match_closed"],
+                "source_sha256": sha256(FAROOQUI_IG210),
+            },
         },
         "checks": checks,
         "controlling_blocker": "same_grade_alpha_V_and_K_T_missing",
         "next_controller": (
-            "Acquire a permitted full Lowitzer P-V-T payload, a source-grade "
+            "Acquire a permitted full Lowitzer P-V-T payload or a permitted "
+            "same-state IG210 K_T record, then seek a source-grade "
             "same-specimen/state-matched alpha_V and isothermal K_T source "
             "with uncertainty and Ding-regime mapping. The Tohei table may "
-            "remain a comparator, but its calculated pair and separately cited "
-            "experimental values must not be combined into a source-grade "
-            "correction by assumption."
+            "remain a comparator, and the Farooqui IG210 rows remain a "
+            "thermophysical comparator; neither may be combined into a "
+            "source-grade correction by assumption."
             ),
         "claim_boundary": (
             "No numeric Cp-to-Cv correction, Ding C_src, alpha_Phi_K, TTG "

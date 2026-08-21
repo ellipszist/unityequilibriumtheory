@@ -6,7 +6,7 @@
   "claim_promotion": false,
   "register": {
     "path": "docs/core/artifacts/uet_major_result_closure_register.json",
-    "sha256": "5499ee395d97c47aa591b66e229dec4c172accb35758136dd2dc04dab3f5a5d9"
+    "sha256": "ace527f744720fd85ae0ac309dabb71a6a79d053481ef7d86d9e514f14dfa3f3"
   },
   "decisions": {
     "CORE_CURVED_3P1_OBSERVABLE_PARENT_READY": {
@@ -75,7 +75,7 @@
   ],
   "claim_boundary": "Dependency decisions only; no downstream result is promoted by a checkpoint or comparator pass.",
   "topic13_partial_evidence": {
-    "register_sha256": "5499ee395d97c47aa591b66e229dec4c172accb35758136dd2dc04dab3f5a5d9",
+    "register_sha256": "4496b453a49fec67455d6c62f63b31bef50d43c9a1e984c1f35b20fc46bffdff",
     "major_result_id": "T13_FULL_THERMODYNAMIC_BRIDGE",
     "current_level": "PARTIAL",
     "independent_cv_route": "CLOSED_FOR_LANE",
@@ -359,7 +359,7 @@
     "uet_o2_normal_thermodynamic_consistency_full_core_unlock": false,
     "berut_source_package_availability_boundary": {
       "path": "docs/core/artifacts/t13_berut_source_package_availability_boundary.json",
-      "sha256": "dfc032f2836f5efdd4260fa8f73917d4475d7ba2e27f0f65c0c9a7cad8e55a5c",
+      "sha256": "6631d275f11f0d71239a6ea0fee35b6542e386862c1a683de96ffdfcfb8b370d",
       "summary": {
         "status": "PASS_SCOPED_BERUT_SOURCE_PACKAGE_BOUNDARY",
         "major_result_id": "T13_BERUT_SOURCE_PACKAGE_AVAILABILITY_BOUNDARY",
@@ -368,11 +368,11 @@
         "full_core_unlock": false
       }
     },
-    "berut_source_package_controller": "berut_local_raw_or_permissioned_numeric_package_missing",
+    "berut_source_package_controller": "berut_permissioned_raw_numeric_package_missing",
     "berut_source_package_full_core_unlock": false,
     "berut_figure3_remote_binary_identity": {
       "path": "docs/core/artifacts/t13_berut_figure3_remote_binary_identity.json",
-      "sha256": "6541785ec09e37f97de93ed5c0abb682e39a1fb85fa8397f8113bf5f406f36c0",
+      "sha256": "6bf15b41e98939e014dab98e7103931175c6deda1ea24cde787622d5f1d03239",
       "summary": {
         "status": "PASS_REMOTE_FIGURE3_BINARY_IDENTITY",
         "major_result_id": "T13_BERUT_FIGURE3_REMOTE_BINARY_IDENTITY",
@@ -547,7 +547,7 @@
         "full_core_unlock": false,
         "audit": {
           "path": "docs/core/artifacts/t13_graphite_alpha_v_kt_matched_source_boundary_audit.json",
-          "sha256": "7f16734e1f78d29154c1652feb3784290ce16923e772fb42230237ea07ab03f1",
+          "sha256": "173002072c6dd9c0a98f0653c2bac87816d60cd21561c8220c97faa14807e080",
           "summary": {
             "status": "PASS_SCOPED_GRAPHITE_ALPHA_V_K_T_MATCHED_SOURCE_BOUNDARY_NO_GO",
             "major_result_id": "T13_GRAPHITE_ALPHA_V_K_T_MATCHED_SOURCE_BOUNDARY",
@@ -581,6 +581,21 @@
           "summary": {
             "status": "PASS_HUANG_PUBLIC_SUPPLEMENTARY_BOUNDARY_NO_NUMERIC_PBTE_PAYLOAD",
             "major_result_id": "T13_HUANG_2023_SUPPLEMENTARY_PAYLOAD_BOUNDARY",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "huberman_2019_public_pbte_boundary": {
+        "major_result_id": "T13_HUBERMAN_2019_PUBLIC_PBTE_BOUNDARY",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_HUBERMAN_PUBLIC_PBTE_BOUNDARY_NO_ACCEPTED_NUMERIC_PAYLOAD",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_huberman_2019_public_pbte_boundary_audit.json",
+          "sha256": "22b065abd8177a9b1f181e79761baadc0c5c6242d44bea74a8fd6022aafec3c4",
+          "summary": {
+            "status": "PASS_HUBERMAN_PUBLIC_PBTE_BOUNDARY_NO_ACCEPTED_NUMERIC_PAYLOAD",
+            "major_result_id": "T13_HUBERMAN_2019_PUBLIC_PBTE_BOUNDARY",
             "closure_level": "CLOSED_FOR_LANE"
           }
         }
@@ -660,6 +675,66 @@
           }
         }
       },
+      "iaea_gr280_same_state_cp_comparator": {
+        "major_result_id": "T13_IAEA_GR280_SAME_STATE_CP_COMPARATOR",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_SCOPED_IAEA_GR280_SAME_STATE_CP_COMPARATOR",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_iaea_gr280_same_state_cp_source_audit.json",
+          "sha256": "c0091ce3d6624e5fd1b5e814f2bd3822459a5d84426cd861d31a9a0052710213",
+          "summary": {
+            "status": "PASS_SCOPED_IAEA_GR280_SAME_STATE_CP_COMPARATOR",
+            "major_result_id": "T13_IAEA_GR280_SAME_STATE_CP_COMPARATOR",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "zenodo_hitrace_isotropic_graphite_cp_comparator": {
+        "major_result_id": "T13_ZENODO_HITRACE_ISOTROPIC_GRAPHITE_CP_COMPARATOR",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_SCOPED_ZENODO_HITRACE_ISOTROPIC_GRAPHITE_CP_COMPARATOR",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_zenodo_hitrace_isotropic_graphite_cp_source_audit.json",
+          "sha256": "067238d11f9f426117cd29e757a8391f9089e97acfbeb0ab2b33c50d0eeb026a",
+          "summary": {
+            "status": "PASS_SCOPED_ZENODO_HITRACE_ISOTROPIC_GRAPHITE_CP_COMPARATOR",
+            "major_result_id": "T13_ZENODO_HITRACE_ISOTROPIC_GRAPHITE_CP_COMPARATOR",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "zenodo_hitrace_ig210_alpha_l_comparator": {
+        "major_result_id": "T13_ZENODO_HITRACE_IG210_ALPHA_L_COMPARATOR",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_SCOPED_IG210_ALPHA_L_SOURCE",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_zenodo_ig210_alpha_l_source_audit.json",
+          "sha256": "7290318976fc4a66c4ec7ffd0f6fee2a2ae9c9773270527e0d676c1e10faba76",
+          "summary": {
+            "status": "PASS_SCOPED_IG210_ALPHA_L_SOURCE",
+            "major_result_id": "T13_ZENODO_HITRACE_IG210_ALPHA_L_COMPARATOR",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "farooqui_ig210_thermophysical_source": {
+        "major_result_id": "T13_FAROOQUI_IG210_THERMOPHYSICAL_SOURCE",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_SCOPED_FAROOQUI_IG210_THERMOPHYSICAL_SOURCE",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_farooqui_ig210_thermophysical_source_audit.json",
+          "sha256": "1bf871b436166ba44243d6600fdfc06e9bbbf65a8fc23e2f99a728ff6402fb7e",
+          "summary": {
+            "status": "PASS_SCOPED_FAROOQUI_IG210_THERMOPHYSICAL_SOURCE",
+            "major_result_id": "T13_FAROOQUI_IG210_THERMOPHYSICAL_SOURCE",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
       "iaea_cv_uncertainty_boundary": {
         "major_result_id": "T13_IAEA_CV_UNCERTAINTY_BOUNDARY",
         "closure_level": "CLOSED_FOR_LANE",
@@ -682,7 +757,7 @@
         "full_core_unlock": false,
         "audit": {
           "path": "docs/core/artifacts/t13_ding_material_regime_boundary_audit.json",
-          "sha256": "700a1f8520521045d58717dc1be25390a783389c443af4e5507736ea0e5940d8",
+          "sha256": "2147cc4909937a00d9769af6d62d64e8258ab92d2b1ccafebf717fba77cbb0f8",
           "summary": {
             "status": "PASS_SCOPED_DING_MATERIAL_REGIME_BOUNDARY_NO_GO",
             "major_result_id": "T13_DING_MATERIAL_REGIME_BOUNDARY",
@@ -832,7 +907,7 @@
         "full_core_unlock": false,
         "audit": {
           "path": "docs/core/artifacts/t13_uet_o2_finite_temperature_quasiparticle_eos_audit.json",
-          "sha256": "5d5726e9eb568182c76eee41a7d25d523304d667cb3720a10d3f4928e9f2317e",
+          "sha256": "6a8e9124d8574fa534c6377646f01e5324715477ff0595bcf04657ad9919538b",
           "summary": {
             "status": "PASS_ACTION_DERIVED_TREE_CONDENSATE_THERMAL_QUASIPARTICLE_EOS",
             "major_result_id": "T13_UET_O2_FINITE_T_QUASIPARTICLE_EOS_LANE",
@@ -1065,6 +1140,51 @@
           }
         }
       },
+      "jun_final_source_boundary": {
+        "major_result_id": "T13_JUN_FINAL_SOURCE_BOUNDARY",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_SCOPED_JUN_FINAL_SOURCE_BOUNDARY",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_jun_final_source_package_boundary.json",
+          "sha256": "0171a53d873a8fe5c386c1221c26679f908434aa425fb80b740f9778e51e72ec",
+          "summary": {
+            "status": "PASS_SCOPED_JUN_FINAL_SOURCE_BOUNDARY",
+            "major_result_id": "T13_JUN_FINAL_SOURCE_BOUNDARY",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "hong_final_source_boundary": {
+        "major_result_id": "T13_HONG_FINAL_SOURCE_BOUNDARY",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_SCOPED_HONG_FINAL_SOURCE_BOUNDARY",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_hong_final_source_package_boundary.json",
+          "sha256": "4c5a81ae8884a4e11b2f358f2e557eecbe4f82c67c6da1e9eb7eed314bf815f7",
+          "summary": {
+            "status": "PASS_SCOPED_HONG_FINAL_SOURCE_BOUNDARY",
+            "major_result_id": "T13_HONG_FINAL_SOURCE_BOUNDARY",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "peterson_source_identity_no_go": {
+        "major_result_id": "T13_PETERSON_SOURCE_IDENTITY_NO_GO",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_SCOPED_PETERSON_SOURCE_IDENTITY_NO_GO",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_peterson_source_identity_no_go.json",
+          "sha256": "c6d1a0154b7c138416e7de0662264559727244802b1b2ec20be07bfe7a263b12",
+          "summary": {
+            "status": "PASS_SCOPED_PETERSON_SOURCE_IDENTITY_NO_GO",
+            "major_result_id": "T13_PETERSON_SOURCE_IDENTITY_NO_GO",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
       "calorine_isotope_mass_sensitivity": {
         "major_result_id": "T13_CALORINE_ISOTOPE_MASS_SENSITIVITY",
         "closure_level": "CLOSED_FOR_LANE",
@@ -1095,6 +1215,111 @@
           }
         }
       },
+      "calorine_csrc_equilibrium_crosscheck": {
+        "major_result_id": "T13_CALORINE_C_SRC_EQUILIBRIUM_CROSSCHECK",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_SCOPED_CALORINE_C_SRC_EQUILIBRIUM_CROSSCHECK",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_calorine_csrc_equilibrium_crosscheck_audit.json",
+          "sha256": "c9f9c60af7b5f75189d587d0f5fb60091945233832675641b37c30b156c0a391",
+          "summary": {
+            "status": "PASS_SCOPED_CALORINE_C_SRC_EQUILIBRIUM_CROSSCHECK",
+            "major_result_id": "T13_CALORINE_C_SRC_EQUILIBRIUM_CROSSCHECK",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "figshare_dft_force_data_boundary": {
+        "major_result_id": "T13_FIGSHARE_DFT_FORCE_DATA_BOUNDARY",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_SCOPED_FIGSHARE_DFT_FORCE_DATA_BOUNDARY",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_figshare_dft_force_data_boundary_audit.json",
+          "sha256": "5128866124bbee80e1b3a100da54d37ceb41b4695260c182c1b0d952326ad9da",
+          "summary": {
+            "status": "PASS_SCOPED_FIGSHARE_DFT_FORCE_DATA_BOUNDARY",
+            "major_result_id": "T13_FIGSHARE_DFT_FORCE_DATA_BOUNDARY",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "huang_2023_nims_mdr_payload_boundary": {
+        "major_result_id": "T13_HUANG_2023_NIMS_MDR_PAYLOAD_BOUNDARY",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_SCOPED_HUANG_2023_NIMS_MDR_PAYLOAD_BOUNDARY",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_huang_2023_nims_mdr_payload_boundary_audit.json",
+          "sha256": "5a80347b4cc014e3c585fa9e3cff16d08834651d93db74c0478ce687156cac5c",
+          "summary": {
+            "status": "PASS_SCOPED_HUANG_2023_NIMS_MDR_PAYLOAD_BOUNDARY",
+            "major_result_id": "T13_HUANG_2023_NIMS_MDR_PAYLOAD_BOUNDARY",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "calorine_public_model_variant_boundary": {
+        "major_result_id": "T13_CALORINE_PUBLIC_MODEL_VARIANT_BOUNDARY",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_SCOPED_CALORINE_PUBLIC_MODEL_VARIANT_BOUNDARY",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_calorine_public_model_variant_boundary_audit.json",
+          "sha256": "062c49c05e8318d42d627d03df886d2d50eea3285d2fb7430064554f98e6edbb",
+          "summary": {
+            "status": "PASS_SCOPED_CALORINE_PUBLIC_MODEL_VARIANT_BOUNDARY",
+            "major_result_id": "T13_CALORINE_PUBLIC_MODEL_VARIANT_BOUNDARY",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "calorine_nep1_backend_compatibility": {
+        "major_result_id": "T13_CALORINE_NEP1_BACKEND_COMPATIBILITY_BOUNDARY",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_SCOPED_CALORINE_NEP1_BACKEND_COMPATIBILITY_BOUNDARY",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_calorine_nep1_backend_compatibility_audit.json",
+          "sha256": "bb3887522ba6bfde25bc74c1deb76e737ca975d5452263fb2dff348bffb3322c",
+          "summary": {
+            "status": "PASS_SCOPED_CALORINE_NEP1_BACKEND_COMPATIBILITY_BOUNDARY",
+            "major_result_id": "T13_CALORINE_NEP1_BACKEND_COMPATIBILITY_BOUNDARY",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "calorine_legacy_nep2_backend_probe": {
+        "major_result_id": "T13_CALORINE_LEGACY_NEP2_BACKEND_PROBE",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_SCOPED_CALORINE_LEGACY_NEP2_BACKEND_PROBE",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_calorine_legacy_nep2_backend_probe_audit.json",
+          "sha256": "bbdecdcb3504b308d1f42c71b233d5c71c1462110f13bf325016edcf2ea9647c",
+          "summary": {
+            "status": "PASS_SCOPED_CALORINE_LEGACY_NEP2_BACKEND_PROBE",
+            "major_result_id": "T13_CALORINE_LEGACY_NEP2_BACKEND_PROBE",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "calorine_legacy_nep2_pbte_reproduction": {
+        "major_result_id": "T13_CALORINE_LEGACY_NEP2_PBTE_REPRODUCTION",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_SCOPED_CALORINE_LEGACY_NEP2_PBTE_REPRODUCTION",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_calorine_legacy_nep2_pbte_reproduction_audit.json",
+          "sha256": "0c3724c591adc411a4ef062a2bf62b9e5ce6564831bbc662e845ef48a8d56398",
+          "summary": {
+            "status": "PASS_SCOPED_CALORINE_LEGACY_NEP2_PBTE_REPRODUCTION",
+            "major_result_id": "T13_CALORINE_LEGACY_NEP2_PBTE_REPRODUCTION",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
       "ding_2017_acs_supplementary_payload_boundary": {
         "major_result_id": "T13_DING_2017_ACS_SUPPLEMENTARY_PAYLOAD_BOUNDARY",
         "closure_level": "CLOSED_FOR_LANE",
@@ -1121,6 +1346,21 @@
           "summary": {
             "status": "PASS_PUBLIC_SOURCE_BOUNDARY_NO_PAIRED_BASE_PHI_RECORD",
             "major_result_id": "T13_PHI_SI_ANCHOR_PUBLIC_SOURCE_BOUNDARY",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "covariant_action_symbolic_si_conversion_contract": {
+        "major_result_id": "T13_COVARIANT_ACTION_SYMBOLIC_SI_CONVERSION_CONTRACT",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_SCOPED_SYMBOLIC_ACTION_SI_CONVERSION_CONTRACT",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_covariant_action_symbolic_si_conversion_audit.json",
+          "sha256": "e1e691dd2264604590e4360f827399849134af8206516c4220f4667663723c1a",
+          "summary": {
+            "status": "PASS_SCOPED_SYMBOLIC_ACTION_SI_CONVERSION_CONTRACT",
+            "major_result_id": "T13_COVARIANT_ACTION_SYMBOLIC_SI_CONVERSION_CONTRACT",
             "closure_level": "CLOSED_FOR_LANE"
           }
         }
@@ -1271,6 +1511,126 @@
           "summary": {
             "status": "PASS_KUBO_MATCHED_DECLARED_CONDENSED_RELATIVE_FLOW_CHANNEL",
             "major_result_id": "T13_UET_O2_CONDENSED_RELATIVE_FLOW_KUBO_ADMISSION_LANE",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "uet_o2_condensed_sk_kms_kubo_match_lane": {
+        "major_result_id": "T13_UET_O2_CONDENSED_SK_KMS_KUBO_MATCH_LANE",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_ACTION_DERIVED_CONDENSED_SK_KMS_KUBO_MATCH_LANE",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_uet_o2_condensed_sk_kms_kubo_match_audit.json",
+          "sha256": "d13d59760f9ebe0a3d2471ad984ec95c6729846d08b2b9ce011e2e8eb2fcaf1c",
+          "summary": {
+            "status": "PASS_ACTION_DERIVED_CONDENSED_SK_KMS_KUBO_MATCH_LANE",
+            "major_result_id": "T13_UET_O2_CONDENSED_SK_KMS_KUBO_MATCH_LANE",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "uet_o2_finite_t_declared_retarded_1pi_response_grid_lane": {
+        "major_result_id": "T13_UET_O2_FINITE_T_DECLARED_RETARDED_1PI_RESPONSE_GRID_LANE",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_ACTION_DERIVED_O2_FINITE_T_DECLARED_RETARDED_1PI_RESPONSE_GRID_LANE",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_uet_o2_finite_temperature_declared_retarded_1pi_grid_audit.json",
+          "sha256": "f22d74b88c82e62bb0dc984bc96b1171bc2b7579d563d693fa3559ac199e3861",
+          "summary": {
+            "status": "PASS_ACTION_DERIVED_O2_FINITE_T_DECLARED_RETARDED_1PI_RESPONSE_GRID_LANE",
+            "major_result_id": "T13_UET_O2_FINITE_T_DECLARED_RETARDED_1PI_RESPONSE_GRID_LANE",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "uet_o2_finite_t_signed_cut_kinematic_taxonomy_lane": {
+        "major_result_id": "T13_UET_O2_FINITE_T_SIGNED_CUT_KINEMATIC_TAXONOMY_LANE",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_ACTION_DERIVED_O2_FINITE_T_SIGNED_CUT_KINEMATIC_TAXONOMY_LANE",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_uet_o2_finite_temperature_signed_cut_coverage_audit.json",
+          "sha256": "42810aec29a5fa708145c5e72d7d5cc4c7a7b0491ba19cea5dd66da8198d3f6e",
+          "summary": {
+            "status": "PASS_ACTION_DERIVED_O2_FINITE_T_SIGNED_CUT_KINEMATIC_TAXONOMY_LANE",
+            "major_result_id": "T13_UET_O2_FINITE_T_SIGNED_CUT_KINEMATIC_TAXONOMY_LANE",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "uet_o2_finite_t_sunset_cut_multiplicity_lane": {
+        "major_result_id": "T13_UET_O2_FINITE_T_SUNSET_CUT_MULTIPLICITY_LANE",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_ACTION_DERIVED_O2_FINITE_T_SUNSET_CUT_MULTIPLICITY_LANE",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_uet_o2_finite_temperature_sunset_cut_multiplicity_audit.json",
+          "sha256": "cb99067a1d234ef98247de36ece91105b162f38abd1f439a75fc6443dd53439b",
+          "summary": {
+            "status": "PASS_ACTION_DERIVED_O2_FINITE_T_SUNSET_CUT_MULTIPLICITY_LANE",
+            "major_result_id": "T13_UET_O2_FINITE_T_SUNSET_CUT_MULTIPLICITY_LANE",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "uet_o2_finite_t_all_onshell_cut_spectral_response_lane": {
+        "major_result_id": "T13_UET_O2_FINITE_T_ALL_ONSHELL_CUT_SPECTRAL_RESPONSE_LANE",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_ACTION_DERIVED_O2_FINITE_T_ALL_ONSHELL_CUT_SPECTRAL_RESPONSE_LANE",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_uet_o2_finite_temperature_all_onshell_cut_response_audit.json",
+          "sha256": "37378c7569a7298c5939f19fea3cef035104146ec82bf10c5f2988f054405ae8",
+          "summary": {
+            "status": "PASS_ACTION_DERIVED_O2_FINITE_T_ALL_ONSHELL_CUT_SPECTRAL_RESPONSE_LANE",
+            "major_result_id": "T13_UET_O2_FINITE_T_ALL_ONSHELL_CUT_SPECTRAL_RESPONSE_LANE",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "uet_o2_finite_t_declared_channel_retarded_advanced_keldysh_1pi_lane": {
+        "major_result_id": "T13_UET_O2_FINITE_T_DECLARED_CHANNEL_RETARDED_ADVANCED_KELDYSH_1PI_LANE",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_ACTION_DERIVED_O2_FINITE_T_DECLARED_CHANNEL_RETARDED_ADVANCED_KELDYSH_1PI_LANE",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_uet_o2_finite_temperature_declared_channel_retarded_advanced_keldysh_1pi_audit.json",
+          "sha256": "ff5a8ea3972f02189f7f4ff3413855946526faeb7b8c5317adc6c09ba3ebea2f",
+          "summary": {
+            "status": "PASS_ACTION_DERIVED_O2_FINITE_T_DECLARED_CHANNEL_RETARDED_ADVANCED_KELDYSH_1PI_LANE",
+            "major_result_id": "T13_UET_O2_FINITE_T_DECLARED_CHANNEL_RETARDED_ADVANCED_KELDYSH_1PI_LANE",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "uet_o2_finite_t_offshell_threshold_crossing_1pi_lane": {
+        "major_result_id": "T13_UET_O2_FINITE_T_OFFSHELL_THRESHOLD_CROSSING_1PI_LANE",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_ACTION_DERIVED_O2_FINITE_T_OFFSHELL_THRESHOLD_CROSSING_1PI_LANE",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_uet_o2_finite_temperature_offshell_threshold_crossing_1pi_audit.json",
+          "sha256": "b0d449ecdc994e150d0157ba450515ea617d462a46b3a8d8f1607f60a2953920",
+          "summary": {
+            "status": "PASS_ACTION_DERIVED_O2_FINITE_T_OFFSHELL_THRESHOLD_CROSSING_1PI_LANE",
+            "major_result_id": "T13_UET_O2_FINITE_T_OFFSHELL_THRESHOLD_CROSSING_1PI_LANE",
+            "closure_level": "CLOSED_FOR_LANE"
+          }
+        }
+      },
+      "uet_o2_finite_t_all_22_permutation_identity_lane": {
+        "major_result_id": "T13_UET_O2_FINITE_T_ALL_22_PERMUTATION_IDENTITY_LANE",
+        "closure_level": "CLOSED_FOR_LANE",
+        "status": "PASS_ACTION_DERIVED_O2_FINITE_T_ALL_22_PERMUTATION_IDENTITY_LANE",
+        "full_core_unlock": false,
+        "audit": {
+          "path": "docs/core/artifacts/t13_uet_o2_finite_temperature_all_22_permutation_identity_audit.json",
+          "sha256": "d8a70695cb21d4530dc1073bfcf5a1cf0bf2d80f9f075e225aeee5f50323f84c",
+          "summary": {
+            "status": "PASS_ACTION_DERIVED_O2_FINITE_T_ALL_22_PERMUTATION_IDENTITY_LANE",
+            "major_result_id": "T13_UET_O2_FINITE_T_ALL_22_PERMUTATION_IDENTITY_LANE",
             "closure_level": "CLOSED_FOR_LANE"
           }
         }

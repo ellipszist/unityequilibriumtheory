@@ -8,6 +8,8 @@ description: "Research module for Thermodynamic Bridge within the Unity Equilibr
 
 Current hardening result: an action-derived natural-unit Phi-to-thermal bridge and non-Landauer natural beta slope are CLOSED_FOR_LANE. Full Topic 13 remains blocked by the physical Phi/SI anchor, independent alpha_Phi_K, source-backed c_v or Ding C_src, EOS/transport/KMS/entropy, and dimensional TTG gates. The natural fixed-(mu,Phi) C_epsilon_T is not relabeled as source c_v.
 
+Current hardening result T13-130: the covariant-action natural-unit to SI conversion contract is CLOSED_FOR_LANE as symbolic dimensional bookkeeping backed by exact SI defining constants. It does not select E_ref or Phi_scale, does not derive e0 or alpha_Phi_K, and does not unlock Core or external validation. Full Topic 13 remains BLOCKED_OPEN_T13_FULL_BRIDGE / PARTIAL with 10 controlling blockers.
+
 Current hardening result T13-092: finite-temperature condensate/normal thermodynamic split, branch-resolved static quasiparticle response, condensed stiffness boundary, and the normal-branch formal heat-flux/entropy balance are CLOSED_FOR_LANE. The static susceptibility is not Landau density or retarded Kubo, condensed dissipative transport remains open, and physical Phi/SI, alpha_Phi_K, Ding C_src, and Full Topic 13 remain blocked.
 
 Machine-readable lane artifact: docs/core/artifacts/t13_uet_o2_finite_temperature_two_fluid_response_audit.json.
@@ -174,3 +176,22 @@ graph LR
 ---
 
 *Core hardening status: formula-audited, verifier-artifact enabled, source records pinned, raw-table source-lock still open.*
+
+
+## Latest Hardening Lane: T13-121
+
+The declared finite-temperature 1<->3 and representative 2<->2 channels now expose numerical retarded, advanced, and Keldysh components with explicit spectral and FDT checks. This is internal natural-unit evidence only. The full off-shell all-channel 1PI object, physical renormalization anchor, dimensional `Phi` map, `alpha_Phi_K`, source closure, transport, entropy, and TTG validation remain open.
+
+## Current Major Result: T13-122
+`T13_UET_O2_FINITE_T_OFFSHELL_THRESHOLD_CROSSING_1PI_LANE` is `CLOSED_FOR_LANE`. This closes only the declared natural-unit response across the three-body threshold. Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`; the independent `alpha_Phi_K` calibration remains open and no holdout was fit or read. The next research controller is complete off-shell all-channel 1PI plus an independent physical renormalization anchor.
+## Current Major Result: T13-123
+`T13_UET_O2_FINITE_T_ALL_22_PERMUTATION_IDENTITY_LANE` is `CLOSED_FOR_LANE`. The three equal-mass `2<->2` signed-cut patterns are covered by explicit unit-Jacobian relabeling and the action-level aggregate weight. Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`; complete off-shell 1PI, physical renormalization, and independent `alpha_Phi_K` remain open.
+## Current Major Result: T13-124
+`T13_IAEA_GR280_SAME_STATE_CP_COMPARATOR` is `CLOSED_FOR_LANE`. The official IAEA GR-280 tables now provide a source-locked 300 C Cp row and 300 C density row, closing only the same-state Cp availability sub-blocker. The conditional comparator is `C_p^V = 2386800 J m^-3 K^-1`; density standard uncertainty, c_v correction, Ding material equivalence, physical dimensional mapping, independent `alpha_Phi_K`, and full EOS/transport/KMS/entropy closure remain open. Full Topic 13 is still `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`, with claim promotion disabled.
+## 2026-08-20 Evidence Wave T13-125
+
+A source-locked Zenodo Hi-Trace workbook now closes a high-temperature same-block isotropic-graphite `C_p` comparator lane with 27 row identities and explicit uncertainty boundaries. It does not close `c_v`, Ding/TTG mapping, `alpha_Phi_K`, or Full Topic 13; the canonical full gate remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`.
+
+## T13-131 public PBTE source boundary
+
+The Huberman 2019 public arXiv package is now source-locked as a comparator boundary. Its embedded supplementary methods provide BTE method context and reference Ding-derived force constants, but no accepted mode-resolved `C_src(T)` payload, uncertainty/convergence package, or raw force-constant/scattering input is available in the package. Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`; this lane does not close `alpha_Phi_K` or promote any TTG curve to a prediction.

@@ -343,7 +343,7 @@ def finite_temperature_o2_quasiparticle_contract() -> dict[str, object]:
             "C": "not relabeled as charge density",
         },
         "closed_scope": "tree condensate plus thermal quasiparticle thermodynamic lane with normal and condensed branches",
-        "excluded_scope": "vacuum counterterm completion, interacting thermal self-energy, physical Kubo/SK-KMS matching, heat flux, SI Phi map, alpha_Phi_K, and TTG validation",
+        "excluded_scope": "vacuum counterterm completion, interacting thermal self-energy, physical Kubo/transport/SK-KMS matching, heat flux, SI Phi map, alpha_Phi_K, and TTG validation",
         "R_gen": "derived history trace only; not a state or feedback term",
         "data_role": "ACTION_DERIVED_APPROXIMATE_EOS_NOT_TRANSPORT",
         "claim_boundary": "This is an action-derived approximate finite-temperature EOS lane. It is not a complete interacting two-fluid theory, physical transport closure, SI calibration, or external validation.",

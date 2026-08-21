@@ -1,0 +1,96 @@
+{
+  "schema_version": "t13-zenodo-hitrace-ig210-alpha-l-source-package-v1",
+  "artifact": "zenodo_5799133_ig210_alpha_l_source_package",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "created_on": "2026-08-20",
+  "status": "SOURCE_LOCKED_IG210_ALPHA_L_COMPARATOR_ALPHA_V_CONDITIONAL",
+  "source": {
+    "source_id": "zenodo_5799133_hitrace_ig210_thermal_diffusivity_and_expansion",
+    "title": "Dataset for publication Uncertainty assessment for very high temperature thermal diffusivity measurements on molybdenum, tungsten and isotropic graphite",
+    "authors": [
+      "Bruno Hay",
+      "Olivier Beaumont",
+      "Guillaume Failleau",
+      "Nolwenn Fleurence",
+      "Marc Grelard",
+      "Refat Razouk",
+      "Guillaume Davee",
+      "Jacques Hameury"
+    ],
+    "publisher": "Zenodo / LNE",
+    "publication_year": 2021,
+    "doi": "10.5281/zenodo.5799133",
+    "official_url": "https://zenodo.org/records/5799133",
+    "download_url": "https://zenodo.org/api/records/5799133/files/Dataset%20for%20paper%20Uncertainty%20assessment%20for%20very%20high%20temp.%20thermal%20diffusivity%20meas..xlsx/content",
+    "license": "CC BY 4.0",
+    "retrieved_on": "2026-08-20",
+    "local_raw_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/zenodo_5799133_hitrace_thermal_diffusivity.xlsx",
+    "local_raw_size_bytes": 33113,
+    "local_raw_md5": "a0a8a2a6e9a9bc607a29c7d17471f89f",
+    "local_raw_sha256": "fcd9517fab77025737de2d0da5d92b8b9b90ebd40b9f99c3330c21853c2d79d3",
+    "material": "Isotropic graphite IG210 from Toyo Tanso",
+    "temperature_scope": "23 C to 3000 C for thermal diffusivity; mean linear expansion table from 23 C to 2000 C",
+    "source_locators": [
+      "Zenodo record metadata: DOI, open access, CC BY 4.0, and file identity",
+      "Table 1!B7:G21: isotropic-graphite temperature and LNE mean alpha_l values",
+      "Table 1!C7:F21: three-cycle expansion measurements used by the source mean",
+      "Table 1!H7:H21: source expansion model values",
+      "Figure 3!B5:D25: IG210 raw and expansion-corrected thermal diffusivity rows; retained as source context but not used in the alpha comparator audit"
+    ],
+    "material_regime_limit": "IG210 is not demonstrated to be the Ding TTG/HOPG material or state"
+  },
+  "preprocessing": {
+    "workbook_read_mode": "read-only workbook inspection with cached numeric values",
+    "selection_policy": "Table 1 isotropic-graphite rows 7:21 only; row 6 contains slash placeholders at 23 C and is not a numeric row",
+    "quantity_policy": "retain the source mean linear expansion coefficient alpha_l; do not relabel it as an instantaneous coefficient",
+    "unit_normalization": "source values in 10^-6 K^-1 are converted to K^-1 by multiplying by 10^-6",
+    "alpha_volume_policy": "alpha_V = 3*alpha_l is emitted only as a conditional isotropic geometry comparator, not as a source-reported volumetric row",
+    "uncertainty_policy": "the paper-reported expanded relative uncertainty of 10 percent at k=2 is preserved as a source-level bound; absolute row envelopes are derived only for comparator bookkeeping",
+    "fit_or_tuning": "none",
+    "target_or_holdout_access": "none"
+  },
+  "source_rows": [
+    {"source_row_id":"zenodo_5799133_table1_r07","sheet":"Table 1","excel_row":7,"cell_range":"B7:H7","temperature_C":50.0,"temperature_K":323.15,"quantity":"mean_linear_thermal_expansion_coefficient_alpha_l","alpha_l_mean_1e-6_K^-1":4.060289804848173,"alpha_l_model_1e-6_K^-1":4.0533467945625,"alpha_l_replicates_1e-6_K^-1":[4.048184897910514,4.064866756061535,4.064053782710323,4.064053782710323]},
+    {"source_row_id":"zenodo_5799133_table1_r08","sheet":"Table 1","excel_row":8,"cell_range":"B8:H8","temperature_C":100.0,"temperature_K":373.15,"quantity":"mean_linear_thermal_expansion_coefficient_alpha_l","alpha_l_mean_1e-6_K^-1":4.1608400358561894,"alpha_l_model_1e-6_K^-1":4.160035936,"alpha_l_replicates_1e-6_K^-1":[4.148435359383001,4.165530332058193,4.164697225991782,4.164697225991782]},
+    {"source_row_id":"zenodo_5799133_table1_r09","sheet":"Table 1","excel_row":9,"cell_range":"B9:H9","temperature_C":150.0,"temperature_K":423.15,"quantity":"mean_linear_thermal_expansion_coefficient_alpha_l","alpha_l_mean_1e-6_K^-1":4.262957646279801,"alpha_l_model_1e-6_K^-1":4.2669254174375,"alpha_l_replicates_1e-6_K^-1":[4.250248527456365,4.267763054294853,4.266909501683994,4.266909501683994]},
+    {"source_row_id":"zenodo_5799133_table1_r10","sheet":"Table 1","excel_row":10,"cell_range":"B10:H10","temperature_C":200.0,"temperature_K":473.15,"quantity":"mean_linear_thermal_expansion_coefficient_alpha_l","alpha_l_mean_1e-6_K^-1":4.367784122859434,"alpha_l_model_1e-6_K^-1":4.372840512,"alpha_l_replicates_1e-6_K^-1":[4.354762485766469,4.372707696249923,4.371833154710672,4.371833154710672]},
+    {"source_row_id":"zenodo_5799133_table1_r11","sheet":"Table 1","excel_row":11,"cell_range":"B11:H11","temperature_C":250.0,"temperature_K":523.15,"quantity":"mean_linear_thermal_expansion_coefficient_alpha_l","alpha_l_mean_1e-6_K^-1":4.471965041777463,"alpha_l_model_1e-6_K^-1":4.4767664453125,"alpha_l_replicates_1e-6_K^-1":[4.4586328110104505,4.47700605284018,4.476110651629612,4.476110651629612]},
+    {"source_row_id":"zenodo_5799133_table1_r12","sheet":"Table 1","excel_row":12,"cell_range":"B12:H12","temperature_C":300.0,"temperature_K":573.15,"quantity":"mean_linear_thermal_expansion_coefficient_alpha_l","alpha_l_mean_1e-6_K^-1":4.568318186878682,"alpha_l_model_1e-6_K^-1":4.577841068,"alpha_l_replicates_1e-6_K^-1":[4.554698699312116,4.5734678117757745,4.572553118213419,4.572553118213419]},
+    {"source_row_id":"zenodo_5799133_table1_r13","sheet":"Table 1","excel_row":13,"cell_range":"B13:H13","temperature_C":400.0,"temperature_K":673.15,"quantity":"mean_linear_thermal_expansion_coefficient_alpha_l","alpha_l_mean_1e-6_K^-1":4.776036507707158,"alpha_l_model_1e-6_K^-1":4.768706944,"alpha_l_replicates_1e-6_K^-1":[4.778795134485904,4.777179020695137,4.781335886340559,4.76683598930703]},
+    {"source_row_id":"zenodo_5799133_table1_r14","sheet":"Table 1","excel_row":14,"cell_range":"B14:H14","temperature_C":600.0,"temperature_K":873.15,"quantity":"mean_linear_thermal_expansion_coefficient_alpha_l","alpha_l_mean_1e-6_K^-1":5.120774957204998,"alpha_l_model_1e-6_K^-1":5.093515136,"alpha_l_replicates_1e-6_K^-1":[5.142621526663977,5.1090667335292235,5.105879600167895,5.125531968458893]},
+    {"source_row_id":"zenodo_5799133_table1_r15","sheet":"Table 1","excel_row":15,"cell_range":"B15:H15","temperature_C":800.0,"temperature_K":1073.15,"quantity":"mean_linear_thermal_expansion_coefficient_alpha_l","alpha_l_mean_1e-6_K^-1":5.321289455491851,"alpha_l_model_1e-6_K^-1":5.336549568,"alpha_l_replicates_1e-6_K^-1":[5.339426861351687,5.315304958790785,5.3089985301289015,5.321427471696026]},
+    {"source_row_id":"zenodo_5799133_table1_r16","sheet":"Table 1","excel_row":16,"cell_range":"B16:H16","temperature_C":1000.0,"temperature_K":1273.15,"quantity":"mean_linear_thermal_expansion_coefficient_alpha_l","alpha_l_mean_1e-6_K^-1":5.498019610579373,"alpha_l_model_1e-6_K^-1":5.51116,"alpha_l_replicates_1e-6_K^-1":[5.5097317843454094,5.487225597207305,5.488515207686956,5.506605853077821]},
+    {"source_row_id":"zenodo_5799133_table1_r17","sheet":"Table 1","excel_row":17,"cell_range":"B17:H17","temperature_C":1200.0,"temperature_K":1473.15,"quantity":"mean_linear_thermal_expansion_coefficient_alpha_l","alpha_l_mean_1e-6_K^-1":5.648060669875634,"alpha_l_model_1e-6_K^-1":5.647258111999999,"alpha_l_replicates_1e-6_K^-1":[5.647564354745052,5.639291902212085,5.654914227196394,5.650472195349007]},
+    {"source_row_id":"zenodo_5799133_table1_r18","sheet":"Table 1","excel_row":18,"cell_range":"B18:H18","temperature_C":1400.0,"temperature_K":1673.15,"quantity":"mean_linear_thermal_expansion_coefficient_alpha_l","alpha_l_mean_1e-6_K^-1":5.79136058937984,"alpha_l_model_1e-6_K^-1":5.783814144,"alpha_l_replicates_1e-6_K^-1":[5.786408860496644,5.792752834945961,5.788663976332721,5.797616685744031]},
+    {"source_row_id":"zenodo_5799133_table1_r19","sheet":"Table 1","excel_row":19,"cell_range":"B19:H19","temperature_C":1600.0,"temperature_K":1873.15,"quantity":"mean_linear_thermal_expansion_coefficient_alpha_l","alpha_l_mean_1e-6_K^-1":5.974185813746194,"alpha_l_model_1e-6_K^-1":5.961353535999999,"alpha_l_replicates_1e-6_K^-1":[5.974184666372514,5.9760398605338345,5.961473812086338,5.985044915992093]},
+    {"source_row_id":"zenodo_5799133_table1_r20","sheet":"Table 1","excel_row":20,"cell_range":"B20:H20","temperature_C":1800.0,"temperature_K":2073.15,"quantity":"mean_linear_thermal_expansion_coefficient_alpha_l","alpha_l_mean_1e-6_K^-1":6.1969120864170915,"alpha_l_model_1e-6_K^-1":6.214453568000001,"alpha_l_replicates_1e-6_K^-1":[6.196680304768292,6.20999552588618,6.160243114327606,6.220729400686286]},
+    {"source_row_id":"zenodo_5799133_table1_r21","sheet":"Table 1","excel_row":21,"cell_range":"B21:H21","temperature_C":2000.0,"temperature_K":2273.15,"quantity":"mean_linear_thermal_expansion_coefficient_alpha_l","alpha_l_mean_1e-6_K^-1":6.569698782979928,"alpha_l_model_1e-6_K^-1":6.564240000000001,"alpha_l_replicates_1e-6_K^-1":[6.565973282863407,6.581927958474771,6.526190874006149,6.604703016575383]}
+  ],
+  "uncertainty_contract": {
+    "source_reported_quantity": "mean linear thermal expansion coefficient alpha_l",
+    "type": "expanded_relative_source_bound",
+    "coverage_factor": 2,
+    "relative_fraction": 0.10,
+    "source_locator": "Hay et al. 2022, Section 4, Table 1 discussion: expanded uncertainty on thermal expansion coefficients estimated to be 10 percent",
+    "absolute_row_envelope_derivation": "u_expanded(alpha_l) = 0.10 * alpha_l_mean; propagated to conditional alpha_V comparator by factor 3",
+    "not_a_row_level_independent_standard_uncertainty": true
+  },
+  "derived_comparator": {
+    "alpha_l_source_rows": 15,
+    "alpha_l_unit": "K^-1",
+    "alpha_v_relation": "alpha_V = 3 * alpha_l under the declared isotropic geometry assumption",
+    "alpha_v_status": "CONDITIONAL_DERIVED_COMPARATOR_NOT_SOURCE_REPORTED",
+    "same_state_K_T_present": false,
+    "density_present": false,
+    "c_p_or_c_v_present": false,
+    "Ding_TTG_material_match_closed": false,
+    "alpha_Phi_K_calibration_emitted": false
+  },
+  "holdout_policy": {
+    "xie_2026_accessed": false,
+    "calibration_path_may_read_holdout": false,
+    "target_curve_used": false,
+    "alpha_Phi_K_fit_used": false
+  },
+  "claim_boundary": "This package closes only a source-traceable IG210 mean linear-expansion comparator and a conditional isotropic alpha_V mapping. It is not a same-state K_T input, not a Cp-to-Cv closure, not Ding C_src, not alpha_Phi_K calibration, and not Full Topic 13 closure."
+}

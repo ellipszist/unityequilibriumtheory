@@ -130,7 +130,13 @@ def overclaim_hits(readme_path: Path) -> list[str]:
     if not readme_path.exists():
         return []
     text = readme_path.read_text(encoding="utf-8", errors="replace")
-    return [pattern for pattern in OVERCLAIM_PATTERNS if pattern in text]
+    def matches(pattern: str) -> bool:
+        # Avoid treating words such as "resolved" as the standalone claim "solved".
+        if pattern.isalpha():
+            return re.search(rf"\b{re.escape(pattern)}\b", text) is not None
+        return pattern in text
+
+    return [pattern for pattern in OVERCLAIM_PATTERNS if matches(pattern)]
 
 
 def formula_audit_status(topic_dir: Path) -> str:

@@ -51,3 +51,16 @@ def test_topic13_full_gate_preserves_current_blockers_and_holdout_boundary() -> 
     assert gate["verification_status"]["holdout_integrity"]["holdout_consumed"] is False
     assert gate["equation_or_mapping"]["dimensional"] == "Delta_Tq = alpha_Phi_K * Delta_Phi"
     assert gate["claim_promotion"] is False
+
+
+def test_topic13_full_gate_reports_machine_readable_closure_summary() -> None:
+    gate = load(T13_GATE_PATH)
+    summary = gate["major_result"]["closure_summary"]
+    assert summary["open_blocker_count"] == len(gate["major_result"]["what_remains_open"])
+    assert summary["closed_lane_count"] >= 1
+    assert "alpha_Phi_K_independent_calibration_missing" in summary["open_blocker_groups"]["dimensional_and_calibration"]
+    assert summary["downstream_dependency_unlocked"] is False
+
+    register = load(REGISTER_PATH)
+    entry = next(item for item in register["entries"] if item["major_result_id"] == "T13_FULL_THERMODYNAMIC_BRIDGE")
+    assert entry["closure_summary"]["open_blocker_count"] == summary["open_blocker_count"]

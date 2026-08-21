@@ -69,7 +69,7 @@ def test_full_gate_records_no_go_without_promoting_topic() -> None:
     )
     assert "density_uncertainty_not_source_locked" in gate["major_result"]["what_remains_open"]
     assert "c_v_source_uncertainty_not_closed" in gate["major_result"]["what_remains_open"]
-    assert "direct_volumetric_c_v_or_same_state_Cp_source_missing" in gate["major_result"]["what_remains_open"]
+    assert "direct_volumetric_c_v_or_same_state_Cp_source_missing" not in gate["major_result"]["what_remains_open"]
 
 
 def test_major_result_register_contains_scoped_no_go_only() -> None:

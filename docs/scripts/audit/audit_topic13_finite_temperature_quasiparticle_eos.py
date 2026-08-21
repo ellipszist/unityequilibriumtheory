@@ -13,6 +13,7 @@ from docs.core.uet_covariant_matter import CovariantMatterConfig
 from docs.core.uet_covariant_response import CovariantResponseConfig
 from docs.core.uet_o2_finite_density_eos import O2FiniteDensityEOSConfig
 from docs.core.uet_o2_finite_temperature_quasiparticle_eos import (
+    FINITE_T_QUASIPARTICLE_EOS_STATUS,
     FiniteTemperatureO2QuasiparticleConfig,
     condensed_quasiparticle_energies,
     finite_temperature_o2_quasiparticle_contract,
@@ -160,6 +161,9 @@ def main() -> int:
             check(e_plus >= e_minus >= 0.0, "quasiparticle energies violate ordering", failures)
             check(np.isfinite(e_plus) and np.isfinite(e_minus), "quasiparticle energy is non-finite", failures)
 
+    representative_checks = {
+        key: bool(value) for key, value in representative_checks.items()
+    }
     contract = finite_temperature_o2_quasiparticle_contract()
     checks = {
         "normal_branch_points_pass": all(state.branch == "normal" for state in normal_states),
@@ -193,6 +197,11 @@ def main() -> int:
         "no_SI_alpha_emitted": "alpha_Phi_K" in contract["excluded_scope"],
         "no_target_or_holdout": True,
     }
+    failures.extend(
+        f"contract check failed: {key}"
+        for key, passed in checks.items()
+        if not passed
+    )
     check(not failures, "audit has failed checks", failures)
 
     artifact = {

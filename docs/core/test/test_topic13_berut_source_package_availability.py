@@ -35,5 +35,6 @@ def test_berut_summary_is_not_calibration_data() -> None:
     assert artifact["parameter_fitting_performed"] is False
     assert artifact["target_data_used"] is False
     assert artifact["xie_2026_accessed"] is False
-    assert artifact["local_source_inventory"]["raw_external_file_present"] is False
-    assert "berut_local_raw_or_permissioned_numeric_package_missing" in artifact["open_blockers"]
+    assert artifact["local_source_inventory"]["raw_external_file_present"] is True
+    assert artifact["local_source_inventory"]["raw_numeric_table_present"] is False
+    assert "berut_permissioned_raw_numeric_package_missing" in artifact["open_blockers"]

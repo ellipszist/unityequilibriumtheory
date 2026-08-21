@@ -19,7 +19,7 @@ REPORT_REL = "docs/topics/0.13_Thermodynamic_Bridge/FULL_THERMODYNAMIC_BRIDGE_CO
 FORMULA_REL = "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md"
 LOG_REL = "docs/topics/0.13_Thermodynamic_Bridge/UPDATE_LOG.md"
 MANIFEST_REL = "docs/topics/0.13_Thermodynamic_Bridge/DATA_MANIFEST.md"
-LEDGER_REL = "WORK_LEDGER/2026/2026-08-12.md"
+LEDGER_REL = "WORK_LEDGER/2026/2026-08-20.md"
 
 
 def load(relative: str) -> dict[str, Any]:
@@ -175,7 +175,7 @@ def main() -> int:
         encoding="utf-8",
     )
 
-    marker = "## Berut Figure 3 Remote Binary Identity"
+    marker = "## Berut Figure 3 Local Archive (2026-08-20)"
     section = f"""{marker}
 
 MAJOR_RESULT_CLOSURE: CLOSED_FOR_LANE
@@ -196,7 +196,7 @@ STATUS: {audit["status"]}
 WHAT_CHANGED: {AUDIT_REL} records the official article/download locators,
 binary hash {audit["binary_identity"]["sha256"]}, size
 {audit["binary_identity"]["bytes"]} bytes, and embedded raster inventory.
-The binary itself remains outside the repository.
+The binary is archived locally at the hash-linked raw path; no raw measurement table is implied.
 
 EQUATION_OR_MAPPING: Figure 3 is a source-surface asset for the Berut
 heat-versus-erasure-duration observable; no numeric Delta_Tq or alpha_Phi_K
@@ -216,10 +216,10 @@ numeric row, uncertainty result, calibration, prediction, or external validation
     append_marker(FORMULA_REL, marker, section)
     append_marker(
         LOG_REL,
-        "### 2026-08-12 - Berut Figure 3 remote binary identity",
+        "### 2026-08-20 - Berut Figure 3 local archive",
         (
-            "### 2026-08-12 - Berut Figure 3 remote binary identity\n\n"
-            "- Scope: verify the official publisher Figure 3 binary route without storing the external binary.\n"
+            "### 2026-08-20 - Berut Figure 3 local archive\n\n"
+            "- Scope: verify the official publisher Figure 3 binary route with the official binary archived for provenance.\n"
             f"- Added: {AUDIT_REL}, source-boundary/full-gate evidence, closure register, dependency evidence, formula audit, report, and update log.\n"
             f"- Verified: {audit['status']}; SHA-256 {audit['binary_identity']['sha256']}, {audit['binary_identity']['bytes']} bytes, OLE signature, and four embedded raster identities.\n"
             "- Result closed: T13_BERUT_FIGURE3_REMOTE_BINARY_IDENTITY is CLOSED_FOR_LANE.\n"
@@ -235,22 +235,22 @@ numeric row, uncertainty result, calibration, prediction, or external validation
             f"The official publisher Figure 3 route was download-tested on 2026-08-12. "
             f"The remote binary is hash-pinned as {audit['binary_identity']['sha256']} "
             f"with {audit['binary_identity']['bytes']} bytes and four embedded raster identities. "
-            f"The binary is not stored in the repository; no numeric row is accepted until "
+            f"The binary is archived in the repository; no raw numeric row is accepted until "
             f"panel, axis, point, uncertainty, preprocessing, and row identity are recorded. "
             f"See {AUDIT_REL}.\n"
         ),
     )
     append_marker(
         LEDGER_REL,
-        "## Topic 13 Berut Figure 3 Remote Binary Identity",
+        "## Topic 13 Berut Figure 3 Local Archive",
         (
-            "## Topic 13 Berut Figure 3 Remote Binary Identity\n\n"
+            "## Topic 13 Berut Figure 3 Local Archive\n\n"
             "- area id: research-core (secondary: data-provenance)\n"
             "- workspace: docs/topics/0.13_Thermodynamic_Bridge Berut Figure 3 source route\n"
             f"- verification: {audit['status']}; hash {audit['binary_identity']['sha256']}, {audit['binary_identity']['bytes']} bytes, four embedded assets, no numeric rows\n"
-            "- public-safety status: partial; binary identity is pinned but the external binary is not stored and no row is accepted\n"
+            "- public-safety status: partial; binary identity is pinned and the official binary is archived; no raw numeric row is accepted\n"
             "- current claim boundary: T13_BERUT_FIGURE3_REMOTE_BINARY_IDENTITY is CLOSED_FOR_LANE; Full Topic 13 remains PARTIAL / BLOCKED\n"
-            "- next action: select panel and axes, attach digitization uncertainty and preprocessing, and keep the summary row out of calibration\n"
+            "- next action: obtain raw measurement uncertainty or a permissioned numeric table, and keep figure-derived rows out of calibration\n"
         ),
     )
 

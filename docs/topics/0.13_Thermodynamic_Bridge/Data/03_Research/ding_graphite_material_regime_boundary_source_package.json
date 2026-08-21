@@ -66,6 +66,22 @@
       "source_identity": "Huang 2023 supplementary provenance boundary",
       "regime_difference": "isotopically purified ribbon geometry and source lane; no equivalence to Ding natural crystal established",
       "equivalence_status": "NOT_ESTABLISHED"
+    },
+    {
+      "source_id": "zenodo_5799133_ig210",
+      "material": "Toyo Tanso IG210 fine-grained isotropic graphite",
+      "evidence_package": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/zenodo_5799133_ig210_alpha_l_source_package.json",
+      "source_identity": "Zenodo 10.5281/zenodo.5799133 Hi-Trace expansion/diffusivity workbook",
+      "regime_difference": "manufactured IG210 isotropic grade with mean expansion and diffusivity records; Ding uses a natural-graphite TTG/PBTE state and no same-state PBTE response or equivalence mapping is supplied",
+      "equivalence_status": "NOT_ESTABLISHED"
+    },
+    {
+      "source_id": "farooqui_2022_ig210",
+      "material": "IG-210 grade isotropic graphite from the NPL Hi-Trace thermophysical table",
+      "evidence_package": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/farooqui_2022_ig210_thermophysical_source_package.json",
+      "source_identity": "NPL eprint 9538 / DOI 10.1007/s10765-021-02928-4 published Table 1",
+      "regime_difference": "manufactured IG-210 isotropic grade with source-locked density, C_p, diffusivity, and expansion rows; Ding uses a natural-graphite TTG/PBTE state and no same-state PBTE response or equivalence mapping is supplied",
+      "equivalence_status": "NOT_ESTABLISHED"
     }
   ],
   "mapping_contract": {

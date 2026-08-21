@@ -19,7 +19,7 @@ FORMULA_REL = "docs/topics/0.13_Thermodynamic_Bridge/FORMULA_AUDIT.md"
 REPORT_REL = "docs/topics/0.13_Thermodynamic_Bridge/FULL_THERMODYNAMIC_BRIDGE_CORE_READY_CURRENT.md"
 LOG_REL = "docs/topics/0.13_Thermodynamic_Bridge/UPDATE_LOG.md"
 MANIFEST_REL = "docs/topics/0.13_Thermodynamic_Bridge/DATA_MANIFEST.md"
-LEDGER_REL = "WORK_LEDGER/2026/2026-08-12.md"
+LEDGER_REL = "WORK_LEDGER/2026/2026-08-20.md"
 
 
 def load(relative: str) -> dict[str, Any]:
@@ -148,16 +148,16 @@ def main() -> int:
         if export.get("export_id") == "T13_EXPORT_SOURCE_NORMALIZED_LANDAUER_DATASET":
             blockers = export.setdefault("blockers", [])
             append_unique(blockers, audit["controlling_blocker"])
-            append_unique(blockers, "Berut Figure 3 route is not a local numeric source package until binary/hash/ticks/transcription are archived")
+            append_unique(blockers, "Berut Figure 3 binary is archived and figure-derived rows are hash-linked; raw numeric measurement uncertainty remains open")
     for row in foundation.get("row_controller_summary", []):
         if row.get("row_id") == "berut_2012_summary_300K":
-            row["source_closure_status"] = "publisher_surface_classified_local_raw_package_missing_figure_route_open"
+            row["source_closure_status"] = "official_figure_binary_archived_figure_derived_rows_raw_numeric_open"
             row["next_controller"] = audit["controlling_blocker"]
-            row["first_missing_requirement"] = "archived official Figure 3 binary/hash or permitted numeric package, then tick mapping and transcription"
+            row["first_missing_requirement"] = "permissioned raw numeric package or source-grade measurement uncertainty for the Figure 3 rows"
     foundation["berut_source_boundary_artifact"] = audit_evidence
     (ROOT / FOUNDATION_REL).write_text(json.dumps(foundation, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
 
-    marker = "## Berut Source Package Availability Boundary (2026-08-12)"
+    marker = "## Berut Source Package Availability Boundary (2026-08-20)"
     section = f"""{marker}
 
 MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE`
@@ -200,11 +200,11 @@ validation.
 
 - Scope: reconcile the Berut source surface with files actually present in the current checkout.
 - Added or changed: `{AUDIT_REL}`, the full-gate source-package lane, closure register, dependency evidence, foundation claim gate, formula audit, report, manifest note, update log, and ledger entry.
-- Verified with: `{audit["status"]}`; source identity, publisher locator, summary-only role, no-local-raw status, no-fit, no-calibration, and holdout checks.
+- Verified with: `{audit["status"]}`; source identity, publisher locator, summary-only role, archived-figure status, no-fit, no-calibration, and holdout checks.
 - Result closed: `T13_BERUT_SOURCE_PACKAGE_AVAILABILITY_BOUNDARY` is `CLOSED_FOR_LANE`.
-- Blocker narrowed: `{audit["controlling_blocker"]}` now controls the Berut row; the official Figure 3 route remains an open acquisition/transcription path.
+- Blocker narrowed: `{audit["controlling_blocker"]}` now controls the Berut row; the official Figure 3 binary and figure-derived comparison route are archived; raw numeric uncertainty remains open.
 - Still open: numeric package, selected-panel ticks/points, preprocessing, uncertainty, `alpha_Phi_K`, and Full Topic 13 closure.
-- Next controller: archive the permitted Figure 3/numeric source package and complete the row-level capture without using the summary copy as calibration.
+- Next controller: obtain a permissioned raw numeric package or source-grade measurement uncertainty; keep Figure 3c rows outside alpha calibration.
 - Claim impact: no promotion; Full Topic 13 remains `PARTIAL / BLOCKED`.
 """)
     append_marker(MANIFEST_REL, marker, f"""{marker}
@@ -221,7 +221,7 @@ source-surface scope, hashes, and next acquisition controller.
 - workspace: `docs/topics/0.13_Thermodynamic_Bridge` Berut/Landauer source lane
 - changed: added source-surface availability artifact and synchronized full gate, register, dependency gate, foundation claim gate, formula audit, report, manifest, and update log
 - verification: `{audit["status"]}`; accepted numeric rows `0`, no fit, no calibration, no Xie holdout
-- public-safety status: `partial`; source identity is pinned but raw/permissioned numeric package is not stored
+- public-safety status: `partial`; official figure binary is archived, but raw/permissioned numeric measurement uncertainty is not available
 - current claim boundary: `T13_BERUT_SOURCE_PACKAGE_AVAILABILITY_BOUNDARY` is `CLOSED_FOR_LANE`; Full Topic 13 remains `PARTIAL/BLOCKED`
 - uncommitted: scoped Topic 13/Core files remain uncommitted; unrelated topic changes were not edited
 - next action: archive the permitted Figure 3/numeric source package and complete row-level provenance before calibration use

@@ -81,6 +81,7 @@ def main() -> int:
             "open_blockers": t13["major_result"]["what_remains_open"],
             "dependency_unlocked": t13["major_result"]["dependency_unlocked"],
             "claim_boundary": t13["claim_boundary"],
+            "closure_summary": t13["major_result"].get("closure_summary", {}),
         },
         {
             "major_result_id": "CORE_O2_TREE_LEVEL_EOS_LANE",

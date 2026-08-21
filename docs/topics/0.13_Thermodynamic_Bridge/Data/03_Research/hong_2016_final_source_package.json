@@ -1,0 +1,70 @@
+{
+  "schema_version": "t13-hong-final-source-package-v1",
+  "source_id": "hong_2016_science_advances_e1501492",
+  "title": "Experimental test of Landauer's principle in single-bit operations on nanomagnetic memory bits",
+  "authors": [
+    "Jeongmin Hong",
+    "Brian Lambson",
+    "Scott Dhuey",
+    "Jeffrey Bokor"
+  ],
+  "publication": {
+    "journal": "Science Advances",
+    "volume": 2,
+    "article_number": "e1501492",
+    "published_date": "2016-03-11",
+    "doi": "10.1126/sciadv.1501492",
+    "doi_url": "https://doi.org/10.1126/sciadv.1501492",
+    "publisher_url": "https://www.science.org/doi/10.1126/sciadv.1501492"
+  },
+  "source_surface": {
+    "final_source_confirmed": true,
+    "confirmation_route": "Final Science Advances identity confirmed by DOI metadata and the author-institution reprint.",
+    "institutional_reprint_url": "https://e3s-center.berkeley.edu/wp-content/uploads/2019/06/2016_Experimental-Test-of-Landauer%E2%80%99s-Principle-in-Single-Bit-Operations-on-Nanomagnetic-Memory-Bits.pdf",
+    "local_archive": {
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/hong_2016_science_advances_article.pdf",
+      "retrieved_on": "2026-08-20",
+      "bytes": 213259,
+      "sha256": "5d7e305edacfb31c66892329375fe0b8fef4ed674c53bb68bfc1139fc26ffe17",
+      "role": "final-source provenance archive; not a machine-readable selected legacy row"
+    },
+    "identity_probe": {
+      "pages": 7,
+      "title_marker_present": true,
+      "doi_marker_present": true,
+      "author_markers_present": true,
+      "supplementary_marker_present": true,
+      "data_availability_statement_present": true,
+      "verification_runtime": "bundled PDF runtime pypdf text probe"
+    }
+  },
+  "observable": "Hong nanomagnetic single-bit reset energy dissipation relative to the Landauer lower bound",
+  "equation_or_mapping": {
+    "landauer_constraint": "E_min = k_B T ln(2)",
+    "uet_mapping": "No Delta_Tq = alpha_Phi_K * Delta_Phi calibration is emitted from Hong."
+  },
+  "units": {
+    "temperature": "K",
+    "energy": "source-defined energy/work units; no new row conversion emitted",
+    "alpha_Phi_K": "not emitted"
+  },
+  "preprocessing": {
+    "binary_downloaded": true,
+    "text_identity_probe_performed": true,
+    "numeric_table_transcribed": false,
+    "digitization_performed": false,
+    "unit_conversion_performed": false,
+    "uncertainty_recomputed": false,
+    "legacy_0p028_eV_row_selected": false,
+    "target_curve_read": false,
+    "holdout_read": false
+  },
+  "data_role": "SOURCE_IDENTITY_AND_LEGACY_ROW_POLICY_BOUNDARY_ONLY",
+  "raw_numeric_package_status": "final_article_surface_archived_machine_readable_selected_row_open",
+  "source_grade_uncertainty_status": "article_uncertainty_surface_present_selected_row_not_closed",
+  "calibration_eligible": false,
+  "numeric_rows_emitted": 0,
+  "numeric_alpha_Phi_K_emitted": false,
+  "parameter_fitting_performed": false,
+  "claim_boundary": "The final Hong article identity and local PDF provenance are closed for lane. This does not close a selected machine-readable legacy row, source-grade uncertainty mapping, alpha_Phi_K, the UET bridge, TTG validation, or external validation."
+}

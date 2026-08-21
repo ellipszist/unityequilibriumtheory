@@ -4,27 +4,45 @@ Machine-readable authority: `docs/topics/0.13_Thermodynamic_Bridge/Result/artifa
 
 MAJOR_RESULT_CLOSURE: `PARTIAL`
 
-WHAT_IS_ACTUALLY_CLOSED: Topic 13 now has lane-level causal selection,
-covariant field-normalization and beta-symbol no-gos, plus a named finite-
-temperature response functional where `beta_T13` has a declared action term,
-units, and entropy derivative. This avoids a Landauer shortcut without
-claiming the coefficient is physically derived.
+WHAT_IS_ACTUALLY_CLOSED: The following results are closed only for their
+ declared lanes: (1) the conserved-C baseline no-go and named normalized
+ finite-cone C/Phi branch; (2) the Ding PBTE formula and normalized TTG
+ observable mapping; (3) action-derived finite-temperature O(2), SK/KMS,
+ entropy, retarded-response, and declared-channel Kubo interfaces in natural
+ units; (4) the symbolic natural-unit-to-SI conversion contract; (5)
+ source-provenance/comparator boundaries for the available graphite packages,
+ including the public Figshare DFT energy/force capability boundary; (6) the
+ Huang 2023 NIMS MDR article-only payload boundary; (7) the Calorine C_src
+ equilibrium/unit cross-check against the independent IAEA c_v comparator; (8)
+ the public Calorine C-CX model-form provenance boundary; no numeric rerun or
+ uncertainty estimate; (9) the NEP1/backend compatibility boundary, which records
+ the current backend rejection without numeric rerun; (10) the pinned Calorine 1.0
+ legacy NEP2 backend probe, which accepts the hash-locked C-CX model without
+ producing fc2/fc3 or PBTE output; and (11) the legacy NEP2 candidate PBTE
+ reproduction, which produces archived 4x4x2 fc2/fc3 and 8x8x4/10x10x5
+ candidate C_src rows with a 0.2294% latest mesh change.
+These are evidence-producing sub-results, not Full Topic 13 closure.
 
-WHAT_REMAINS_OPEN: Source-backed `a_Phi(T)`/`beta_T13` provenance, physical
-Phi normalization and SI energy-density anchor, correspondence to a core or
-covariant coefficient, independent `alpha_Phi_K`, finite-temperature EOS,
-covariant transport, SK/KMS, entropy production, and dissipative balance.
+WHAT_REMAINS_OPEN: The current full-gate blockers are:
+`ding_pbte_C_src_numeric_or_accepted_independent_reproduction_missing`,
+`alpha_Phi_K_independent_calibration_missing`,
+`normalized_beta_and_SI_scale_correspondence_missing`,
+`eos_transport_kms_entropy_completion_missing`,
+`dimensional_phi_to_thermal_observable_map_missing`,
+`physical_Kubo_coefficient_record_missing`,
+`same_grade_alpha_V_and_K_T_missing`,
+`material_regime_mapping_to_TTG_not_closed`,
+`density_uncertainty_not_source_locked`, and
+`c_v_source_uncertainty_not_closed`.
 
-DEPENDENCY_UNLOCKED: A formula/unit interface for later EOS and entropy work
-only. No Core-ready, Gravity/GR, transport, Galaxy, external-validation, or
-global claim is unlocked.
+DEPENDENCY_UNLOCKED: Lane-level formula, causal, formal-response, and source
+boundary interfaces only. No Core-ready, curved 3+1, Gravity/GR, full
+constitutive transport, Galaxy, external-validation, or global UET claim is
+unlocked.
 
 STATUS: `BLOCKED_OPEN_T13_FULL_BRIDGE`
 
-WHAT_CHANGED: `T13_THERMAL_RESPONSE_BETA_CONTRACT` is
-`CLOSED_FOR_LANE`. The legacy `beta_core` remains a separate normalized
-coupling; it is not identified with `beta_T13`, `Phi`, or a physical thermal
-coefficient.
+WHAT_CHANGED: The canonical summary is synchronized to the current full gate and major-result register. The Figshare DFT archive audit closes only the public force-data provenance/capability boundary, the Huang 2023 NIMS MDR audit closes only the article-only public payload boundary, the Calorine equilibrium/unit cross-check remains lane-level evidence, the Calorine C-CX audit locks a public model-form input only, the current Calorine 3.5 compatibility audit records the rejection without rewriting source bytes, and the pinned Calorine 1.0 legacy NEP2 probe records model acceptance without PBTE output; the new legacy PBTE lane now runs the fixed 4x4x2 state through 8x8x4 and 10x10x5 q-meshes and archives candidate fc2/fc3 and C_src outputs, while source-grade uncertainty and Ding mapping remain open. C, Phi, R_gen, and R_obs meanings are unchanged, and no threshold, fit, calibration, or holdout policy changed.
 
 EQUATION_OR_MAPPING:
 
@@ -37,20 +55,15 @@ s = -partial_T(e0 f_hat_T13) = -e0 Phi^2 beta_T13 / (2 T0)
 y_TTG = Delta_Tq(t) / Delta_Tq(0)
 y_TTG^UET = Delta_Phi(t) / Delta_Phi(0)
 Delta_Tq = alpha_Phi_K * Delta_Phi
+rho_model = N_C M_C / (N_A V_primitive)
+c_v,implied = C_src / rho_model
 ```
 
-VERIFICATION: Analytic and finite-difference entropy derivatives agree on a
-synthetic unit witness. `T0` is K, `da_Phi/dT` is K^-1, and `e0` is an
-external J m^-3 input. No Landauer term, fit, source row, target, or Xie 2026
-holdout was used.
+VERIFICATION: Analytic and finite-difference entropy derivatives agree on a synthetic unit witness. `T0` is K, `da_Phi/dT` is K^-1, and `e0` is an external J m^-3 input. The Figshare audit is source-hash locked with 4,788 configuration records, 742 graphite records, and no direct PBTE payload fields. The NIMS MDR archive is hash-locked and contains one article PDF member only, with no deposited ShengBTE/force-constant/C_src rows. No Landauer term, fit, source row, target, or Xie 2026 holdout was used. The public C-CX model input is SHA-256 cf75256947a8953b8041ccc26a34ac307724f69bf2edbcc97b46d87bc5e72408; the current Calorine 3.5 NEPY backend rejects the legacy NEP1 model, while the pinned Calorine 1.0 legacy NEP2 backend generates 1,220 force-displacement evaluations for a 128-atom 4x4x2 state. The archived 8x8x4 and 10x10x5 runs share the same POSCAR/fc2/fc3 hashes and emit `C_src(200 K)=993760.2797173061` and `C_src(300 K)=1689859.0705455516 J m^-3 K^-1` at 10x10x5; the latest relative mesh change is `0.0022937348623178356`, below the declared 0.01 candidate preflight. This is not source-grade uncertainty or Ding acceptance.
 
-CONTROLLING_BLOCKER: `dimensional_phi_energy_anchor_or_independent_alpha_calibration_missing`. The beta-lane controller
-is `beta_T13_source_backed_temperature_coefficient_provenance_and_physical_Phi_SI_anchor_missing`.
+CONTROLLING_BLOCKER: Full Topic 13 remains controlled by `ding_pbte_C_src_numeric_or_accepted_independent_reproduction_missing` together with `alpha_Phi_K_independent_calibration_missing` and the remaining dimensional/thermodynamic closure blockers. The legacy PBTE lane is now controlled by `calorine_legacy_pbte_source_grade_uncertainty_and_ding_mapping_missing`; the backend-availability blocker has narrowed but has not become Ding acceptance or source-grade uncertainty.
 
-NEXT_ACTION: Source-lock a material-relevant temperature coefficient path and
-the Phi/e0 SI anchor independently of TTG target fitting. Then test finite-
-temperature EOS, transport, SK/KMS, entropy production, and dissipative
-balance under this named lane.
+NEXT_ACTION: Keep the legacy PBTE package as candidate evidence only. Source-lock an authorized Ding numeric package or accepted same-regime mapping with material state, mode-resolved C_src, and source-grade uncertainty; separately establish the independent base-Phi/SI anchor and alpha_Phi_K without target fitting or Xie 2026 access. Then continue EOS, covariant transport, SK/KMS, entropy production, and dissipative-balance closure under the named lane.
 
 CLAIM_BOUNDARY: UET remains a candidate effective theory. `C` remains a
 collective coordinate, `Phi` an effective response, and `R_gen` a derived
@@ -107,7 +120,9 @@ EQUATION_OR_MAPPING:
 Phi_E = Delta_u / e0
 Phi_E = s_material * Phi_base
 alpha_Phi_K = (e0 / c_v) * s_material
-Delta_Tq = alpha_Phi_K * Delta_Phi_base
+Delta_Tq = alpha_Phi_K * Delta_Phi
+rho_model = N_C M_C / (N_A V_primitive)
+c_v,implied = C_src / rho_model_base
 ```
 
 VERIFICATION: The contract audit passes its required-field and forbidden-input
@@ -239,7 +254,7 @@ KuboCoefficientRecord -> constitutive coefficient
 
 VERIFICATION: Required value/unit/state/correlator/hash fields are checked;
 synthetic controls are not promoted; no numeric coefficient, target curve, or
-Xie 2026 holdout was used.
+Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
 
 CONTROLLING_BLOCKER: `physical_Kubo_coefficient_record_missing`
 
@@ -707,7 +722,9 @@ WHAT_CHANGED: `docs/core/artifacts/t13_berut_source_package_availability_boundar
 current local inventory, source-surface scope, and non-calibration policy.
 
 EQUATION_OR_MAPPING: `E_min = k_B T ln(2)` remains an imported standard
-constraint. No numeric `Delta_Tq = alpha_Phi_K * Delta_Phi` mapping is emitted.
+constraint. No numeric `Delta_Tq = alpha_Phi_K * Delta_Phi
+rho_model = N_C M_C / (N_A V_primitive)
+c_v,implied = C_src / rho_model` mapping is emitted.
 
 VERIFICATION: All source identity, summary-role, no-raw-file, surface-scope,
 holdout, no-fit, and no-calibration checks pass; accepted numeric rows emitted:
@@ -748,7 +765,7 @@ heat-versus-erasure-duration observable; no numeric Delta_Tq or alpha_Phi_K
 mapping is emitted.
 
 VERIFICATION: Binary identity and asset inventory checks pass; accepted numeric
-rows emitted: 0; no fit, target data, calibration, or Xie 2026 holdout was used.
+rows emitted: 0; no fit, target data, calibration, or Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
 
 CONTROLLING_BLOCKER: berut_selected_panel_and_axis_tick_mapping_missing
 
@@ -1191,7 +1208,8 @@ WHAT_REMAINS_OPEN: This does not reproduce Ding PBTE `C_src`, third-order PBTE t
 DEPENDENCY_UNLOCKED: MP48 harmonic force-constant source lane only; no Ding source, alpha, transport, Core, Gravity, or Galaxy unlock.
 STATUS: `PASS_SCOPED_FORCE_CONSTANT_HARMONIC_RECONSTRUCTION`; Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE`.
 WHAT_CHANGED: Added and integrated `docs/core/artifacts/t13_mp48_force_constant_harmonic_reconstruction_audit.json` (SHA-256 `3903fbbbc22476e1394305edd2c9ad3c948802d31a9a9c36c572b8eb395cedd1`) and linked it into the Topic 13 full gate (SHA-256 `f6005cb6225975168eaf9fdf41ff280a6a6c096c16b55129cc9a92fda01671fd`).
-EQUATION_OR_MAPPING: `D_ij(q) = sum_R Phi_ij(R) exp(2*pi*i*q.R)/sqrt(m_i*m_j)` and `nu_mu = sign(lambda_mu)*sqrt(abs(lambda_mu))*conversion_factor`; mapping is from supercell Cartesian coordinates to primitive atom plus integer translation.
+EQUATION_OR_MAPPING: `D_ij(q) = sum_R Phi_ij(R) exp(2*pi*i*q.R)/sqrt(m_i*m_j)` and
+u_mu = sign(lambda_mu)*sqrt(abs(lambda_mu))*conversion_factor`; mapping is from supercell Cartesian coordinates to primitive atom plus integer translation.
 VERIFICATION: Force-constant shape `200x200x3x3`, pair symmetry residual `1.1e-14`, acoustic-sum residual `9.5e-14`, Gamma acoustic maximum `8.17e-7 THz`, no q-grid negative eigenvalue beyond roundoff, and q-grid maximum `48.41862978666018 THz` versus deposited summary `48.4370817598 THz` (relative gap `-0.0003809472509372913`). No fit, target access, holdout access, or alpha emission.
 CONTROLLING_BLOCKER: `Ding_material_regime_and_mode_resolved_C_src_acceptance_missing` for this lane; the full gate remains controlled by the existing Ding source, dimensional alpha, bridge/beta, EOS/transport/KMS/entropy, and SI-map blockers.
 NEXT_ACTION: Obtain Ding-compatible mode-resolved `C_src(T)` or an accepted same-regime PBTE reproduction with volume, convergence, uncertainty, and material-state contracts; separately obtain a declared base-Phi SI anchor or independent paired calibration.
@@ -1263,7 +1281,7 @@ WHAT_IS_ACTUALLY_CLOSED: A declared constant-amplitude 2-to-2 phase-space kernel
 WHAT_REMAINS_OPEN: Final-state Bose enhancement, ladder/vertex matching, condensed scattering, microscopic SK/KMS and retarded Kubo matching, heat-flux/entropy balance, dimensional Phi mapping, independent alpha_Phi_K, and Ding-compatible C_src.
 DEPENDENCY_UNLOCKED: Action-derived dilute-gas kinetic comparator only; no physical Kubo, SI, alpha, Core, Gravity, or external-validation dependency is unlocked.
 STATUS: PASS_ACTION_DERIVED_DILUTE_KINETIC_COLLISION_LANE; Full Topic 13 remains BLOCKED_OPEN_T13_FULL_BRIDGE at PARTIAL.
-WHAT_CHANGED: Added the collision-kernel module, audit artifact, focused regression, full-gate projection, and major-result synchronization. The fixed reference momentum is k_ref=max(T,m_eff,sqrt(Z)*abs(mu)); no source rows, fit, target curve, or Xie 2026 holdout was used.
+WHAT_CHANGED: Added the collision-kernel module, audit artifact, focused regression, full-gate projection, and major-result synchronization. The fixed reference momentum is k_ref=max(T,m_eff,sqrt(Z)*abs(mu)); no source rows, fit, target curve, or Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
 EQUATION_OR_MAPPING: E_s(k)=sqrt(k^2+m_eff^2)-s*sqrt(Z)*abs(mu); sigma_22(s)=lambda^2/(16*pi*s); Gamma_s(k)=sum_r integral[d^3p/(2*pi)^3] f_r(E_p)v_rel sigma_22(s); D_s=(1/3)integral[d^3k/(2*pi)^3]k^2[-partial_E f_s]; K_kin=sum_s D_s/Gamma_s(k_ref).
 VERIFICATION: Audit passed with zero failed checks; reference collision widths are 1.3919336977353308e-06 for both species; reference K_kin=608.3842369966399; refined-vs-reference width and response changes are both about 2.55e-06; focused regression passed (3 passed); the current major-result register has 104 entries; downstream dependency audit remains blocked.
 CONTROLLING_BLOCKER: microscopic_ladder_vertex_and_SK_KMS_matching_missing.
@@ -1315,7 +1333,9 @@ WHAT_REMAINS_OPEN: This independent isotopically purified graphite-ribbon compar
 DEPENDENCY_UNLOCKED: Huang comparator provenance only; no source, alpha, bridge, transport, Core, Gravity, or Galaxy unlock.
 STATUS: `PASS_HUANG_PUBLIC_SUPPLEMENTARY_BOUNDARY_NO_NUMERIC_PBTE_PAYLOAD`; Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE`.
 WHAT_CHANGED: Added the source-boundary artifact and integrated it into full gate SHA-256 `888e2ff3cd23a2e4b1b4454b53039c76fd7b3a8083cb8dd6cf2427e7d25beaeb` and register SHA-256 `730cd7ab782e51e5b29ddc4bb8d5f017724f34413ae34d5059d3863767e4db72`.
-EQUATION_OR_MAPPING: Comparator layer only: `y_TTG = Delta_Tq(t) / Delta_Tq(0)`; no `C_src`, `Delta_Tq = alpha_Phi_K * Delta_Phi`, or temperature prediction is emitted.
+EQUATION_OR_MAPPING: Comparator layer only: `y_TTG = Delta_Tq(t) / Delta_Tq(0)`; no `C_src`, `Delta_Tq = alpha_Phi_K * Delta_Phi
+rho_model = N_C M_C / (N_A V_primitive)
+c_v,implied = C_src / rho_model`, or temperature prediction is emitted.
 VERIFICATION: Hash, size, PDF/page boundary, no numeric payload, no digitization, no fit, no alpha fit, and no Xie 2026 holdout access pass.
 CONTROLLING_BLOCKER: `ding_pbte_C_src_numeric_or_accepted_independent_reproduction_missing` plus the existing alpha, bridge/beta, EOS/transport/KMS/entropy, dimensional-map, and material-regime blockers.
 NEXT_ACTION: Obtain an authorized numeric Ding payload or accepted same-regime PBTE reproduction with convergence, uncertainty, and units.
@@ -1329,7 +1349,9 @@ WHAT_REMAINS_OPEN: `15x15x6 -> 20x20x8` still changes by `0.020163733436403874` 
 DEPENDENCY_UNLOCKED: Finest-pair diagnostic only; no downstream dependency unlock.
 STATUS: `BLOCKED_MP48_FORCE_CONSTANT_C_SRC_MESH_CONVERGENCE`; Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE`.
 WHAT_CHANGED: Canonical artifact now records all five meshes and distinguishes route-wide, fine-tail, and finest-pair convergence. Full gate SHA-256 `f0cb644215f356b0b2e6b925bbc8bfa0e9fa364a0c33275133fbe70fd0624c1e`.
-EQUATION_OR_MAPPING: `C_src^mesh(T) = N_A/N_q * sum_(q,mu) c_mu(q,T)`; no `Delta_Tq = alpha_Phi_K * Delta_Phi` calibration is emitted.
+EQUATION_OR_MAPPING: `C_src^mesh(T) = N_A/N_q * sum_(q,mu) c_mu(q,T)`; no `Delta_Tq = alpha_Phi_K * Delta_Phi
+rho_model = N_C M_C / (N_A V_primitive)
+c_v,implied = C_src / rho_model` calibration is emitted.
 VERIFICATION: Five-mesh source audit, focused `3 passed`, and full Topic 13 `176 passed, 625 deselected`; no fit or holdout access.
 CONTROLLING_BLOCKER: `mp48_force_constant_C_src_mesh_convergence_missing` plus Ding source/material mapping and full thermal bridge blockers.
 NEXT_ACTION: Seek an accepted Ding-compatible numeric PBTE payload/reproduction rather than treating the finest pair as sufficient.
@@ -1469,7 +1491,8 @@ WHAT_REMAINS_OPEN: Xie 2026 remains a locked holdout and must not be used for ca
 DEPENDENCY_UNLOCKED: Holdout-integrity reporting may proceed from the canonical access audit; no thermal-bridge, alpha, prediction, or external-validation dependency is unlocked.
 STATUS: `PASS_HOLDOUT_DATA_UNCONSUMED_METADATA_ONLY`; Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE`.
 WHAT_CHANGED: Added `docs/core/artifacts/t13_xie_2026_holdout_access_audit.json` (SHA-256 `c3185da0a233894d7f338138bbe6acee287194e1852a80e40b0b5f6f2134e21b`), wired it into the active full-gate and Ding source-mapping verifiers, and synchronized the major-result register/dependency gate.
-EQUATION_OR_MAPPING: Access contract is `metadata_only_observed != numeric_payload_consumed`; the locked rule is `numeric_payload_consumed = used_for_fit = used_for_tuning = used_for_calibration = used_for_threshold_adjustment = false`.
+EQUATION_OR_MAPPING: Access contract is `metadata_only_observed != numeric_payload_consumed`; the locked rule is
+umeric_payload_consumed = used_for_fit = used_for_tuning = used_for_calibration = used_for_threshold_adjustment = false`.
 VERIFICATION: Canonical holdout audit and full-gate evidence hash agree; full-gate holdout integrity is `PASS` with metadata-only observation recorded and all numeric-consumption controls false. Focused holdout/acceptance/KMS tests pass (`7 passed`).
 CONTROLLING_BLOCKER: No blocker remains in the access-control lane. Full Topic 13 remains controlled by Ding-regime `C_src`, independent `alpha_Phi_K`, dimensional/base-Phi anchor, bridge/beta, EOS/transport/KMS/entropy, and source uncertainty blockers.
 NEXT_ACTION: Keep Xie 2026 locked and continue only with an authorized Ding numeric package or an accepted independent same-regime PBTE reproduction, plus an independent base-Phi SI anchor/calibration.
@@ -1536,7 +1559,8 @@ WHAT_REMAINS_OPEN: Transverse normal-current response, interacting finite-temper
 DEPENDENCY_UNLOCKED: Formal thermodynamic two-sector lane only; no physical two-fluid transport, SI, alpha, Full Topic 13, Core, Gravity, or external-validation unlock.
 STATUS: `PASS_FORMAL_TWO_SECTOR_THERMODYNAMIC_CONSISTENCY`; Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE` at `PARTIAL`.
 WHAT_CHANGED: Added `docs/core/uet_o2_formal_two_sector_thermodynamics.py`, its audit artifact and focused tests, then linked the result into the full gate and major-result registry.
-EQUATION_OR_MAPPING: `p_2sector = p_condensate + p_normal`; `n_i = partial_mu p_i`; `s_condensate = partial_T p_condensate = 0`; `epsilon_i = -p_i + T*s_i + mu*n_i`; `chi_i = partial_mu n_i`. No transverse current or transport coefficient is inferred.
+EQUATION_OR_MAPPING: `p_2sector = p_condensate + p_normal`;
+_i = partial_mu p_i`; `s_condensate = partial_T p_condensate = 0`; `epsilon_i = -p_i + T*s_i + mu*n_i`; `chi_i = partial_mu n_i`. No transverse current or transport coefficient is inferred.
 VERIFICATION: Formal audit passed with zero failed checks; focused tests passed (`2 passed`); full gate retains the existing 10 blockers; Xie 2026 remains unconsumed. A broader EOS test still has a pre-existing assertion-shape failure in `test_topic13_finite_temperature_quasiparticle_eos.py`.
 CONTROLLING_BLOCKER: `transverse_normal_current_response_or_Landau_normal_density_missing`.
 NEXT_ACTION: Derive or source-lock a state-matched transverse normal-current response from a declared interacting finite-temperature action, while keeping this thermodynamic split separate from physical Kubo and SI calibration.
@@ -1655,7 +1679,7 @@ WHAT_IS_ACTUALLY_CLOSED: A single fixed mass-squared Taylor-subtraction prescrip
 WHAT_REMAINS_OPEN: Microscopic 2PI or controlled 1/N matching, physical finite-temperature renormalization, complete condensed/two-fluid EOS, retarded physical Kubo, microscopic SK/KMS, entropy/heat-flux balance, dimensional Phi mapping, independent alpha_Phi_K, and Ding-compatible C_src remain open.
 DEPENDENCY_UNLOCKED: Formal Ward-preserving auxiliary-field condensed lane only; no physical EOS, Kubo/SK-KMS, SI, alpha, TTG, Core, Gravity, or external-validation dependency is unlocked.
 STATUS: PASS_FORMAL_WARD_PRESERVING_AUXILIARY_FIELD_CONDENSED_LANE; Full Topic 13 remains BLOCKED_OPEN_T13_FULL_BRIDGE at PARTIAL.
-WHAT_CHANGED: Added the auxiliary-field functional, audit artifact, regression test, full-gate projection, and major-result registry synchronization. No source rows, target curve, fit, or Xie 2026 holdout was used.
+WHAT_CHANGED: Added the auxiliary-field functional, audit artifact, regression test, full-gate projection, and major-result registry synchronization. No source rows, target curve, fit, or Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
 EQUATION_OR_MAPPING: Omega=(m_eff^2-Z*mu^2)*rho/2+lambda*rho^2/4+Omega_1^R(M^2)-(M^2-m_eff^2-lambda*rho)^2/(4*lambda); partial_rho Omega=(M^2-Z*mu^2)/2; partial_M2 Omega=I_R-(M^2-m_eff^2-lambda*rho)/(2*lambda); therefore M^2=Z*mu^2 and rho=(Z*mu^2-m_eff^2-2*lambda*I_R)/lambda.
 VERIFICATION: Audit passed with zero failed checks; six states are condensed and Ward-gapless, auxiliary gap residuals close to 1e-10, thermodynamic charge/entropy envelope checks pass, maximum quadrature relative error is 5.4062289645398915e-12, and maximum cutoff relative error is 5.588546748373999e-07. Regression test passed (3 passed); major-result closure has 100 entries; downstream dependency audit remains blocked; Xie 2026 remains unconsumed.
 CONTROLLING_BLOCKER: microscopic_2pi_or_controlled_1N_matching_missing.
@@ -1670,7 +1694,7 @@ WHAT_IS_ACTUALLY_CLOSED: The declared normal collisionless response has a positi
 WHAT_REMAINS_OPEN: An interaction collision kernel or microscopic self-energy/width, a matched retarded correlator, physical heat transport, dimensional Phi mapping, independent alpha_Phi_K, and Ding-compatible C_src remain open.
 DEPENDENCY_UNLOCKED: Collisionless Kubo structural boundary only; no physical transport, SI, alpha, Core, Gravity, or external-validation dependency is unlocked.
 STATUS: PASS_COLLISIONLESS_KUBO_DC_NO_GO; Full Topic 13 remains BLOCKED_OPEN_T13_FULL_BRIDGE at PARTIAL.
-WHAT_CHANGED: Added the action-derived collisionless Drude boundary, verifier, regression test, full-gate projection, and major-result synchronization. No source rows, fit, target curve, or Xie 2026 holdout was used.
+WHAT_CHANGED: Added the action-derived collisionless Drude boundary, verifier, regression test, full-gate projection, and major-result synchronization. No source rows, fit, target curve, or Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
 EQUATION_OR_MAPPING: sigma(omega;gamma)=D/(gamma-i*omega); rho_JJ=2*D*omega*gamma/(gamma^2+omega^2); K_DC=(1/2)lim rho_JJ/omega=D/gamma; gamma->0+ gives no finite DC coefficient.
 VERIFICATION: Audit passed with zero failed checks. D=0.0008468305206465916; regulated coefficients for gamma=(0.1,0.01,0.001) are (0.008468305206465916, 0.08468305206465916, 0.8468305206465916); focused regression passed (3 passed); major-result register has 101 entries; downstream dependency audit remains blocked.
 CONTROLLING_BLOCKER: interaction_collision_kernel_or_microscopic_width_missing.
@@ -1700,7 +1724,7 @@ WHAT_IS_ACTUALLY_CLOSED: An explicit elastic outgoing-state factor B_34=(1+f_3)(
 WHAT_REMAINS_OPEN: Ladder/vertex resummation, condensed collision processes, microscopic SK/KMS and retarded Kubo matching, heat-flux and entropy balance, dimensional Phi mapping, independent alpha_Phi_K, Ding C_src, and external validation remain open.
 DEPENDENCY_UNLOCKED: Quantum-enhanced dilute-gas comparator only; no physical Kubo, SI, alpha, Core, Gravity, or external-validation unlock.
 STATUS: PASS_ACTION_DERIVED_QUANTUM_COLLISION_ENHANCEMENT_LANE; Full Topic 13 remains BLOCKED_OPEN_T13_FULL_BRIDGE at PARTIAL.
-WHAT_CHANGED: Added a separately named explicit Bose-enhancement lane, verifier artifact, focused tests, full-gate projection, and major-result register entry. No source rows, target curve, fit, or Xie 2026 holdout was used.
+WHAT_CHANGED: Added a separately named explicit Bose-enhancement lane, verifier artifact, focused tests, full-gate projection, and major-result register entry. No source rows, target curve, fit, or Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
 EQUATION_OR_MAPPING: Gamma_s^Q(k)=sum_r integral[d^3p/(2*pi)^3] f_r v_rel sigma_22 B_34; B_34=(1+f_3)(1+f_4) for the declared elastic outgoing-state comparator. This is not a ladder-resummed retarded response.
 VERIFICATION: Audit passed with zero failed checks; width ratios versus baseline are (1.0141056743182757, 1.027717187674908), quantum refinement changes are about 2.54e-06, response refinement is about 2.53e-06, and focused regression passed (3 passed). The lane emits no physical Kubo coefficient or alpha_Phi_K and leaves Xie 2026 unconsumed.
 CONTROLLING_BLOCKER: ladder_vertex_resummation_missing.
@@ -1730,7 +1754,8 @@ WHAT_REMAINS_OPEN: The finite-cutoff limit, full energy-momentum conserving coll
 DEPENDENCY_UNLOCKED: Named momentum-dependent response and algebraic KMS/FDT interface only. No physical Kubo, SI, alpha, TTG, Core, Gravity, constitutive-transport, or external-validation dependency is unlocked.
 STATUS: PASS_ACTION_DERIVED_MOMENTUM_LADDER_SK_KMS_INTERFACE_LANE; full gate remains `BLOCKED_OPEN_T13_FULL_BRIDGE` at `PARTIAL`.
 WHAT_CHANGED: Added the momentum-grid module, machine-readable audit artifact, regression tests, full-gate map, major-result sync tuple, formula-audit entry T13-060, and this report section. The lane declares a finite momentum cutoff and does not consume source rows, fit parameters, target data, or Xie 2026.
-EQUATION_OR_MAPPING: `w_s(k)=k^2/(2*pi^2*T)*f_s(E_k)*(1+f_s(E_k))*dk`; `c_(s,k)=q_s*sqrt(w_s(k))`; `P=I-c*c^T/(c^T*c)`; `L=P*diag(Gamma_s(k))*P`; `b_perp=P*b`; `K_R(omega)=b_perp^T*(L-i*omega*I)^(-1)*b_perp`; `rho=2*Im(K_R)`; `G^>=rho*(1+n_B)`; `G^<=rho*n_B`; `N=rho*coth(beta_th*omega/2)`; `sigma_formal=b_perp^T*L*b_perp/T`. Natural units only; Phi is not temperature, C is not mass or charge, R_gen is a derived history trace, and R_obs is separate.
+EQUATION_OR_MAPPING: `w_s(k)=k^2/(2*pi^2*T)*f_s(E_k)*(1+f_s(E_k))*dk`; `c_(s,k)=q_s*sqrt(w_s(k))`; `P=I-c*c^T/(c^T*c)`; `L=P*diag(Gamma_s(k))*P`; `b_perp=P*b`; `K_R(omega)=b_perp^T*(L-i*omega*I)^(-1)*b_perp`; `rho=2*Im(K_R)`; `G^>=rho*(1+n_B)`; `G^<=rho*n_B`;
+=rho*coth(beta_th*omega/2)`; `sigma_formal=b_perp^T*L*b_perp/T`. Natural units only; Phi is not temperature, C is not mass or charge, R_gen is a derived history trace, and R_obs is separate.
 VERIFICATION: Audit completed with zero failed checks. The reference lane has 64 states across two species, width spread `3.572274811684194`, positive-mode rate `3.845182613400187e-07`, entropy witness `4.662265988145945e-10`, and fixed-cutoff reference/refined response change `0.008022779716558905`. Charge conservation, positive semidefiniteness, retarded sign/monotonicity, algebraic KMS/FDT identities, finite-grid refinement, ontology, no-fitting, and no-holdout checks pass. Full gate and downstream dependency audit remain blocked.
 CONTROLLING_BLOCKER: `microscopic_bethe_salpeter_and_SK_KMS_matching_missing`.
 NEXT_ACTION: Derive the full energy-momentum conserving collision operator and microscopic vertex, then match its retarded response to a microscopic Bethe-Salpeter/SK construction. Keep the finite-cutoff boundary, physical Kubo, dimensional map, source package, and alpha_Phi_K independently gated.
@@ -1788,8 +1813,9 @@ WHAT_IS_ACTUALLY_CLOSED: The declared tree-level charged-sector action vertex no
 WHAT_REMAINS_OPEN: The loop-renormalized microscopic vertex, full interacting SK influence functional, continuum limit, physical Kubo coefficient, entropy-current/heat-flux/dissipative balance, dimensional `Phi` to thermal map, independent `alpha_Phi_K`, Ding-compatible numeric `C_src`, and Full Topic 13 remain open. The recorded continuum sequence is visibly nonconverged.
 DEPENDENCY_UNLOCKED: Named tree-level action vertex normalization and formal finite-cutoff SK/KMS/Bethe-Salpeter interface only. Core curved 3+1, Gravity, full constitutive transport, Galaxy, SI, alpha, source, and external-validation dependencies remain blocked.
 STATUS: `PASS_ACTION_DERIVED_TREE_LEVEL_BS_SK_MATCH_INTERFACE_LANE`; full gate remains `BLOCKED_OPEN_T13_FULL_BRIDGE` at `PARTIAL`; downstream dependency remains `BLOCKED_DOWNSTREAM_MAJOR_RESULTS`.
-WHAT_CHANGED: Added the tree-level action vertex/SK matching state, machine-readable verifier/artifact, regression tests, full-gate/register mappings, formula-audit entry `T13-064`, and this report section. No source rows, fitting, target data, Landauer-derived alpha, or Xie 2026 holdout was used.
-EQUATION_OR_MAPPING: `M_tree=lambda`; `sigma_22=|M_tree|^2/(16*pi*s)`; `L_cont=L_width+K_transition`; `K_BS=gamma_ref*I-L_cont`; `G_R=G_0+G_0*K_BS*G_R`; `S_SK=integral[Phi_a D_R Phi_r+i Phi_a N Phi_a/2]`; `N=coth(beta_th*omega/2)*rho`. Natural units only; `Phi` is not temperature, `C` is not mass or charge, `R_gen` is a derived history trace, and `R_obs` is separate.
+WHAT_CHANGED: Added the tree-level action vertex/SK matching state, machine-readable verifier/artifact, regression tests, full-gate/register mappings, formula-audit entry `T13-064`, and this report section. No source rows, fitting, target data, Landauer-derived alpha, or Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
+EQUATION_OR_MAPPING: `M_tree=lambda`; `sigma_22=|M_tree|^2/(16*pi*s)`; `L_cont=L_width+K_transition`; `K_BS=gamma_ref*I-L_cont`; `G_R=G_0+G_0*K_BS*G_R`; `S_SK=integral[Phi_a D_R Phi_r+i Phi_a N Phi_a/2]`;
+=coth(beta_th*omega/2)*rho`. Natural units only; `Phi` is not temperature, `C` is not mass or charge, `R_gen` is a derived history trace, and `R_obs` is separate.
 VERIFICATION: Zero failed checks. Action cross-section residual `1.1102230246251565e-16`; kinematic residual `1.4210854715202004e-14`; detailed-balance residual `8.543090354715029e-14`; decomposition residual `2.4147484638442308e-22`; BS residual `4.513280234121269e-16`; formal SK/KMS residual `1.729285121923951e-16`; FDT residual `2.0024586688771869e-16`; entropy witness `7.653163030092222e-10`; maximum recorded continuum-sequence change `0.47541462972440046`. New regression passed `3` tests. Full gate and dependency audit keep downstream promotion blocked.
 CONTROLLING_BLOCKER: `loop_renormalized_microscopic_vertex_and_full_interacting_SK_action_match_missing`; independent `alpha_Phi_K` calibration remains separately open.
 NEXT_ACTION: Derive the loop-renormalized microscopic vertex and full interacting SK/KMS action match on top of the declared tree-level interface, then rerun the continuum-limit controller. Keep entropy-current/heat-flux, dimensional mapping, independent alpha, Ding source, and Xie holdout gates independent.
@@ -1816,8 +1842,9 @@ WHAT_IS_ACTUALLY_CLOSED: The stable normal-branch Euclidean charged propagator, 
 WHAT_REMAINS_OPEN: Unique physical renormalization, condensed/two-fluid charged completion, full interacting SK/KMS action, continuum limit, physical Kubo coefficient, entropy-current/heat-flux/dissipative balance, dimensional \`Phi\` map, independent \`alpha_Phi_K\`, Ding-compatible numeric \`C_src\`, and Full Topic 13 remain open.
 DEPENDENCY_UNLOCKED: Named finite-density charged normal-branch scheme only. Core curved 3+1, Gravity, full constitutive transport, Galaxy, SI, alpha, source, and external-validation dependencies remain blocked.
 STATUS: \`PASS_ACTION_DERIVED_FINITE_DENSITY_CHARGED_O2_VERTEX_SCHEME\`; full gate remains \`BLOCKED_OPEN_T13_FULL_BRIDGE\` at \`PARTIAL\`; downstream dependency remains \`BLOCKED_DOWNSTREAM_MAJOR_RESULTS\`.
-WHAT_CHANGED: Added the finite-density charged propagator/vertex module, machine-readable verifier/artifact, regression tests, full-gate/register mappings, and formula-audit entry \`T13-066\`. The lane uses only declared natural-unit action inputs; no source rows, fitting, target data, Landauer shortcut, or Xie 2026 holdout was used.
-EQUATION_OR_MAPPING: \`D_E^{-1}(omega_n,k)=(omega_n+i*mu_eff)^2+k^2+m_eff(Phi)^2\`; \`E_particle=E-mu_eff\`; \`E_antiparticle=E+mu_eff\`; \`B_ch^R=B_vac(m)-B_vac(m_ref)+B_thermal(m,mu_eff)\`; \`n_ch=sqrt(Z)*integral[(n_-(E)-n_+(E))d^3k/(2*pi)^3]\`. Natural units only; \`Phi\` is not temperature, \`C\` is not mass or charge, \`R_gen\` is a derived history trace, and \`R_obs\` is separate.
+WHAT_CHANGED: Added the finite-density charged propagator/vertex module, machine-readable verifier/artifact, regression tests, full-gate/register mappings, and formula-audit entry \`T13-066\`. The lane uses only declared natural-unit action inputs; no source rows, fitting, target data, Landauer shortcut, or Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
+EQUATION_OR_MAPPING: \`D_E^{-1}(omega_n,k)=(omega_n+i*mu_eff)^2+k^2+m_eff(Phi)^2\`; \`E_particle=E-mu_eff\`; \`E_antiparticle=E+mu_eff\`; \`B_ch^R=B_vac(m)-B_vac(m_ref)+B_thermal(m,mu_eff)\`; \
+_ch=sqrt(Z)*integral[(n_-(E)-n_+(E))d^3k/(2*pi)^3]\`. Natural units only; \`Phi\` is not temperature, \`C\` is not mass or charge, \`R_gen\` is a derived history trace, and \`R_obs\` is separate.
 VERIFICATION: Zero failed checks. Static propagator residual \`1.2820127305140375e-16\`; factorization residual \`0\`; charged thermal cutoff change \`3.1691751332771736e-14\`; renormalized bubble/vertex changes \`1.1413950082964835e-05\` and \`3.137451738838419e-08\`; particle/antiparticle KMS, charge-conjugation, odd-charge, and neutral-limit residuals are all \`0\`. New regression passed \`3\` tests; Topic 13 suite passed \`289\` tests. Full gate and dependency audit keep downstream promotion blocked.
 CONTROLLING_BLOCKER: \`unique_physical_renormalization_and_full_interacting_sk_kms_match_missing\`; condensed/two-fluid, continuum, entropy-current, physical Kubo, dimensional, independent \`alpha_Phi_K\`, Ding source, and holdout boundaries remain independent.
 NEXT_ACTION: Match the finite-density charged scheme to a full interacting SK/KMS construction and a declared physical renormalization, then test the condensed/two-fluid interface. Keep \`alpha_Phi_K\`, TTG source, Xie holdout, entropy-current, heat-flux, and physical Kubo gates independent.
@@ -1830,10 +1857,11 @@ WHAT_IS_ACTUALLY_CLOSED: The exact local O(2) contour action difference in r/a v
 WHAT_REMAINS_OPEN: Nonlocal interacting SK influence functional, microscopic retarded self-energy and physical dissipation, unique physical renormalization, condensed/two-fluid completion, physical Kubo coefficient, entropy-current/heat-flux/dissipative balance, dimensional \`Phi\` map, independent \`alpha_Phi_K\`, Ding-compatible numeric \`C_src\`, and Full Topic 13 remain open.
 DEPENDENCY_UNLOCKED: Local interacting SK contour and charged equilibrium KMS/detailed-balance interface only. Core curved 3+1, Gravity, full constitutive transport, Galaxy, SI, alpha, source, and external-validation dependencies remain blocked.
 STATUS: \`PASS_ACTION_DERIVED_INTERACTING_SK_KMS_LOCAL_ACTION_INTERFACE\`; full gate remains \`BLOCKED_OPEN_T13_FULL_BRIDGE\` at \`PARTIAL\`; downstream dependency remains \`BLOCKED_DOWNSTREAM_MAJOR_RESULTS\`.
-WHAT_CHANGED: Added the exact local interacting contour module, machine-readable verifier/artifact, regression tests, full-gate/register mappings, and formula-audit entry \`T13-067\`. The lane uses declared natural-unit action inputs and existing action-derived transition channels; no source rows, fitting, target data, Landauer shortcut, or Xie 2026 holdout was used.
+WHAT_CHANGED: Added the exact local interacting contour module, machine-readable verifier/artifact, regression tests, full-gate/register mappings, and formula-audit entry \`T13-067\`. The lane uses declared natural-unit action inputs and existing action-derived transition channels; no source rows, fitting, target data, Landauer shortcut, or Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
 EQUATION_OR_MAPPING: \`S_SK=S_E[Phi_r+Phi_a/2]-S_E[Phi_r-Phi_a/2]\`; \`D_tau Phi=partial_tau Phi+mu_eff*J*Phi\`; \`V(r+a/2)-V(r-a/2)=lambda*(r.r)*(r.a)+(lambda/4)*(a.a)*(r.a)\`; charged KMS and detailed balance as recorded in \`T13-067\`. Natural units only; \`Phi\` is not temperature, \`C\` is not mass or charge, \`R_gen\` is a derived history trace, and \`R_obs\` is separate.
 VERIFICATION: Zero failed checks. Contour expansion, unitarity, reality, and no-pure-r residuals are \`0\`; r^3a/ra^3 weights are \`0.0009339120000000001\` and \`6.6780000000000008e-05\`; charged collision detailed-balance residual \`2.8463221008786541e-14\`; collision KMS/FDT residuals \`1.7292851219239511e-16\` and \`1.5019325358485805e-16\`; formal entropy witness \`1.3611620264866121e-27\`. New regression passed \`3\` tests; Topic 13 suite passed \`292\` tests. Full gate and dependency audit keep downstream promotion blocked.
-CONTROLLING_BLOCKER: \`nonlocal_interacting_sk_influence_functional_and_physical_retarded_kernel_missing\`; unique physical renormalization, condensed/two-fluid, entropy-current, physical Kubo, dimensional, independent \`alpha_Phi_K\`, Ding source, and holdout boundaries remain independent.
+CONTROLLING_BLOCKER: \
+onlocal_interacting_sk_influence_functional_and_physical_retarded_kernel_missing\`; unique physical renormalization, condensed/two-fluid, entropy-current, physical Kubo, dimensional, independent \`alpha_Phi_K\`, Ding source, and holdout boundaries remain independent.
 NEXT_ACTION: Derive the nonlocal interacting SK influence functional and physical retarded/dissipative kernel from the charged action without importing a fitted coefficient. Then rerun entropy-current/heat-flux and Kubo gates while keeping \`alpha_Phi_K\`, TTG source, and Xie holdout independent.
 CLAIM_BOUNDARY: This closes only the local action-level interacting SK contour and charged equilibrium KMS/detailed-balance interface. It is not a nonlocal influence-functional derivation, physical retarded self-energy, dissipative transport closure, unique physical renormalization, condensed/two-fluid closure, physical Kubo coefficient, SI observable, \`alpha_Phi_K\` calibration, TTG prediction, external validation, or Full Topic 13 closure.
 EVIDENCE_HASHES: module \`91b432c04e11aebf4aa1c293a05ae611be4eca3243daa91546d671f63fd68da5\`; verifier \`2b3c09d45b386dda36fd38592fc18cdeb44d91987e7d52c9242c03bdecbc1c55\`; regression \`7a184da2a1710e59c10690952757917fbb87d74821a4b66257f1fcf6ee95236c\`; artifact \`6131d8ffba0e365d172c52c8e97cc58fa5f3eae75432aa8875aee9bb54b6c4e2\`; full gate \`6d8bd2d071ef01110416c887f85c594796ba925e96ef955de9f8b5da6a626069\`; register \`fede0159caa349bb3295f2ff1025f57cb37a1d231172f5d8d810c484421ec2e1\`; dependency \`fdffaa7ede862db19c306d15153e55edbd35c0c13b7e97cb3cab37de2ae384fa\`.
@@ -1844,8 +1872,9 @@ WHAT_IS_ACTUALLY_CLOSED: The explicit causal exponential memory kernel, action-d
 WHAT_REMAINS_OPEN: Physical retarded self-energy/dissipative kernel, unique physical renormalization, condensed/two-fluid completion, physical Kubo coefficient, entropy-current/heat-flux/dissipative balance, dimensional \`Phi\` map, independent \`alpha_Phi_K\`, Ding-compatible numeric \`C_src\`, and Full Topic 13 remain open.
 DEPENDENCY_UNLOCKED: Formal action-derived nonlocal SK/KMS memory control only. Core curved 3+1, Gravity, full constitutive transport, Galaxy, SI, alpha, source, and external-validation dependencies remain blocked.
 STATUS: \`PASS_ACTION_DERIVED_NONLOCAL_SK_KMS_MEMORY_KERNEL_LANE\`; full gate remains \`BLOCKED_OPEN_T13_FULL_BRIDGE\` at \`PARTIAL\`; downstream dependency remains \`BLOCKED_DOWNSTREAM_MAJOR_RESULTS\`.
-WHAT_CHANGED: Added the nonlocal memory-kernel module, machine-readable verifier/artifact, regression tests, full-gate/register mappings, and formula-audit entry \`T13-068\`. The damping rate is inherited from the action-derived normal collision-width comparator; no target rows, fitting, Landauer shortcut, or Xie 2026 holdout was used.
-EQUATION_OR_MAPPING: \`S_IF=integral dt dt' [Phi_a(t) K_R(t-t') Phi_r(t')+i Phi_a(t) N(t-t') Phi_a(t')/2]\`; \`g_R(t)=gamma_memory/memory_time*exp(-t/memory_time)*Theta(t)\`; \`rho(omega)=2 gamma_memory omega/(1+omega^2 memory_time^2)\`; \`N=rho*coth(beta_th*omega/2)\`. Natural units only; \`Phi\` is not temperature, \`C\` is not mass or charge, \`R_gen\` is a derived history trace, and \`R_obs\` is separate.
+WHAT_CHANGED: Added the nonlocal memory-kernel module, machine-readable verifier/artifact, regression tests, full-gate/register mappings, and formula-audit entry \`T13-068\`. The damping rate is inherited from the action-derived normal collision-width comparator; no target rows, fitting, Landauer shortcut, or Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
+EQUATION_OR_MAPPING: \`S_IF=integral dt dt' [Phi_a(t) K_R(t-t') Phi_r(t')+i Phi_a(t) N(t-t') Phi_a(t')/2]\`; \`g_R(t)=gamma_memory/memory_time*exp(-t/memory_time)*Theta(t)\`; \`rho(omega)=2 gamma_memory omega/(1+omega^2 memory_time^2)\`; \
+=rho*coth(beta_th*omega/2)\`. Natural units only; \`Phi\` is not temperature, \`C\` is not mass or charge, \`R_gen\` is a derived history trace, and \`R_obs\` is separate.
 VERIFICATION: Zero failed checks. Negative-time support \`0\`; memory pole imaginary part \`-0.7039206634854508\`; spectral minimum \`3.0393357701529953e-07\`; maximum causal-transform residual \`5.357171079777344e-14\`; maximum KMS residual \`7.488546547861213e-16\`; maximum FDT residual \`4.2351647362715017e-22\`; kernel-reality residuals \`0\`; formal entropy witness \`2.4883064269456041e-05\`. New regression passed \`3\` tests; Topic 13 suite passed \`295\` tests. Full gate and dependency audit keep downstream promotion blocked.
 CONTROLLING_BLOCKER: \`physical_retarded_self_energy_and_dissipative_kernel_missing\`; unique physical renormalization, condensed/two-fluid, entropy-current, physical Kubo, dimensional, independent \`alpha_Phi_K\`, Ding source, and holdout boundaries remain independent.
 NEXT_ACTION: Replace the formal collision-width memory control with a state-matched microscopic retarded self-energy and entropy-current/dissipative kernel. Keep physical Kubo, \`alpha_Phi_K\`, TTG source, and Xie holdout access independent.
@@ -1858,7 +1887,7 @@ WHAT_IS_ACTUALLY_CLOSED: The local quartic one-loop retarded correction is a rea
 WHAT_REMAINS_OPEN: Two-loop sunset or microscopic retarded self-energy, physical dissipative kernel, unique physical renormalization, condensed/two-fluid completion, physical Kubo coefficient, entropy-current/heat-flux/dissipative balance, dimensional \`Phi\` map, independent \`alpha_Phi_K\`, Ding-compatible numeric \`C_src\`, and Full Topic 13 remain open.
 DEPENDENCY_UNLOCKED: One-loop dissipation no-go only. It does not unlock physical transport, Core curved 3+1, Gravity, Galaxy, SI, alpha, source, or external validation.
 STATUS: \`PASS_ACTION_DERIVED_ONE_LOOP_RETARDED_SELF_ENERGY_NO_GO\`; closure level is \`CLOSED_AS_NO_GO\`; full gate remains \`BLOCKED_OPEN_T13_FULL_BRIDGE\` at \`PARTIAL\`; downstream dependency remains \`BLOCKED_DOWNSTREAM_MAJOR_RESULTS\`.
-WHAT_CHANGED: Added the one-loop tadpole/self-energy no-go module, machine-readable verifier/artifact, regression tests, full-gate/register mappings, and formula-audit entry \`T13-069\`. No source rows, fitting, target data, Landauer shortcut, or Xie 2026 holdout was used.
+WHAT_CHANGED: Added the one-loop tadpole/self-energy no-go module, machine-readable verifier/artifact, regression tests, full-gate/register mappings, and formula-audit entry \`T13-069\`. No source rows, fitting, target data, Landauer shortcut, or Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
 EQUATION_OR_MAPPING: \`Sigma_R^(1)(omega,k)=3 lambda [I_vac^R+I_thermal]\`; \`I_thermal=integral[(n_-(E)+n_+(E))/(4E)]d^3k/(2*pi)^3\`; \`Im Sigma_R^(1)=0\`; \`rho_Sigma^(1)=0\`. Natural units only; \`Phi\` is not temperature, \`C\` is not mass or charge, \`R_gen\` is a derived history trace, and \`R_obs\` is separate.
 VERIFICATION: Zero failed checks. Thermal tadpole \`0.00022235021208668495\`; real self-energy \`0.000533640509008044\`; imaginary and spectral maxima \`0\`; frequency-independence residual \`0\`; stable normal branch and no-go requirement pass. New regression passed \`3\` tests; Topic 13 suite passed \`298\` tests. Full gate and dependency audit keep downstream promotion blocked.
 CONTROLLING_BLOCKER: \`two_loop_sunset_or_microscopic_retarded_self_energy_missing\`; physical Kubo, entropy-current, dimensional, independent \`alpha_Phi_K\`, Ding source, and holdout boundaries remain independent.
@@ -1872,7 +1901,7 @@ WHAT_IS_ACTUALLY_CLOSED: The first nonzero action-derived order-lambda^2 finite-
 WHAT_REMAINS_OPEN: The continuum 1PI sunset integral, regulator/subtraction matching, full retarded self-energy, physical Kubo/transport, entropy-current/heat-flux balance, dimensional \`Phi\` map, independent \`alpha_Phi_K\`, Ding-compatible \`C_src\`, and Full Topic 13 remain open.
 DEPENDENCY_UNLOCKED: Finite-channel two-loop phase-space cut interface only. No physical self-energy, Kubo, SI, alpha, Core, Gravity, Galaxy, or external-validation dependency is unlocked.
 STATUS: \`PASS_ACTION_DERIVED_TWO_LOOP_SUNSET_CUT_LANE\`; closure level \`CLOSED_FOR_LANE\`; full gate remains \`BLOCKED_OPEN_T13_FULL_BRIDGE\` at \`PARTIAL\`; downstream dependency remains \`BLOCKED_DOWNSTREAM_MAJOR_RESULTS\`.
-WHAT_CHANGED: Added the two-loop sunset-cut module, refreshed the transition-kernel reverse-rate field and artifact, verifier, regression tests, full-gate/register integration, and formula-audit entry \`T13-070\`. No source rows, fitting, target data, Landauer shortcut, or Xie 2026 holdout was used.
+WHAT_CHANGED: Added the two-loop sunset-cut module, refreshed the transition-kernel reverse-rate field and artifact, verifier, regression tests, full-gate/register integration, and formula-audit entry \`T13-070\`. No source rows, fitting, target data, Landauer shortcut, or Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
 EQUATION_OR_MAPPING: \`W_>^(2)=integral dPi_1...dPi_4 delta^4(P_in-P_out)|M_22|^2 f1*f2*(1+f3)*(1+f4)\`; \`W_<^(2)=integral ... f3*f4*(1+f1)*(1+f2)\`; \`W_cut^(2)=0.5*(W_>^(2)+W_<^(2))\`. Natural units only; \`Phi\` is not temperature, \`C\` is not mass or charge, \`R_gen\` is a derived history trace, and \`R_obs\` is separate.
 VERIFICATION: Zero failed checks. Reference 12-channel forward/reverse/symmetric cut totals are \`2.133294206254412e-18\`, \`2.1332942062544197e-18\`, and \`2.1332942062544158e-18\`; maximum detailed-balance residual \`1.755777910152043e-14\`; conservation residual \`6.75000790405693e-29\`; KMS/FDT residuals \`1.3467686071081029e-16\` and \`1.5206645789855688e-16\`; formal entropy witness \`2.2494043957344814e-18\`. Focused sunset plus transition regression: \`6\` passed.
 CONTROLLING_BLOCKER: \`continuum_sunset_integral_and_full_retarded_self_energy_missing\`; independent \`alpha_Phi_K\` calibration remains open with zero eligible paired records.
@@ -1886,8 +1915,9 @@ WHAT_IS_ACTUALLY_CLOSED: The neutral p=0 continuum on-shell elastic 2-to-2 sunse
 WHAT_REMAINS_OPEN: Full 1PI retarded self-energy, real-part subtraction, off-shell matching, regulator-scheme matching, physical Kubo/transport, covariant entropy-current/heat-flux balance, dimensional `Phi` map, independent `alpha_Phi_K`, Ding-compatible numeric `C_src`, and Full Topic 13 closure remain open.
 DEPENDENCY_UNLOCKED: Neutral continuum on-shell sunset-cut lane only. No full retarded self-energy, physical Kubo, entropy-current, SI, alpha, source, Core, Gravity, Galaxy, or external-validation dependency is unlocked.
 STATUS: `PASS_ACTION_DERIVED_CONTINUUM_SUNSET_CUT_LANE`; closure level `CLOSED_FOR_LANE`; full gate remains `BLOCKED_OPEN_T13_FULL_BRIDGE` at `PARTIAL`; downstream dependency remains `BLOCKED_DOWNSTREAM_MAJOR_RESULTS`.
-WHAT_CHANGED: Added the continuum sunset-cut module, verifier, artifact, regression test, full-gate lane mapping, continuum major-result registry/dependency sync extension, and formula-audit entry `T13-072`. Reference uses `48/40` quadrature and cutoff factor `24`; no source rows, fitting, Landauer shortcut, target data, or Xie 2026 holdout was used.
-EQUATION_OR_MAPPING: `p=(E_p,0,0,0)`, `E_p=m_eff`; `Gamma_>^cut=integral d^3k/(2*pi)^3 n_k v_rel sigma_22 <(1+n_3)(1+n_4)>_CM`; `Gamma_<^cut=integral d^3k/(2*pi)^3 (1+n_k) v_rel sigma_22 <n_3 n_4>_CM`; `rho_cut=2*E_p*(Gamma_>-Gamma_<)`; `N_cut=2*E_p*(Gamma_>+Gamma_<)`; `Gamma_>/Gamma_<=exp(beta*E_p)`. Natural units only; `Phi` is not temperature, `C` is not mass or charge, `R_gen` is a derived history trace, and `R_obs` is separate.
+WHAT_CHANGED: Added the continuum sunset-cut module, verifier, artifact, regression test, full-gate lane mapping, continuum major-result registry/dependency sync extension, and formula-audit entry `T13-072`. Reference uses `48/40` quadrature and cutoff factor `24`; no source rows, fitting, Landauer shortcut, target data, or Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
+EQUATION_OR_MAPPING: `p=(E_p,0,0,0)`, `E_p=m_eff`; `Gamma_>^cut=integral d^3k/(2*pi)^3 n_k v_rel sigma_22 <(1+n_3)(1+n_4)>_CM`; `Gamma_<^cut=integral d^3k/(2*pi)^3 (1+n_k) v_rel sigma_22 <n_3 n_4>_CM`; `rho_cut=2*E_p*(Gamma_>-Gamma_<)`;
+_cut=2*E_p*(Gamma_>+Gamma_<)`; `Gamma_>/Gamma_<=exp(beta*E_p)`. Natural units only; `Phi` is not temperature, `C` is not mass or charge, `R_gen` is a derived history trace, and `R_obs` is separate.
 VERIFICATION: Continuum verifier has zero failed checks. Greater/lesser cut weights are `9.52491443174392e-07` and `3.8840193632612374e-08`; spectral/noise cuts are `1.2862704057367969e-06` and `1.3956315906479364e-06`; KMS residual is `2.8974136869086344e-16`; radial, angular, and cutoff residuals are `1.2354253257923907e-10`, `0`, and `1.7723202010929002e-09`, below threshold `1e-8`. Continuum regression and two inherited Topic 13 lanes: `9` passed. Full gate remains blocked.
 CONTROLLING_BLOCKER: `full_1PI_retarded_self_energy_real_part_subtraction_and_off_shell_match_missing`; independent `alpha_Phi_K` calibration remains open with zero eligible paired records.
 NEXT_ACTION: Derive the real and imaginary parts of the full 1PI retarded self-energy with an explicit regulator/subtraction and off-shell matching, then connect the matched KMS kernel to covariant entropy/heat-flux balance while keeping source, alpha, and holdout gates independent.
@@ -1904,7 +1934,7 @@ WHAT_IS_ACTUALLY_CLOSED: The formal finite-channel entropy affinity and H-theore
 WHAT_REMAINS_OPEN: Covariant continuum entropy current, physical heat-flux/dissipative balance, physical Kubo/transport, dimensional \`Phi\` map, independent \`alpha_Phi_K\`, Ding-compatible \`C_src\`, and Full Topic 13 remain open.
 DEPENDENCY_UNLOCKED: Finite-channel formal entropy balance only. No covariant entropy current, physical heat flux, Kubo, SI, alpha, Core, Gravity, Galaxy, or external-validation dependency is unlocked.
 STATUS: \`PASS_ACTION_DERIVED_FINITE_CHANNEL_ENTROPY_BALANCE_LANE\`; closure level \`CLOSED_FOR_LANE\`; full gate remains \`BLOCKED_OPEN_T13_FULL_BRIDGE\` at \`PARTIAL\`; downstream dependency remains \`BLOCKED_DOWNSTREAM_MAJOR_RESULTS\`.
-WHAT_CHANGED: Added the finite-channel entropy-balance module, verifier, artifact, regression tests, full-gate/register integration, and formula-audit entry \`T13-071\`. The affinity is an internal declared witness; no source rows, fitting, target data, Landauer shortcut, or Xie 2026 holdout was used.
+WHAT_CHANGED: Added the finite-channel entropy-balance module, verifier, artifact, regression tests, full-gate/register integration, and formula-audit entry \`T13-071\`. The affinity is an internal declared witness; no source rows, fitting, target data, Landauer shortcut, or Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
 EQUATION_OR_MAPPING: \`A_c=log(W_f,c/W_r,c)\`; \`sigma_c=(W_f,c-W_r,c)*A_c/T>=0\`; \`partial_mu S^mu_discrete=sum_c sigma_c\`. Natural units only; \`Phi\` is not temperature, \`C\` is not mass or charge, \`R_gen\` is a derived history trace, and \`R_obs\` is separate.
 VERIFICATION: Zero failed checks. Reference equilibrium entropy production \`3.5592569872372884e-52\`; positive-affinity production \`2.272374294421268e-27\`; balance divergence \`2.2723742944212683e-27\`; balance residual \`3.5873240686715317e-43\`; minimum channel production \`7.6677620444810345e-67\`; detailed-balance/conservation/KMS/FDT residuals pass. Focused entropy regression: \`3\` passed.
 CONTROLLING_BLOCKER: \`covariant_continuum_entropy_current_and_heat_flux_balance_missing\`; independent \`alpha_Phi_K\` calibration remains open with zero eligible paired records.
@@ -1919,10 +1949,311 @@ WHAT_IS_ACTUALLY_CLOSED: The condensed relative-flow contact channel now has a f
 WHAT_REMAINS_OPEN: Complete condensed 1PI vertex and scattering channels, independent physical Kubo/vertex anchor and accepted provenance, complete two-fluid tensor, dimensional `Phi` map, independent calibration, Ding-compatible `C_src`, and Full Topic 13 remain open.
 DEPENDENCY_UNLOCKED: Loop-renormalized condensed contact-channel and state-matched natural retarded lane only; no physical Kubo, SI, alpha, Core, Gravity, or external-validation unlock.
 STATUS: `PASS_ACTION_DERIVED_CONDENSED_LOOP_RENORMALIZED_CONTACT_VERTEX_LANE`; full gate remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`; `claim_promotion=false`.
-WHAT_CHANGED: Added the action-derived condensed thermal loop/contact implementation, audit, focused regression, equation addendum, full-gate projection, major-result register entry, dependency evidence, and wave record. No external numeric source, target data, fit, or Xie 2026 holdout was used.
+WHAT_CHANGED: Added the action-derived condensed thermal loop/contact implementation, audit, focused regression, equation addendum, full-gate projection, major-result register entry, dependency evidence, and wave record. No external numeric source, target data, fit, or Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
 EQUATION_OR_MAPPING: `B_ab^R=B_ab^th(T,mu,Phi)-B_ab^th(T,mu,Phi_ref)`; `lambda_ab^R=lambda/(1+lambda*B_ab^R)`; `sigma_ab^R=(lambda_ab^R)^2/[16*pi*(s_med+2*lambda*A_*^2)]`; `L_rel=Gamma_rel*((1,-1),(-1,1))`; `G_R^rel(omega)=2*D_rel/(2*Gamma_rel-i*omega)`.
 VERIFICATION: Zero failed checks; numerical uncertainty bound `3.500054507989025e-06`; loop-bubble relative change `9.321205929180344e-13`; loop-coupling relative change `3.261235996489399e-14`; focused regression `2 passed`; KMS/FDT, entropy, positivity, and common-flow conservation pass.
 CONTROLLING_BLOCKER: `physical_Kubo_coefficient_record_missing`, with `independent_physical_condensed_vertex_anchor_missing` and `complete_condensed_1PI_vertex_and_scattering_channels_missing`.
 NEXT_ACTION: Source-lock or microscopically match one state-matched physical condensed Kubo/retarded record with units, locator, hash, evidence status, and uncertainty; then test full interacting SK/KMS and complete scattering-channel admission.
 CLAIM_BOUNDARY: Natural-unit loop-renormalized contact-channel lane only; not a full 1PI renormalization, physical Kubo coefficient, SI observable, `alpha_Phi_K` calibration, TTG prediction, external validation, or Full Topic 13 closure.
 EVIDENCE_HASHES: module `6384e8bc5553b696c17a079b93fd97df95b8f545475732b2a23f7133f03fe0dc`; audit `6a3b581978b4020648c5f2c9b9d38fef4aed501267190e5a8c5c2178e666737b`; registry `ae143f9bd06738ae777415b46d39752c8fbb4a96b17f31de94eac3e563a7be44`; full gate `3336e8e0ee0fa3e0d4f455f39010a3c9426af8583074d830c8143518dbc94c09`; register `fd0db3bd2358b0e66c480464ddf088e13fa37ccb8b0b1df0a542ec383740078d`; dependency `ec6199d171b0aea536c0f072e498c0bfd9988ae66612bedfac94d422b5462637`.
+
+## 2026-08-20 - State-matched Kubo admission and condensed SK/KMS match (T13-115/T13-116)
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_CONDENSED_RELATIVE_FLOW_KUBO_ADMISSION_LANE` and `T13_UET_O2_CONDENSED_SK_KMS_KUBO_MATCH_LANE`.
+WHAT_IS_ACTUALLY_CLOSED: One declared condensed relative-flow contact channel now has a machine-readable state-matched natural-unit Kubo record, plus a matched retarded lower-half-plane pole, positive spectral matrix, KMS ratio, FDT identity, zero-frequency Kubo match, and nonnegative entropy witness.
+WHAT_REMAINS_OPEN: Full finite-temperature retarded 1PI self-energy, all-channel renormalization, complete two-fluid transport, SI conversion, independent physical vertex anchor, dimensional Phi map, independent alpha_Phi_K, Ding-compatible C_src, and Full Topic 13 remain open.
+DEPENDENCY_UNLOCKED: Declared-channel Kubo and SK/KMS/FDT lanes only; `full_core_unlock=false`; no physical global coefficient, Core, Gravity, Galaxy, SI, or external-validation dependency is unlocked.
+STATUS: `PASS_KUBO_MATCHED_DECLARED_CONDENSED_RELATIVE_FLOW_CHANNEL` and `PASS_ACTION_DERIVED_CONDENSED_SK_KMS_KUBO_MATCH_LANE`; Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`.
+WHAT_CHANGED: Added the state-matched Kubo admission builder/audit and the condensed SK/KMS/Kubo response audit, then synchronized full-gate mappings, closure register, dependency projection, and update records. No fit, synthetic replacement, target residual, or Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
+EQUATION_OR_MAPPING: `K_rel^natural=lim_(omega->0) Re G_R^rel(omega)=D_rel/Gamma_rel`; `G_R^rel(omega)=2*D_rel/(2*Gamma_rel-i*omega)*P_rel`; `G^K=rho*coth(omega/(2*T))`.
+VERIFICATION: Both audits have zero failed checks. Kubo coefficient `2.713283847206443e-05` with quadrature uncertainty `3.500054507989025e-06` is `KUBO_MATCHED` in natural units only. SK/KMS residuals are KMS `0`, FDT `2.1815250606323664e-16`, retarded reality `0`, spectral PSD minimum `0`, and zero-frequency match `0`; focused tests `4 passed`. Wave 1 integrity is `PASS_WITH_BLOCKED_LANES` with no hash errors and holdout access clean.
+CONTROLLING_BLOCKER: `full_finite_temperature_retarded_1PI_self_energy_missing`, `independent_physical_condensed_vertex_anchor_missing`, and the full-bridge dimensional/alpha, Ding C_src, EOS/transport/KMS/entropy closure groups.
+NEXT_ACTION: Derive the full finite-temperature condensed retarded self-energy and all-channel SK/KMS kernel, or source-lock an independent physical condensed vertex anchor. Keep this coefficient scoped to the declared natural-unit lane and do not promote it to SI or Full Topic 13.
+CLAIM_BOUNDARY: Action-derived declared-channel result only; not an external measurement, complete interacting 1PI theory, SI thermal transport, alpha_Phi_K calibration, TTG prediction, external validation, or global UET closure.
+DATA_ROLE: `DERIVED_INTERNAL_NATURAL_UNIT`; the admitted coefficient is not a calibration, training, comparison, or holdout record. No external numeric source was consumed by these two lanes.
+EVIDENCE_PATHS: `docs/core/uet_o2_condensed_relative_flow_kubo_admission.py`; `docs/core/artifacts/t13_uet_o2_condensed_relative_flow_kubo_admission_audit.json`; `docs/core/uet_o2_condensed_sk_kms_kubo_match.py`; `docs/core/artifacts/t13_uet_o2_condensed_sk_kms_kubo_match_audit.json`.
+EVIDENCE_HASHES: Kubo module `92dea65cf85d2fc2054e4f5c0b293712d2ea0b8b0df65ffa5e4b95de9dd2df67`; Kubo audit `5e909ff97aa0476619235460c012313f36b6065e642bbe4f7fba63f36bd8c7f6`; SK/KMS module `ab6fabaca6d2a19f8185535928638ecf4f1581cd2ad89ada78ed89e5341aff72`; SK/KMS audit `d13d59760f9ebe0a3d2471ad984ec95c6729846d08b2b9ce011e2e8eb2fcaf1c`; registry `ae143f9bd06738ae777415b46d39752c8fbb4a96b17f31de94eac3e563a7be44`; full gate `4b69d2f13ef9827f11898edc63b254dd837943b3ccdf4b88f7fe52b2ea0d2415`; register `6d41189d970ba4b17bb889176412fc66ed4b9cbcd02a8520d014ddc61800ddb0`; dependency `83f6351dc2ccee0f3ba80a593c2081ca82e04d0b0b9d5b69ec9ad91754bfff1d`.
+## 2026-08-20 - Declared finite-temperature retarded 1PI response grid (T13-117)
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_FINITE_T_DECLARED_RETARDED_1PI_RESPONSE_GRID_LANE`.
+WHAT_IS_ACTUALLY_CLOSED: The audited action-derived 1<->3 and labeled 2<->2 finite-temperature sunset channels are evaluated on one matched timelike invariant grid. The assembled pole-subtracted retarded response has a positive spectral grid, lower-half-plane imaginary part, grid-level KMS/FDT checks, retarded i0 consistency, and PV convergence.
+WHAT_REMAINS_OPEN: Complete finite-temperature retarded 1PI self-energy, all sunset cuts, unique physical renormalization, physical Kubo transport, covariant entropy/heat-flux closure, dimensional Phi mapping, independent alpha_Phi_K, Ding C_src, and Full Topic 13 remain open.
+DEPENDENCY_UNLOCKED: Declared retarded response-grid lane only; `full_core_unlock=false`; no physical Kubo, SI, alpha, Core, Gravity, Galaxy, or external-validation dependency is unlocked.
+STATUS: `PASS_ACTION_DERIVED_O2_FINITE_T_DECLARED_RETARDED_1PI_RESPONSE_GRID_LANE`; Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`; `claim_promotion=false`.
+WHAT_CHANGED: Added the multi-invariant state-matched retarded response builder, focused regression, audit artifact, full-gate mapping, closure-register entry, dependency projection, and wave record. No target data, fit, synthetic replacement data, Landauer shortcut, or Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
+EQUATION_OR_MAPPING: `Sigma_R,T^declared(s+i0)=Re Sigma_R,T^declared,sub(s)-i*pi*rho_T^declared(s)`; `rho_T^declared=rho_>,13+rho_>,22-rho_<,13-rho_<,22`; `log(rho_>/rho_<)=sqrt(s)/T`;
+_T=rho_T*coth(sqrt(s)/(2*T))`.
+VERIFICATION: Audit has zero failed checks on `s={4.75,5.0,5.5}` with threshold `4.5`. Maximum KMS residual `8.881784197001252e-16`; maximum FDT residual `0.003942955405912313`; maximum PV inner/outer residuals `0.0004183177470783957` / `0.00028892386785935357`; retarded i0 residual `6.776263578034403e-21`; focused regression `3 passed`. Wave 1 integrity remains `PASS_WITH_BLOCKED_LANES`, with no hash errors and no holdout consumption.
+CONTROLLING_BLOCKER: `complete_finite_temperature_1pi_self_energy_and_all_channel_physical_renormalization_missing`; independent physical vertex/Kubo provenance, dimensional Phi anchor, alpha_Phi_K, Ding C_src, and EOS/transport/KMS/entropy completion remain full-bridge blockers.
+NEXT_ACTION: Derive the remaining finite-temperature interacting 1PI channels and an independent physical renormalization/vertex anchor. Keep this grid as a declared natural-unit lane and do not promote it to physical SI transport.
+CLAIM_BOUNDARY: Action-derived internal evidence for the declared two-channel response grid only; not a complete interacting 1PI theory, physical Kubo coefficient, SI thermal transport, alpha_Phi_K calibration, TTG prediction, external validation, or global UET closure.
+DATA_ROLE: `ACTION_DERIVED_FINITE_T_DECLARED_RETARDED_1PI_RESPONSE_GRID_NO_HOLDOUT`.
+EVIDENCE_HASHES: module `f635e131e00c295cb90bf51607a8c41b392fef4af610682d9c4d3bc99e504885`; audit script `c2c379f776a48d0c4daad099696042e3c205ded0f51dcc7893a959ebe9d2c281`; audit artifact `f22d74b88c82e62bb0dc984bc96b1171bc2b7579d563d693fa3559ac199e3861`; full gate `53f40cd31b9cba7d608aeb5e8a3d48d3dc204302c478c16d4bb165a96f66a9ee`; register `8561401dec879ebc1b3c98f438e0ea774e8a8bacaf9cbe6cacae0ab1b25b985c`; dependency `cc3ef8f07c4e16037d9d232f40487f5de6cd841f9b12ddc8f163541bc7f820fd`.
+## Signed-Cut Kinematic Taxonomy (2026-08-20, T13-118)
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_FINITE_T_SIGNED_CUT_KINEMATIC_TAXONOMY_LANE`.
+WHAT_IS_ACTUALLY_CLOSED: All eight positive-external-energy equal-mass sign assignments are enumerated. One `1<->3` assignment and three `2<->2` permutations are kinematically allowed; the remaining assignments are forbidden. The current scattering module covers one labeled `2<->2` pattern, so the two-pattern multiplicity gap is now explicit.
+WHAT_REMAINS_OPEN: Action-level cut multiplicity, complete finite-temperature 1PI self-energy, physical renormalization, physical Kubo, entropy/heat-flux closure, dimensional `Phi` map, independent `alpha_Phi_K`, Ding `C_src`, and Full Topic 13 remain open.
+DEPENDENCY_UNLOCKED: Signed-cut taxonomy only; `full_core_unlock=false`.
+STATUS: `PASS_ACTION_DERIVED_O2_FINITE_T_SIGNED_CUT_KINEMATIC_TAXONOMY_LANE`; full gate remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`.
+WHAT_CHANGED: Added the signed-cut classifier, audit, regression, gate/register projection, and corrected the composition state so `all_finite_temperature_sunset_channels_completed=false` remains honest.
+EQUATION_OR_MAPPING: `P0=sigma_1 E_1+sigma_2 E_2+sigma_3 E_3`; `+++` is `1<->3`; `-++`, `+-+`, and `++-` are the three `2<->2` permutations; current labeled coverage is `++-`; missing permutations are `2`.
+VERIFICATION: Signed-cut audit zero failed checks; 8 assignments, 4 allowed, 1 `1<->3`, 3 `2<->2`, and 2 missing labeled permutations. Focused regression `3 passed`; full sunset regression `3 passed`; Wave 1 integrity `PASS_WITH_BLOCKED_LANES`; holdout not consumed.
+CONTROLLING_BLOCKER: `action_level_signed_cut_multiplicity_and_complete_finite_temperature_1pi_missing`, alongside the full-gate dimensional/alpha, source, and EOS/transport/KMS/entropy blockers.
+NEXT_ACTION: Derive the action-level multiplicity and identical-state symmetry factor, then connect it to the complete retarded/advanced/Keldysh 1PI object and physical renormalization.
+CLAIM_BOUNDARY: This is a natural-unit kinematic taxonomy lane only; it is not full 1PI closure, physical transport, SI mapping, `alpha_Phi_K` calibration, TTG validation, or global UET closure.
+## Sunset Cut Multiplicity (2026-08-20, T13-119)
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_FINITE_T_SUNSET_CUT_MULTIPLICITY_LANE`.
+WHAT_IS_ACTUALLY_CLOSED: From `S_sunset=1/6`, one `1<->3` pattern has weight `1/6` and three equal-mass `2<->2` sign permutations have graph weight `3/6=1/2`. The existing representative factor `0.5` matches this graph-summed weight. The species-resolved physical final-state factor `1/(1+delta_cd)` remains separate.
+WHAT_REMAINS_OPEN: Physical scattering normalization identity, complete finite-temperature 1PI, physical renormalization, Kubo, entropy/heat-flux, dimensional `Phi`, independent `alpha_Phi_K`, Ding `C_src`, and Full Topic 13.
+DEPENDENCY_UNLOCKED: Action-level cut multiplicity only; `full_core_unlock=false`.
+STATUS: `PASS_ACTION_DERIVED_O2_FINITE_T_SUNSET_CUT_MULTIPLICITY_LANE`; full gate remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`.
+WHAT_CHANGED: Added multiplicity derivation/audit/test and clarified the existing scattering factor semantics without changing its numeric value.
+EQUATION_OR_MAPPING: `w_13=1*(1/6)=1/6`; `w_22=3*(1/6)=1/2`; `w_final(c,d)=1/(1+delta_cd)` is comparator-only.
+VERIFICATION: Audit zero failed checks; `w_13=0.16666666666666666`, `w_22=0.5`, ratio `3`; physical final-state weights `{0.5,1.0}`; focused tests `6 passed`; holdout not consumed.
+CONTROLLING_BLOCKER: `physical_scattering_normalization_identity_and_complete_finite_temperature_1pi_missing` plus the 11 full-bridge blockers.
+NEXT_ACTION: Evaluate complete retarded/advanced/Keldysh 1PI with this graph weight and establish a physical renormalization anchor.
+CLAIM_BOUNDARY: Natural-unit action-level multiplicity only; not physical transport, SI mapping, `alpha_Phi_K`, TTG validation, or Full Topic 13 closure.
+## All Positive-Energy On-Shell Cut Response (2026-08-20, T13-120)
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_FINITE_T_ALL_ONSHELL_CUT_SPECTRAL_RESPONSE_LANE`.
+WHAT_IS_ACTUALLY_CLOSED: The `1<->3` plus all three equal-mass `2<->2` positive-energy cuts are represented on `s={4.75,5.0,5.5}` with graph weight `w_22=1/2`. The combined spectral response passes positivity, retarded sign, KMS/FDT, i0, and PV convergence checks.
+WHAT_REMAINS_OPEN: Complete off-shell finite-temperature 1PI, physical renormalization, physical scattering/Kubo normalization, entropy/heat-flux, dimensional `Phi`, independent `alpha_Phi_K`, Ding `C_src`, and Full Topic 13.
+DEPENDENCY_UNLOCKED: All-positive-energy on-shell spectral response only; `full_core_unlock=false`.
+STATUS: `PASS_ACTION_DERIVED_O2_FINITE_T_ALL_ONSHELL_CUT_SPECTRAL_RESPONSE_LANE`; full gate remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`.
+WHAT_CHANGED: Integrated signed-cut taxonomy, action multiplicity, and matched retarded response into one evidence-producing lane.
+EQUATION_OR_MAPPING: `rho_all=rho_(+++)+rho_(-++)+rho_(+-+)+rho_(++-)`; `rho_(2<->2,all)=(3/6)rho_(++-)`; `Sigma_R=Re Sigma_sub-i*pi*rho_all`.
+VERIFICATION: Zero failed checks; maximum KMS `8.881784197001252e-16`, FDT `0.003942955405912313`, PV inner/outer `0.0004183177470783957` / `0.00028892386785935357`, i0 `6.776263578034403e-21`; focused all-onshell tests `3 passed`; holdout not consumed.
+CONTROLLING_BLOCKER: `complete_off_shell_finite_temperature_1pi_and_physical_renormalization_missing` plus 11 full-bridge blockers.
+NEXT_ACTION: Evaluate the complete off-shell retarded/advanced/Keldysh 1PI object and prove its physical subtraction anchor.
+CLAIM_BOUNDARY: Natural-unit all-onshell spectral response only; not complete 1PI, physical transport, SI mapping, `alpha_Phi_K`, TTG validation, or Full Topic 13 closure.
+
+## Declared-Channel Retarded/Advanced/Keldysh 1PI (T13-121)
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_FINITE_T_DECLARED_CHANNEL_RETARDED_ADVANCED_KELDYSH_1PI_LANE`; Full Topic 13 remains `PARTIAL` and `BLOCKED_OPEN_T13_FULL_BRIDGE`.
+WHAT_IS_ACTUALLY_CLOSED: The declared action-derived 1<->3 and representative 2<->2 thermal channels now emit a matched numerical retarded, advanced, and Keldysh component triplet. Retarded/advanced conjugacy, the spectral discontinuity, Keldysh component convention, FDT, and the existing BPHZ subtraction interface are checked on `s={4.75,5.0,5.5}`.
+WHAT_REMAINS_OPEN: Complete off-shell all-channel finite-temperature 1PI, physical renormalization anchor, physical Kubo, covariant entropy/heat-flux balance, dimensional `Phi` map, independent `alpha_Phi_K`, Ding `C_src`, and Full Topic 13 remain open.
+DEPENDENCY_UNLOCKED: Declared-channel real-time component interface only; `full_core_unlock=false`; no physical coefficient, SI, Core, Gravity, Galaxy, or external-validation dependency is unlocked.
+STATUS: `PASS_ACTION_DERIVED_O2_FINITE_T_DECLARED_CHANNEL_RETARDED_ADVANCED_KELDYSH_1PI_LANE`; Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`; `claim_promotion=false`.
+WHAT_CHANGED: Added a numerical component builder, audit artifact, focused tests, full-gate projection, major-result register entry, and dependency projection. No fit, target data, synthetic replacement, Landauer shortcut, or Xie 2026 holdout was used. The Calorine 300 K cross-check residual is 0.1756%; the IAEA comparator uncertainty remains explicitly unpromoted.
+EQUATION_OR_MAPPING: `rho=rho_>-rho_<`;
+=rho_>+rho_<`; `Sigma_R=Re Sigma_sub-i*pi*rho`; `Sigma_A=Re Sigma_sub+i*pi*rho=Sigma_R^*`; `Sigma_K=-2*i*pi*N`;
+/rho=coth(sqrt(s)/(2*T))`.
+VERIFICATION: Audit has zero failed checks; maximum retarded/advanced conjugacy, discontinuity, and Keldysh-convention residuals are `0`; maximum Keldysh FDT residual is `1.1620995061153706e-16`; focused regression `3 passed`; full gate remains blocked with 11 blockers.
+CONTROLLING_BLOCKER: `complete_off_shell_all_channel_1pi_and_physical_renormalization_anchor_missing`; dimensional, alpha, source, EOS, transport, KMS, and entropy blockers remain independent.
+NEXT_ACTION: Complete the off-shell all-channel finite-temperature 1PI evaluation and source-lock an independent physical renormalization anchor without using TTG target residuals or Xie 2026.
+CLAIM_BOUNDARY: This closes only the declared-channel natural-unit real-time component interface. It is not a complete interacting 1PI theory, physical renormalization, physical Kubo coefficient, SI observable, `alpha_Phi_K` calibration, TTG prediction, external validation, or Full Topic 13 closure.
+DATA_ROLE: `ACTION_DERIVED_FINITE_T_DECLARED_CHANNEL_RETA_KELDYSH_1PI_NO_HOLDOUT`.
+EVIDENCE_PATHS: `docs/core/uet_o2_finite_temperature_declared_channel_retarded_advanced_keldysh_1pi.py`; `docs/scripts/audit/audit_topic13_uet_o2_finite_temperature_declared_channel_retarded_advanced_keldysh_1pi.py`; `docs/core/test/test_topic13_uet_o2_finite_temperature_declared_channel_retarded_advanced_keldysh_1pi.py`; `docs/core/artifacts/t13_uet_o2_finite_temperature_declared_channel_retarded_advanced_keldysh_1pi_audit.json`.
+EVIDENCE_HASHES: module `48ac15b10b64c81aa4c85dd7941ce8004022e61dc08acc655c9ab2ef4f25f013`; audit `6fb21ef9accc84f9af43197c22225d62b88d4a9670f482804be98d7be23bc5e4`; test `f5a6c71cc0dce44249a45803ff728544dcef69a704882e07dd797126e53f805e`; artifact `ff5a8ea3972f02189f7f4ff3413855946526faeb7b8c5317adc6c09ba3ebea2f`; full gate `ed5ec6babcca07b09925c33ffc3ec0389bfd2ed80eac49b23f2d1440577d38eb`; register `68a8b651ace97ae6dd99e7a64609203f381fb520d6a66ed56d7d9a433e455251`; dependency `6a8ba736e60b18c28bab998a09308d81a1cccfdef52bc88ec863ef56d5377b0a`.
+
+## Off-Shell Threshold-Crossing Declared 1PI Lane (2026-08-20, T13-122)
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_FINITE_T_OFFSHELL_THRESHOLD_CROSSING_1PI_LANE`.
+WHAT_IS_ACTUALLY_CLOSED: The declared natural-unit real-time response is now evaluated across a below/above three-body threshold grid. The `1<->3` spectral support is zero below `s_th=9*m^2` and nonzero above it, while the graph-summed `2<->2` channel remains nonzero at selected points below the three-body threshold. The combined retarded, advanced, and Keldysh component identities are checked on the same grid.
+WHAT_REMAINS_OPEN: Complete off-shell all-channel finite-temperature 1PI closure, unique physical renormalization, physical Kubo provenance, covariant entropy and heat-flux balance, dimensional `Phi` to thermal observable mapping, independent `alpha_Phi_K`, Ding `C_src`, EOS and constitutive transport, and Full Topic 13 remain open.
+DEPENDENCY_UNLOCKED: The below/above-threshold declared response lane only; `full_core_unlock=false`. No Core, Gravity, Galaxy, physical transport, SI, or external-validation dependency is unlocked.
+STATUS: `PASS_ACTION_DERIVED_O2_FINITE_T_OFFSHELL_THRESHOLD_CROSSING_1PI_LANE`; Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`; `claim_promotion=false`.
+WHAT_CHANGED: Added the threshold-crossing response builder, audit artifact, focused regression, major-result register projection, full-gate projection, and dependency evidence. The PV quadrature resolution was increased from `16->24` to `48->64` only to resolve the low-`s` subtraction kernel; the threshold, acceptance gate, ontology, and data role were unchanged.
+EQUATION_OR_MAPPING: `s_th=9*m^2`; `rho_13(s)=0` for `s<=s_th` and `rho_13(s)>0` for `s>s_th`; `rho_22(s)>0` on selected `s<s_th`; `rho=rho_13+rho_22`; `Sigma_R=Re Sigma_sub-i*pi*rho`; `Sigma_A=Sigma_R^*`; `Sigma_K=-2*i*pi*N`;
+/rho=coth(sqrt(s)/(2*T))`.
+VERIFICATION: Grid `s={0.25,1.0,4.0,4.75,5.0,5.5,7.0}` with `m^2=0.5`, `s_th=4.5`; focused regression `3 passed`; audit zero failed checks; maximum `1<->3` PV residual `6.103811254557431e-05`; maximum `2<->2` PV residual `0.014920561773350124`; maximum Keldysh FDT residual `2.6926011101365283e-16`; below-threshold zero/nonzero support witnesses all true; Xie 2026 not accessed.
+CONTROLLING_BLOCKER: `complete_off_shell_all_channel_1pi_and_physical_renormalization_anchor_missing`, together with the 11 full-bridge blockers for source/calibration, dimensional mapping, EOS, transport, KMS/entropy, and heat-flux closure.
+NEXT_ACTION: Continue from this crossing lane to the complete off-shell all-channel 1PI object and an independent physical renormalization anchor. Keep the action-derived natural-unit lane separate from physical TTG transport and do not use holdout data for calibration.
+CLAIM_BOUNDARY: This is a declared action-derived natural-unit threshold-crossing response lane only. It is not complete interacting 1PI closure, physical renormalization, a physical Kubo coefficient, an SI observable, an `alpha_Phi_K` calibration, a TTG prediction, external validation, or global UET closure.
+DATA_ROLE: `ACTION_DERIVED_FINITE_T_OFFSHELL_THRESHOLD_CROSSING_NO_HOLDOUT`.
+EVIDENCE_PATHS: `docs/core/uet_o2_finite_temperature_offshell_threshold_crossing_1pi.py`; `docs/scripts/audit/audit_topic13_uet_o2_finite_temperature_offshell_threshold_crossing_1pi.py`; `docs/core/test/test_topic13_uet_o2_finite_temperature_offshell_threshold_crossing_1pi.py`; `docs/core/artifacts/t13_uet_o2_finite_temperature_offshell_threshold_crossing_1pi_audit.json`; `docs/core/artifacts/uet_major_result_closure_register.json`; `docs/core/artifacts/uet_major_result_dependency_unlock_gate.json`; `docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/topic13_full_thermodynamic_bridge_core_ready_gate.json`.
+EVIDENCE_HASHES: module `1b481136ba677b79d441f9ec253d1a4bb167c576463ee677f799d912ebfe549f`; audit script `0ebe3a880d6fe66759349233abb5dba21c1cfe0e63c240eee2df0b0ed8782123`; test `db17e230f12020634e107422705a1aab5844108c12204928f52db986f32d2c7a`; audit artifact `b0d449ecdc994e150d0157ba450515ea617d462a46b3a8d8f1607f60a2953920`; full gate `0df1a55ddcb131d328935c53c0aea2793dce28e07274cb1d6763d9c64002c5c0`; register `e4478953864f311d9eb0b8b4a06f6dccb2aba7b56186f2d2627c2bf2334e4983`; dependency gate `f73572847b21611be4c8dd658680f9e3f8960468285335d903c373732056f364`.
+## All 2-to-2 Permutation Identity (2026-08-20, T13-123)
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_UET_O2_FINITE_T_ALL_22_PERMUTATION_IDENTITY_LANE`.
+WHAT_IS_ACTUALLY_CLOSED: The three allowed equal-mass `2<->2` signed-cut patterns `++-`, `+-+`, and `-++` are now represented by explicit dummy-line relabeling maps to the reference kernel. Each map has unit Jacobian, the action-level single-cut weight remains `1/6`, and the aggregate graph weight is `3*(1/6)=1/2`. The matched response diagnostics are identical under the declared equal-mass relabeling.
+WHAT_REMAINS_OPEN: Complete off-shell all-channel finite-temperature 1PI, unique physical renormalization, physical Kubo provenance, covariant entropy and heat-flux balance, dimensional `Phi` mapping, independent `alpha_Phi_K`, Ding `C_src`, EOS and constitutive transport, and Full Topic 13 remain open.
+DEPENDENCY_UNLOCKED: Equal-mass `2<->2` permutation identity and action-level coverage only; `full_core_unlock=false`. No physical transport, SI, Core, Gravity, Galaxy, or external-validation dependency is unlocked.
+STATUS: `PASS_ACTION_DERIVED_O2_FINITE_T_ALL_22_PERMUTATION_IDENTITY_LANE`; Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`; `claim_promotion=false`.
+WHAT_CHANGED: Added an explicit all-three-permutation identity state, audit artifact, focused regression, full-gate projection, major-result register entry, and dependency projection. No new data, fit, holdout, clipping, padding, threshold change, or physical coefficient was introduced.
+EQUATION_OR_MAPPING: `P+k_minus=k_plus,1+k_plus,2`; `k_ref=(k_plus,1,k_plus,2,k_minus)`; `|det J|=1`; `w_single=1/6`; `w_22=3*(1/6)=1/2`; `I_22^(++-)=I_22^(+-+)=I_22^(-++)` for equal masses and common temperature/couplings.
+VERIFICATION: Three permutations and maps `(-++):(2,3,1)`, `(+-+):(1,3,2)`, `(++-):(1,2,3)`; response identity residual `0`; maximum PV inner residual `0.014920561773350124`; maximum PV outer residual `0.005424851497988344`; focused regression `3 passed`; audit zero failed checks; no Xie 2026 access.
+CONTROLLING_BLOCKER: `complete_off_shell_all_channel_1pi_and_physical_renormalization_anchor_missing`; dimensional, source/calibration, EOS, transport, KMS, and entropy blockers remain independent.
+NEXT_ACTION: Use the now-explicit three-permutation coverage as input to the complete off-shell all-channel 1PI construction and then test a physical renormalization anchor. Keep the response as action-derived natural-unit evidence only.
+CLAIM_BOUNDARY: This closes the equal-mass `2<->2` permutation identity and action-level coverage lane only. It is not complete interacting 1PI closure, physical renormalization, a physical Kubo coefficient, an SI observable, an `alpha_Phi_K` calibration, a TTG prediction, external validation, or global UET closure.
+DATA_ROLE: `ACTION_DERIVED_FINITE_T_ALL_22_PERMUTATION_IDENTITY_NO_HOLDOUT`.
+EVIDENCE_PATHS: `docs/core/uet_o2_finite_temperature_all_22_permutation_identity.py`; `docs/scripts/audit/audit_topic13_uet_o2_finite_temperature_all_22_permutation_identity.py`; `docs/core/test/test_topic13_uet_o2_finite_temperature_all_22_permutation_identity.py`; `docs/core/artifacts/t13_uet_o2_finite_temperature_all_22_permutation_identity_audit.json`; `docs/core/artifacts/uet_major_result_closure_register.json`; `docs/core/artifacts/uet_major_result_dependency_unlock_gate.json`; `docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/topic13_full_thermodynamic_bridge_core_ready_gate.json`.
+EVIDENCE_HASHES: module `4e4609b56b9fc230ff70cca5c87bf2ccc809ed09b4f14e8b7906551c7b10d250`; audit script `a3ab76cb78c6c1b12e6ddba533b9d66506b3e9d9d59a8cd6a17c4e7a756b9bb3`; test `495d4f3fbe938f48860023ea8bb9e9de3227d83e5f85bf86fb6d507cd727c1f6`; audit artifact `d8a70695cb21d4530dc1073bfcf5a1cf0bf2d80f9f075e225aeee5f50323f84c`; full gate `af09632cc717526649df82a6c4245f96a6d14c26cb0e02ccc3444104484109c1`; register `c52b1c556c04fc4a76e264e866aea379d3cf2747207b40e58aa5ba08246fa0c3`; dependency gate `6d465f940bbc3d6d0892d83a3b7b8222161434b3afce399f76eaf364dc5b9e51`.
+## IAEA GR-280 Same-State Cp Availability Comparator (2026-08-20, T13-124)
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_IAEA_GR280_SAME_STATE_CP_COMPARATOR`; Full Topic 13 remains `PARTIAL` and `BLOCKED_OPEN_T13_FULL_BRIDGE`.
+WHAT_IS_ACTUALLY_CLOSED: The official IAEA-THPH source is archived with locator and hash. Its GR-280 tables provide a same-temperature 300 C Cp row and a 300 C density row, so the availability sub-blocker for a same-state Cp source is now closed. The result is a comparison lane only.
+WHAT_REMAINS_OPEN: Full-gate blockers remain `ding_pbte_C_src_numeric_or_accepted_independent_reproduction_missing`, `alpha_Phi_K_independent_calibration_missing`,
+on_circular_uet_bridge_and_beta_derivation_missing`, `eos_transport_kms_entropy_completion_missing`, `dimensional_phi_to_thermal_observable_map_missing`, `physical_Kubo_coefficient_record_missing`, `same_grade_alpha_V_and_K_T_missing`, `material_regime_mapping_to_TTG_not_closed`, `density_uncertainty_not_source_locked`, and `c_v_source_uncertainty_not_closed`.
+DEPENDENCY_UNLOCKED: Same-state Cp availability sub-blocker only; no Ding C_src, c_v uncertainty, alpha calibration, transport, Core, Gravity, Galaxy, or external-validation dependency is unlocked.
+STATUS: `PASS_SCOPED_IAEA_GR280_SAME_STATE_CP_COMPARATOR`; full gate is `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`; `claim_promotion=false`.
+WHAT_CHANGED: Added the source package, raw PDF archive, audit, focused regression, full-gate projection, and major-result register/dependency projection. The gate now removes only `direct_volumetric_c_v_or_same_state_Cp_source_missing` when the same-state row check passes.
+EQUATION_OR_MAPPING: `C_p^V = rho*C_p`; `u(C_p^V | rho fixed) = rho*u(C_p)`; `c_v^V = C_p^V - T*alpha_V^2*K_T`. The comparator is `C_p^V = 2386800 J m^-3 K^-1` with Cp-only uncertainty `209640.6 J m^-3 K^-1`; this is not a standard total uncertainty because density uncertainty is not reported.
+VERIFICATION: Source audit passed with zero failed checks; raw SHA-256 is `bdb8454d8ebdadf83ecdb1794621180651bcf00108f1214f8f3a82193c05976b`; focused source/gate regression `10 passed`; full gate hash is `e64c34834dcb1ec36c9606b641601a8381430ae2ec02904986d6c25647be80e5`; Wave 1 integrity is `PASS_WITH_BLOCKED_LANES`; Xie 2026 remains unconsumed.
+CONTROLLING_BLOCKER: The source lane is now controlled by missing standard density uncertainty, c_v correction inputs, and the non-equivalence of GR-280 to Ding HOPG/TTG. Full Topic 13 remains controlled by the ten blockers above plus the independent dimensional and thermodynamic closure groups.
+NEXT_ACTION: Acquire a source-grade density uncertainty or direct same-state volumetric c_v record, then match alpha_V and K_T to the same specimen/regime. Keep this comparator out of calibration and holdout paths while continuing the independent physical 1PI/renormalization wave.
+CLAIM_BOUNDARY: This closes only a source-traceable same-state reactor-graphite Cp and density comparator lane. It is not c_v, Ding TTG C_src, an alpha_Phi_K calibration, physical SI transport, external validation, or Full Topic 13 closure.
+DATA_ROLE: `EXTERNAL_INPUT_STANDARD_COMPARATOR_NOT_DING_TTG_GRADE`; no fit, target tuning, Landauer shortcut, or holdout access.
+EVIDENCE_PATHS: `docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/iaea_gr280_same_state_cp_source_package.json`; `docs/core/artifacts/t13_iaea_gr280_same_state_cp_source_audit.json`; `docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/iaea_thermophysical_properties_web.pdf`.
+EVIDENCE_HASHES: package `d090b066a8d3e6ea405a553700a1c15b33b28d652636cf6aff1cc054e2ab9d73`; audit `c0091ce3d6624e5fd1b5e814f2bd3822459a5d84426cd861d31a9a0052710213`; full gate `e64c34834dcb1ec36c9606b641601a8381430ae2ec02904986d6c25647be80e5`; register `9b1c2e395af59976dd9f9c3e249fb85ee56fa9c6f81e9176eb0db586182b2217`; dependency `a8b1411c0a993a08a86d7c2fcd5a095f807fc15e76e9829a1fa1035bb8958e8a`.
+## T13-125 Zenodo Hi-Trace high-temperature Cp comparator
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_ZENODO_HITRACE_ISOTROPIC_GRAPHITE_CP_COMPARATOR`.
+WHAT_IS_ACTUALLY_CLOSED: A Zenodo-recorded Hi-Trace workbook is now source-locked with MD5/SHA-256, sheet/cell row identity, 27 populated Cp rows from three laboratories on same-block isotropic graphite, and explicit uncertainty handling: 16 rows with expanded uncertainty and 11 VINCA rows with uncertainty not reported.
+WHAT_REMAINS_OPEN: `c_v`, source-grade density uncertainty, same-grade `alpha_V`/`K_T`, Ding/TTG material-regime mapping, Ding numeric `C_src`, dimensional `Phi` map, independent `alpha_Phi_K`, EOS/transport/KMS/entropy closure, and Full Topic 13 remain open.
+DEPENDENCY_UNLOCKED: Comparator source lane only; `full_core_unlock=false`; no calibration, holdout, Core, Gravity, transport, Galaxy, or external-validation dependency is unlocked.
+STATUS: `PASS_SCOPED_ZENODO_HITRACE_ISOTROPIC_GRAPHITE_CP_COMPARATOR`; Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL` with 10 controlling blockers.
+WHAT_CHANGED: Added the raw XLSX archive, machine-readable source package, source audit, focused regression, full-gate projection, closure-register entry, and dependency projection. No synthetic replacement, fit, threshold change, Landauer inference, or Xie 2026 holdout access was used.
+EQUATION_OR_MAPPING: `C_p(T)` is retained as mass-specific source data in `J kg^-1 K^-1`; `c_v^V = rho*(C_p - T*alpha_V^2*K_T)` is not evaluated because density, `alpha_V`, and `K_T` are not source-locked for this package.
+VERIFICATION: Source audit passed with all checks true; raw MD5 `6b9e617fb0266da9a5724d04eccb18b8`, raw SHA-256 `c38e74d22c8b409b347b5d65384f0c172d4a43162ffffe7c2eba231f48d57020`; focused regression `10 passed`; major-result sync passed; downstream dependency audit remains blocked by the partial Topic 13 result.
+CONTROLLING_BLOCKER: `c_v_source_uncertainty_not_closed`, `density_uncertainty_not_source_locked`, `same_grade_alpha_V_and_K_T_missing`, `material_regime_mapping_to_TTG_not_closed`, `ding_pbte_C_src_numeric_or_accepted_independent_reproduction_missing`, and `alpha_Phi_K_independent_calibration_missing` remain controlling.
+NEXT_ACTION: Acquire direct volumetric `c_v` or a same-state source-grade density/`alpha_V`/`K_T` package for the relevant material regime, while continuing the independent Ding `C_src` and `alpha_Phi_K` routes without entering calibration or holdout paths.
+CLAIM_BOUNDARY: This lane is a source-traceable high-temperature Cp comparator only. It is not `c_v`, not volumetric, not Ding/HOPG/TTG `C_src`, not an `alpha_Phi_K` calibration, not a temperature prediction, and not Full Topic 13 closure.
+DATA_ROLE: `EXTERNAL_INPUT_STANDARD_COMPARATOR_NOT_DING_TTG_GRADE`; no calibration, training, or holdout role.
+EVIDENCE_PATHS: `docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/zenodo_6091274_isotropic_graphite_specific_heat.xlsx`; `docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/zenodo_hitrace_isotropic_graphite_cp_source_package.json`; `docs/scripts/audit/audit_topic13_zenodo_hitrace_isotropic_graphite_cp_source.py`; `docs/core/artifacts/t13_zenodo_hitrace_isotropic_graphite_cp_source_audit.json`; `docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/topic13_full_thermodynamic_bridge_core_ready_gate.json`; `docs/core/artifacts/uet_major_result_closure_register.json`; `docs/core/artifacts/uet_major_result_dependency_unlock_gate.json`.
+EVIDENCE_HASHES: package `5d3cbbbf1eeab24c7f66f1cc01b16e80005aa80dfc9918edf62d82e6473dc8e3`; source audit `067238d11f9f426117cd29e757a8391f9089e97acfbeb0ab2b33c50d0eeb026a`; full gate `0b66d65364143b7f37fe1f58675b36da6ade7fd28e39caca09d6eeda2b8eeba0`; register `b04e38cc8b05b607314cc46f84d5a06473f04a30d5fc9e14d50de3486a9b2ced`; dependency `2e621c93e40aca38e3e4727a4f9cc7d5b570a1432120ee22aa84fcc4a46f1248`.
+
+## Latest Hardening Lane: T13-126
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_ZENODO_HITRACE_IG210_ALPHA_L_COMPARATOR`.
+WHAT_IS_ACTUALLY_CLOSED: Open Zenodo source package with 15 IG210 mean linear-expansion rows, row-level provenance, source replicate/model columns, and the paper-reported expanded uncertainty boundary.
+WHAT_REMAINS_OPEN: `alpha_V` is conditional `3*alpha_l`; same-state `K_T`, density, `Cp/Cv`, Ding material mapping, Ding `C_src`, dimensional `Phi` anchor, and independent `alpha_Phi_K` remain open.
+DEPENDENCY_UNLOCKED: IG210 alpha comparator lane only; `full_core_unlock=false`.
+STATUS: Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`; claim promotion remains false.
+WHAT_CHANGED: Added source archive/package/audit/test and full-gate/register/dependency projections.
+EQUATION_OR_MAPPING: `alpha_l[K^-1]=alpha_l[10^-6 K^-1]*10^-6`; `alpha_V=3*alpha_l` conditionally; `c_p^V-c_v^V=T*alpha_V^2*K_T` remains open.
+VERIFICATION: Audit `17/17`; focused test `2 passed`; full gate and major-result sync passed; holdout access clean.
+CONTROLLING_BLOCKER: Dimensional `Phi` energy anchor / independent `alpha_Phi_K`, Ding numeric `C_src`, and full EOS/transport/KMS/entropy remain the global controllers.
+NEXT_ACTION: Continue source-grade paired thermodynamic inputs and the independent `Phi` anchor; do not use this comparator for fit or holdout tuning.
+CLAIM_BOUNDARY: Comparator lane only, not Full Topic 13 closure.
+## Latest Hardening Lane: T13-128
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE` for `T13_FAROOQUI_IG210_THERMOPHYSICAL_SOURCE`.
+WHAT_IS_ACTUALLY_CLOSED: Published NPL/Hi-Trace IG-210 Table 1 rows are source-locked for density, `C_p`, diffusivity, `alpha_l`, conductivity, and expanded uncertainty at `k=2`.
+WHAT_REMAINS_OPEN: `K_T`, `C_v`, Ding material mapping, Ding `C_src`, dimensional `Phi`, and independent `alpha_Phi_K` remain open.
+DEPENDENCY_UNLOCKED: IG-210 source comparator lane only; `full_core_unlock=false`.
+STATUS: Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE` / `PARTIAL`; claim promotion remains false.
+WHAT_CHANGED: Added the PDF archive, package, audit, focused test, full-gate projection, material-regime entry, and register/dependency projections.
+EQUATION_OR_MAPPING: `c_v^V=rho*(C_p-T*alpha_V^2*K_T)` remains open; `alpha_V=3*alpha_l` is conditional.
+VERIFICATION: Source audit `15/15`; focused regression `3 passed`; material audit comparator count `8`; full gate remains at 10 blockers; holdout access clean.
+CONTROLLING_BLOCKER: Same-state `K_T` and independent dimensional `Phi` calibration, plus Ding `C_src` and full EOS/transport closure.
+NEXT_ACTION: Search for same-state IG-210 `K_T`; keep `C_p` separate from `C_v` and continue independent `alpha_Phi_K` work.
+CLAIM_BOUNDARY: Comparator lane only, not Full Topic 13 closure.
+
+## Latest Hardening Lane: T13-129
+MAJOR_RESULT_CLOSURE: CLOSED_FOR_LANE for T13_GRAPHITE_ALPHA_V_K_T_MATCHED_SOURCE_BOUNDARY.
+WHAT_IS_ACTUALLY_CLOSED: IG210 is now present in the matched-source inventory with three source-locked thermophysical rows and explicit absence of same-state K_T/C_v.
+WHAT_REMAINS_OPEN: same_state_IG210_K_T_missing, Ding C_src/material mapping, dimensional Phi, independent alpha_Phi_K, and full EOS/transport/KMS/entropy remain open.
+DEPENDENCY_UNLOCKED: IG210 source-boundary lane only; full_core_unlock=false.
+STATUS: Full Topic 13 remains BLOCKED_OPEN_T13_FULL_BRIDGE / PARTIAL; claim promotion remains false.
+WHAT_CHANGED: Extended the matched-source audit and regression, then regenerated full-gate/register/dependency hashes.
+EQUATION_OR_MAPPING: c_v^V=rho*(C_p-T*alpha_V^2*K_T) remains open; alpha_V=3*alpha_l remains conditional.
+VERIFICATION: Boundary audit passed; focused regression 2 passed; full gate remains at 10 blockers; Xie 2026 not accessed.
+CONTROLLING_BLOCKER: Same-state IG210 K_T and the independent Phi calibration route.
+NEXT_ACTION: Search permitted same-state IG210 K_T, while continuing independent alpha_Phi_K and Ding C_src work without target/holdout fitting.
+CLAIM_BOUNDARY: Source-boundary lane only, not C_v, not alpha_Phi_K, and not Full Topic 13 closure.
+## T13-130 - Current major-result status
+MAJOR_RESULT_CLOSURE: CLOSED_FOR_LANE for the symbolic covariant-action SI conversion contract; not CLOSED_FOR_CORE.
+WHAT_IS_ACTUALLY_CLOSED: Natural-unit dimensional conversion formulas are available as a machine-readable, exact-constant-backed contract when E_ref and Phi_scale are declared.
+WHAT_REMAINS_OPEN: Full Topic 13 still lacks physical E_ref provenance, covariant/base-Phi normalization, independent alpha_Phi_K, Ding C_src, non-circular bridge/beta, EOS, transport/Kubo, KMS, entropy, and heat-flux closure.
+DEPENDENCY_UNLOCKED: Symbolic formula lane only; full_core_unlock=false.
+STATUS: Full gate BLOCKED_OPEN_T13_FULL_BRIDGE; closure PARTIAL; 10 blockers remain.
+WHAT_CHANGED: Registered and synchronized T13-130 module, audit, test, full gate, closure register, and dependency gate.
+EQUATION_OR_MAPPING: u_SI=u_nat*E_ref^4/(hbar*c)^3; C_SI=C_nat*k_B*E_ref^3/(hbar*c)^3; Delta_Tq=(E_ref/k_B)*Delta_theta; alpha_Phi_K=(E_ref/k_B)*alpha_Phi_theta.
+VERIFICATION: Symbolic audit passed; regression 4 passed; room integrity PASS_WITH_BLOCKED_LANES; Xie 2026 not consumed.
+CONTROLLING_BLOCKER: energy_reference_and_base_Phi_normalization_provenance_missing.
+NEXT_ACTION: Produce an independent, provenance-backed E_ref/Phi_scale record; only then attempt a numeric dimensional anchor.
+CLAIM_BOUNDARY: This result is not a measured calibration, prediction, proof, external validation, or global UET closure.
+
+## T13-133 - Current major-result status
+MAJOR_RESULT_CLOSURE: CLOSED_FOR_LANE for the existing action-derived beta/no-go correspondence result; not CLOSED_FOR_CORE.
+WHAT_IS_ACTUALLY_CLOSED: Reporting now records that the natural-unit beta derivation exists and that its conversion to normalized beta_T13 is non-identifiable without field, free-energy, and temperature scale inputs.
+WHAT_REMAINS_OPEN: nnormalized_beta_and_SI_scale_correspondence_missing, independent alpha_Phi_K, accepted Ding C_src(T), the dimensional Phi map, physical Kubo provenance, and EOS/transport/KMS/entropy closure.
+DEPENDENCY_UNLOCKED: None; full_core_unlock=false.
+STATUS: Full gate BLOCKED_OPEN_T13_FULL_BRIDGE; closure PARTIAL; claim promotion false.
+WHAT_CHANGED: The full-gate blocker projection was narrowed without changing the underlying equations or evidence class.
+EQUATION_OR_MAPPING: beta_Phi^nat=T*partial_T a_Phi^nat; normalized beta_T13 requires an independent scale correspondence.
+VERIFICATION: Full gate SHA-256 c4cb035a55ecd6d1dbbdf4f663a0f05b3d57cf71181f542bfb30590492852cbf; room integrity PASS_WITH_BLOCKED_LANES; focused regression 31 passed; holdout clean.
+CONTROLLING_BLOCKER: nnormalized_beta_and_SI_scale_correspondence_missing.
+NEXT_ACTION: Acquire an independent scale map or paired base-Phi/SI record; preserve the no-fit and locked-holdout policy.
+CLAIM_BOUNDARY: This is blocker-classification closure only, not a physical beta value, SI calibration, prediction, or Full Topic 13 closure.
+
+## Regularized Continuum Heat-Current Lane (T13-142)
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE`
+WHAT_IS_ACTUALLY_CLOSED: A named normal-branch compactified radial heat-current scheme is closed for lane. It uses the existing action-derived normal dispersion and constant-amplitude collision width, projects charge/energy/three-momentum invariants, and passes the unchanged `1e-2` radial/angular/scale controller.
+WHAT_REMAINS_OPEN: Loop-renormalized off-shell self-energy, physical Kubo provenance, condensed finite-temperature two-fluid completion, full SK/KMS matching, dimensional `Phi` to thermal observable mapping, independent `alpha_Phi_K`, and Ding `C_src` remain open.
+DEPENDENCY_UNLOCKED: This unlocks only the named natural-unit normal-branch lane; it does not unlock physical transport, SI mapping, TTG, Core, Gravity, or Full Topic 13.
+STATUS: `PASS_ACTION_DERIVED_REGULARIZED_CONTINUUM_HEAT_CURRENT_LANE`; Full Topic 13 remains `BLOCKED_OPEN_T13_FULL_BRIDGE`.
+WHAT_CHANGED: Added `docs/core/artifacts/t13_uet_o2_regularized_continuum_heat_current_audit.json` and synchronized the full gate and research-room reporting surfaces.
+EQUATION_OR_MAPPING: `k=Lambda*u/(1-u)`; `b_q=(E-h*q)*(p_x/E)*sqrt(w)`; `L_reg=P*diag(Gamma_s(k))*P`; `kappa=Re[b_q^T(L_reg-i*omega*I)^(-1)b_q]`.
+VERIFICATION: `kappa_natural=153.316802`; radial maximum change `1.04244e-06`, angular change `7.28033e-07`, scale change `1.10828e-08`; conservation residual `8.47823e-23`; source residual `1.92646e-18`; entropy `1.21146e-09`; KMS residual `1.72929e-16`. No fit, target, physical coefficient, numeric alpha, or Xie 2026 holdout was used.
+CONTROLLING_BLOCKER: `loop_renormalized_off_shell_self_energy_missing` for this lane; full Topic 13 still retains the source, dimensional, alpha, EOS/transport/KMS/entropy, and material-regime blockers.
+NEXT_ACTION: Keep this branch as scoped natural-unit evidence and close physical Kubo/source provenance and the remaining independent dimensional bridge before promotion.
+CLAIM_BOUNDARY: `CLOSED_FOR_LANE` only. The branch does not replace the failed finite-cutoff baseline, prove a physical transport coefficient, or close Full Topic 13.
+
+## Berut Figure 3 Local Archive (2026-08-20)
+
+MAJOR_RESULT_CLOSURE: CLOSED_FOR_LANE
+
+WHAT_IS_ACTUALLY_CLOSED: The official publisher Figure 3 route was
+download-tested. Its remote binary identity is pinned by SHA-256, byte size,
+OLE signature, retrieval date, and an explicit four-asset raster inventory.
+
+WHAT_REMAINS_OPEN: No raster is accepted as a numeric row yet. Selected panel,
+axis ticks and units, point or curve selection, digitization uncertainty,
+preprocessing, and row identity remain open.
+
+DEPENDENCY_UNLOCKED: Berut figure-acquisition route only. No numeric source,
+alpha_Phi_K, Full Topic 13, Core, Gravity, or transport dependency is unlocked.
+
+STATUS: PASS_REMOTE_FIGURE3_BINARY_IDENTITY
+
+WHAT_CHANGED: docs/core/artifacts/t13_berut_figure3_remote_binary_identity.json records the official article/download locators,
+binary hash e4bab6be849a093b7578bc52ce6df9be95dc25d83d51ecb718b4f798a37d50fa, size
+479744 bytes, and embedded raster inventory.
+The binary is archived locally at the hash-linked raw path; no raw measurement table is implied.
+
+EQUATION_OR_MAPPING: Figure 3 is a source-surface asset for the Berut
+heat-versus-erasure-duration observable; no numeric Delta_Tq or alpha_Phi_K
+mapping is emitted.
+
+VERIFICATION: Binary identity and asset inventory checks pass; accepted numeric
+rows emitted: 0; no fit, target data, calibration, or Xie 2026 holdout was used.
+
+CONTROLLING_BLOCKER: berut_selected_panel_and_axis_tick_mapping_missing
+
+NEXT_ACTION: Select one quantitative panel, record axis ticks and units, map selected points or curve with declared digitization uncertainty, and archive row identity and preprocessing before source-normalized use.
+
+CLAIM_BOUNDARY: Remote binary identity only. This is not a source-normalized
+numeric row, uncertainty result, calibration, prediction, or external validation.
+
+## Berut Source Package Availability Boundary (2026-08-20)
+
+MAJOR_RESULT_CLOSURE: `CLOSED_FOR_LANE`
+
+WHAT_IS_ACTUALLY_CLOSED: The Berut working copies in the current checkout are
+classified as topic-derived summaries, not raw experimental rows. The captured
+publisher surface is recorded as a Figure 3/PPT acquisition route, while the
+absence of a local raw or separately exposed source-data package is explicit.
+
+WHAT_REMAINS_OPEN: The official Figure 3 binary/hash, selected panel and axis
+mapping, numeric transcription, row identity, preprocessing, and uncertainty
+package remain open. No Berut numeric row is eligible for calibration.
+
+DEPENDENCY_UNLOCKED: Berut source-acquisition decision only. No Full Topic 13,
+Core, Gravity, or constitutive-transport dependency is unlocked.
+
+STATUS: `PASS_SCOPED_BERUT_SOURCE_PACKAGE_BOUNDARY`
+
+WHAT_CHANGED: `docs/core/artifacts/t13_berut_source_package_availability_boundary.json` records the source identity, publisher locator,
+current local inventory, source-surface scope, and non-calibration policy.
+
+EQUATION_OR_MAPPING: `E_min = k_B T ln(2)` remains an imported standard
+constraint. No numeric `Delta_Tq = alpha_Phi_K * Delta_Phi` mapping is emitted.
+
+VERIFICATION: All source identity, summary-role, no-raw-file, surface-scope,
+holdout, no-fit, and no-calibration checks pass; accepted numeric rows emitted:
+`0`.
+
+CONTROLLING_BLOCKER: `berut_permissioned_raw_numeric_package_missing`
+
+NEXT_ACTION: Obtain a permissioned raw numeric table or numeric measurement uncertainty for the Berut rows; keep the archived Figure 3c transcription as comparison-only and outside alpha calibration.
+
+CLAIM_BOUNDARY: This is a provenance and acquisition boundary, not a closed
+Berut numeric row, uncertainty result, `alpha_Phi_K`, UET bridge, or external
+validation.

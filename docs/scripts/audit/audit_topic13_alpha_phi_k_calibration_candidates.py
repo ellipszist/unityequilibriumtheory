@@ -42,6 +42,7 @@ CANDIDATES = (
     ("oxford_tgs_figure1_source_package.json", "Oxford TGS provenance comparator"),
     ("thermal_closure_derivation_audit.json", "formal thermal bridge derivation contract"),
     ("thermal_closure_source_inventory.json", "thermal source inventory and policy"),
+    ("calorine_legacy_nep2_pbte_reproduction_source_package.json", "Calorine C-CX legacy NEP2 PBTE candidate reproduction"),
     ("landauer_source_lock.json", "imported Landauer constraint"),
 )
 

@@ -1,7 +1,7 @@
 {
   "schema_version": "t13-uet-o2-finite-t-scattering-sunset-sk-kms-v1",
   "artifact": "t13_uet_o2_finite_temperature_sunset_scattering_sk_kms_audit",
-  "generated_at": "2026-08-14",
+  "generated_at": "2026-08-20",
   "status": "PASS_ACTION_DERIVED_O2_FINITE_T_SCATTERING_SUNSET_SK_KMS_LANE",
   "major_result": {
     "major_result_id": "T13_UET_O2_FINITE_T_SCATTERING_SUNSET_SK_KMS_LANE",
@@ -26,7 +26,8 @@
       "retarded_i0_scattering": "Im Sigma_R,T,22(s)=-pi*rho_T,22(s)",
       "pole_subtracted_principal_value": "Re Sigma_R,T,22^sub(s)=PV integral_[0,infty] [rho_T,22(S)-rho_T,22(s)]K_sub(S)dS + rho_T,22(s)A(s)",
       "pole_subtraction_kernel": "K_sub(S)=1/(S-s)-1/(S-r)-(s-r)/(S-r)^2; r=-s_E",
-      "scattering_channel_symmetry": "S_22=1/2 for one labeled identical-pair channel"
+      "scattering_channel_graph_weight": "S_22^graph=3*(1/6)=1/2 for the representative ++- integral",
+      "physical_final_state_weight": "w_final(c,d)=1/(1+delta_cd) belongs to the separate action scattering comparator"
     },
     "units": {
       "unit_lane": "natural vacuum 3+1",
@@ -44,7 +45,7 @@
     "evidence_artifacts": [
       {
         "path": "docs/core/uet_o2_finite_temperature_sunset_scattering_sk_kms.py",
-        "sha256": "dbcd9212bf6738a71d6e1b550531adc98cdeaa966cc9875f9045709733dcea3a"
+        "sha256": "9ee0ab0c2b2e0a95783576bf57affcf996326fd4d697585c87dd6512cea597c0"
       },
       {
         "path": "docs/core/uet_o2_action_1pi_sunset_tensor.py",
@@ -64,7 +65,7 @@
       "ding_pbte_C_src_numeric_or_accepted_independent_reproduction_missing"
     ],
     "dependency_unlocked": "finite-temperature labeled 2<->2 scattering channel SK/KMS/FDT/PV-real-part and retarded-sign interface only; no full finite-temperature 1PI, physical renormalization, transport, entropy, SI, alpha, Core, Gravity, or external-validation unlock",
-    "claim_boundary": "This closes only a labeled action-derived finite-temperature 2<->2 sunset scattering cut and its channel-level SK/KMS/FDT/PV interface. It does not close the other thermal cuts, full finite-temperature 1PI, all-channel real-part subtraction, unique physical renormalization, transport, entropy-current balance, SI Phi mapping, alpha_Phi_K, TTG, external validation, or Full Topic 13."
+    "claim_boundary": "This closes only a representative action-derived finite-temperature 2<->2 sunset scattering integral with its graph-summed cut weight and channel-level SK/KMS/FDT/PV interface. It does not close the other thermal cuts, full finite-temperature 1PI, all-channel real-part subtraction, unique physical renormalization, transport, entropy-current balance, SI Phi mapping, alpha_Phi_K, TTG, external validation, or Full Topic 13."
   },
   "contract": {
     "status": "PASS_ACTION_DERIVED_O2_FINITE_T_SCATTERING_SUNSET_SK_KMS_LANE",
@@ -79,7 +80,8 @@
       "retarded_i0_scattering": "Im Sigma_R,T,22(s)=-pi*rho_T,22(s)",
       "pole_subtracted_principal_value": "Re Sigma_R,T,22^sub(s)=PV integral_[0,infty] [rho_T,22(S)-rho_T,22(s)]K_sub(S)dS + rho_T,22(s)A(s)",
       "pole_subtraction_kernel": "K_sub(S)=1/(S-s)-1/(S-r)-(s-r)/(S-r)^2; r=-s_E",
-      "scattering_channel_symmetry": "S_22=1/2 for one labeled identical-pair channel"
+      "scattering_channel_graph_weight": "S_22^graph=3*(1/6)=1/2 for the representative ++- integral",
+      "physical_final_state_weight": "w_final(c,d)=1/(1+delta_cd) belongs to the separate action scattering comparator"
     },
     "unit_contract": {
       "unit_lane": "natural vacuum 3+1",
@@ -113,7 +115,7 @@
       "TTG_validation": true,
       "Xie_2026_holdout": true
     },
-    "claim_boundary": "This closes only a labeled action-derived finite-temperature 2<->2 sunset scattering cut and its channel-level SK/KMS/FDT/PV interface. It does not close the other thermal cuts, full finite-temperature 1PI, all-channel real-part subtraction, unique physical renormalization, transport, entropy-current balance, SI Phi mapping, alpha_Phi_K, TTG, external validation, or Full Topic 13."
+    "claim_boundary": "This closes only a representative action-derived finite-temperature 2<->2 sunset scattering integral with its graph-summed cut weight and channel-level SK/KMS/FDT/PV interface. It does not close the other thermal cuts, full finite-temperature 1PI, all-channel real-part subtraction, unique physical renormalization, transport, entropy-current balance, SI Phi mapping, alpha_Phi_K, TTG, external validation, or Full Topic 13."
   },
   "state": {
     "reference": {
@@ -227,5 +229,5 @@
     "alpha_Phi_K_independent_calibration_missing",
     "ding_pbte_C_src_numeric_or_accepted_independent_reproduction_missing"
   ],
-  "claim_boundary": "This closes only a labeled action-derived finite-temperature 2<->2 sunset scattering cut and its channel-level SK/KMS/FDT/PV interface. It does not close the other thermal cuts, full finite-temperature 1PI, all-channel real-part subtraction, unique physical renormalization, transport, entropy-current balance, SI Phi mapping, alpha_Phi_K, TTG, external validation, or Full Topic 13."
+  "claim_boundary": "This closes only a representative action-derived finite-temperature 2<->2 sunset scattering integral with its graph-summed cut weight and channel-level SK/KMS/FDT/PV interface. It does not close the other thermal cuts, full finite-temperature 1PI, all-channel real-part subtraction, unique physical renormalization, transport, entropy-current balance, SI Phi mapping, alpha_Phi_K, TTG, external validation, or Full Topic 13."
 }

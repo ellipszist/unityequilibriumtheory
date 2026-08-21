@@ -1,0 +1,67 @@
+{
+  "schema_version": "t13-jun-final-source-package-v1",
+  "source_id": "jun_2014_prl_113_190601",
+  "title": "High-Precision Test of Landauer's Principle in a Feedback Trap",
+  "authors": [
+    "Yonggun Jun",
+    "Momcilo Gavrilov",
+    "John Bechhoefer"
+  ],
+  "publication": {
+    "journal": "Physical Review Letters",
+    "volume": 113,
+    "article_number": "190601",
+    "published_date": "2014-11-04",
+    "doi": "10.1103/PhysRevLett.113.190601",
+    "doi_url": "https://doi.org/10.1103/PhysRevLett.113.190601",
+    "publisher_url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.113.190601"
+  },
+  "source_surface": {
+    "final_source_confirmed": true,
+    "confirmation_route": "Final PRL identity confirmed by APS record and institutional reprint.",
+    "institutional_reprint_url": "https://www.sfu.ca/chaos/assets/papers/2014/prl14-reprint.pdf",
+    "local_archive": {
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/jun_2014_prl_reprint.pdf",
+      "retrieved_on": "2026-08-20",
+      "bytes": 1085095,
+      "sha256": "3283e23a31a546dec28d9e33364456297e13e89f302546cabd8b5c8d0eb92519",
+      "role": "final-source provenance archive; not a machine-readable row table"
+    },
+    "identity_probe": {
+      "pages": 8,
+      "title_marker_present": true,
+      "doi_marker_present": true,
+      "author_markers_present": true,
+      "table_i_marker_present": true,
+      "verification_runtime": "bundled PDF runtime pypdf text probe"
+    }
+  },
+  "observable": "Jun feedback-trap erasure work relative to the Landauer lower bound",
+  "equation_or_mapping": {
+    "landauer_constraint": "W_min = k_B T ln(2)",
+    "uet_mapping": "No Delta_Tq = alpha_Phi_K * Delta_Phi calibration is emitted from Jun."
+  },
+  "units": {
+    "temperature": "K",
+    "work_or_heat": "source-defined work/energy units; no new row conversion emitted",
+    "alpha_Phi_K": "not emitted"
+  },
+  "preprocessing": {
+    "binary_downloaded": true,
+    "text_identity_probe_performed": true,
+    "numeric_table_transcribed": false,
+    "digitization_performed": false,
+    "unit_conversion_performed": false,
+    "uncertainty_recomputed": false,
+    "target_curve_read": false,
+    "holdout_read": false
+  },
+  "data_role": "SOURCE_IDENTITY_AND_FINAL_PARITY_SURFACE_ONLY",
+  "raw_numeric_package_status": "final_article_surface_archived_machine_readable_rows_open",
+  "source_grade_uncertainty_status": "not_closed",
+  "calibration_eligible": false,
+  "numeric_rows_emitted": 0,
+  "numeric_alpha_Phi_K_emitted": false,
+  "parameter_fitting_performed": false,
+  "claim_boundary": "The final Jun paper identity and local PDF provenance are closed for lane. This does not close a machine-readable numeric row package, source-grade uncertainty, alpha_Phi_K, the UET bridge, TTG validation, or external validation."
+}

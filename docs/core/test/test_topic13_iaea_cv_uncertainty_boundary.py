@@ -41,7 +41,7 @@ def test_iaea_cv_uncertainty_boundary_is_closed_without_core_promotion() -> None
     assert full["status"] == "BLOCKED_OPEN_T13_FULL_BRIDGE"
     assert full["claim_promotion"] is False
     assert "c_v_source_uncertainty_not_closed" in full["major_result"]["what_remains_open"]
-    assert "direct_volumetric_c_v_or_same_state_Cp_source_missing" in full["major_result"]["what_remains_open"]
+    assert "direct_volumetric_c_v_or_same_state_Cp_source_missing" not in full["major_result"]["what_remains_open"]
     assert any(
         item["path"] == "docs/core/artifacts/t13_iaea_cv_uncertainty_boundary_audit.json"
         for item in full["evidence_artifacts"]

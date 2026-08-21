@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
   "artifact": "uet_all_waves_closure",
-  "generated_at": "2026-08-20",
+  "generated_at": "2026-08-21",
   "audit_status": "PASS",
   "program_status": "ALL_WAVE_STATUS_ACCOUNTING_CLOSED_FOUNDATION_PHYSICS_NOT_CLOSED",
   "foundation_gate": {
     "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
     "status": "BLOCKED",
-    "sha256": "e1d84c339e14a1673274559c259f8cdbeae7507d5b46832da10c06ff0ff4fa73",
+    "sha256": "5dd899ec7614b4d28263f34cd744d14ed0ffea1ab1cc6e75c733e6af0d15dde9",
     "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
   },
   "wave_count": 12,
@@ -40,7 +40,7 @@
         {
           "path": "docs/core/artifacts/uet_foundation_dependency_gate.json",
           "exists": true,
-          "sha256": "e1d84c339e14a1673274559c259f8cdbeae7507d5b46832da10c06ff0ff4fa73",
+          "sha256": "5dd899ec7614b4d28263f34cd744d14ed0ffea1ab1cc6e75c733e6af0d15dde9",
           "status": "BLOCKED",
           "controller": "foundation_coverage_units_observable_and_external_claim_gates_incomplete"
         },

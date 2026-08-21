@@ -1,7 +1,7 @@
 {
   "schema_version": "t13-uet-o2-finite-t-declared-full-sunset-sk-kms-v1",
   "artifact": "t13_uet_o2_finite_temperature_full_sunset_sk_kms_audit",
-  "generated_at": "2026-08-14",
+  "generated_at": "2026-08-20",
   "status": "PASS_ACTION_DERIVED_O2_FINITE_T_DECLARED_FULL_SUNSET_SK_KMS_LANE",
   "major_result": {
     "major_result_id": "T13_UET_O2_FINITE_T_DECLARED_FULL_SUNSET_SK_KMS_LANE",
@@ -41,7 +41,7 @@
     "evidence_artifacts": [
       {
         "path": "docs/core/uet_o2_finite_temperature_full_sunset_sk_kms.py",
-        "sha256": "01caf81cb0a29ed5d01d291b91accf600cbf75e1cbeaaaa1e7ef5d6c50702e43"
+        "sha256": "c10b0c42897365a6d29ee8ada0b9657a78456e02fc8a1bba34d96abc43f783db"
       },
       {
         "path": "docs/core/uet_o2_finite_temperature_sunset_sk_kms.py",
@@ -158,7 +158,7 @@
       "combined_pole_subtracted_real_part_completed": true,
       "aggregate_pv_convergence_is_conservative_bound": true,
       "full_finite_temperature_1pi_self_energy_completed": false,
-      "all_finite_temperature_sunset_channels_completed": true,
+      "all_finite_temperature_sunset_channels_completed": false,
       "unique_physical_renormalization_scheme_match_completed": false,
       "physical_kubo_coefficient_emitted": false,
       "covariant_entropy_current_completed": false,
@@ -191,6 +191,7 @@
     "aggregate_pv_witness_is_conservative": true,
     "state_is_finite": true,
     "full_finite_temperature_1pi_remains_open": true,
+    "all_finite_temperature_sunset_channels_remain_open": true,
     "unique_renormalization_remains_open": true,
     "physical_kubo_not_emitted": true,
     "covariant_entropy_remains_open": true,
@@ -216,7 +217,7 @@
   "combined_pv_inner_convergence_residual": 0.0015630214156617276,
   "combined_pv_outer_convergence_residual": 0.0009742158373661669,
   "full_finite_temperature_1pi_self_energy_completed": false,
-  "all_finite_temperature_sunset_channels_completed": true,
+  "all_finite_temperature_sunset_channels_completed": false,
   "unique_physical_renormalization_scheme_match_completed": false,
   "physical_transport_coefficients_emitted": false,
   "covariant_entropy_current_completed": false,

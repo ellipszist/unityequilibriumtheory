@@ -76,7 +76,10 @@ class FiniteTemperatureFullSunsetSKKMSState:
     combined_pole_subtracted_real_part_completed: bool
     aggregate_pv_convergence_is_conservative_bound: bool
     full_finite_temperature_1pi_self_energy_completed: bool = False
-    all_finite_temperature_sunset_channels_completed: bool = True
+    # The composition contains one labeled 2<->2 sign pattern; the signed-cut
+    # taxonomy records two additional permutations that still need an action-
+    # level multiplicity contract.
+    all_finite_temperature_sunset_channels_completed: bool = False
     unique_physical_renormalization_scheme_match_completed: bool = False
     physical_kubo_coefficient_emitted: bool = False
     covariant_entropy_current_completed: bool = False

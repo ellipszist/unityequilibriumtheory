@@ -27,7 +27,7 @@ def test_ding_material_regime_boundary_rejects_silent_comparator_substitution() 
     assert lane["status"] == "PASS_SCOPED_DING_MATERIAL_REGIME_BOUNDARY_NO_GO"
     assert lane["major_result"]["closure_level"] == "CLOSED_FOR_LANE"
     assert lane["mapping_contract"]["equivalence_result"] is False
-    assert len(lane["source"]["comparators"]) == 6
+    assert len(lane["source"]["comparators"]) == 8
     assert all(
         item["equivalence_status"] == "NOT_ESTABLISHED"
         for item in lane["source"]["comparators"]

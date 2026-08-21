@@ -1,0 +1,138 @@
+{
+  "schema_version": "t13-farooqui-ig210-thermophysical-source-package-v1",
+  "artifact": "farooqui_2022_ig210_thermophysical_source_package",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "created_on": "2026-08-20",
+  "status": "SOURCE_LOCKED_IG210_THERMOPHYSICAL_COMPARATOR_KT_OPEN",
+  "source": {
+    "source_id": "farooqui_2022_npl_ig210_thermophysical_table",
+    "title": "Development of High Temperature Multi-Layer Laser Flash Artefacts",
+    "authors": [
+      "Ateeb Farooqui",
+      "Roger Morrell",
+      "Jiyu Wu",
+      "Louise Wright",
+      "Bruno Hay",
+      "Michael Pekris",
+      "Mark J. Whiting",
+      "Theo Saunders"
+    ],
+    "publisher": "National Physical Laboratory / International Journal of Thermophysics",
+    "publication_year": 2022,
+    "doi": "10.1007/s10765-021-02928-4",
+    "official_url": "https://doi.org/10.1007/s10765-021-02928-4",
+    "repository_url": "https://eprintspublications.npl.co.uk/9538/",
+    "download_url": "https://eprintspublications.npl.co.uk/9538/1/eid9538.pdf",
+    "license": "CC BY 4.0",
+    "retrieved_on": "2026-08-20",
+    "local_raw_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/farooqui_2022_ig210_thermophysical_table.pdf",
+    "local_raw_size_bytes": 4116498,
+    "local_raw_md5": "95237ebba081f28e48d5ee7ec88babe8",
+    "local_raw_sha256": "777eebdc380f0707c3b63e612cce8977fcb6cab4ee5ed086e45f09aa81e2bd45",
+    "material": "IG-210 grade isotropic graphite from Toyo Tanso",
+    "batch_statement": "The article states that this IG-210 batch was used in an intercomparison between Hi-Trace partners.",
+    "temperature_scope": "500 C, 700 C, and 1000 C Table 1 thermophysical values",
+    "source_locators": [
+      "PDF page 7, Section 4.1, Table 1: property methods and uncertainty labels",
+      "PDF page 7, Table 1, 500 C column: density, specific heat, diffusivity, alpha_l, and thermal conductivity",
+      "PDF page 7, Table 1, 700 C column: density, specific heat, diffusivity, alpha_l, and thermal conductivity",
+      "PDF page 7, Table 1, 1000 C column: density, specific heat, diffusivity, alpha_l, and thermal conductivity",
+      "PDF page 7, Table 1 footnote: higher-temperature density values use thermal-expansion corrections"
+    ],
+    "material_regime_limit": "IG-210 is a manufactured isotropic graphite grade; equivalence to Ding natural-graphite TTG/PBTE state is not established."
+  },
+  "preprocessing": {
+    "source_read_mode": "read-only published-PDF table transcription",
+    "selection_policy": "Table 1 rows at 500 C, 700 C, and 1000 C only",
+    "unit_normalization": "retain SI-compatible source units; thermal diffusivity values are converted from table x 10^-6 m^2 s^-1 notation to m^2 s^-1",
+    "density_policy": "retain source density values and source footnote that higher-temperature values use thermal-expansion corrections",
+    "alpha_volume_policy": "alpha_V = 3*alpha_l is a conditional isotropic geometry comparator and is not source-reported",
+    "cp_cv_policy": "retain C_p; do not relabel as C_v; c_v^V = rho*(C_p - T*alpha_V^2*K_T) remains open",
+    "uncertainty_policy": "retain expanded relative source bounds at k=2; conductivity range 8-10 percent remains a range",
+    "fit_or_tuning": "none",
+    "target_or_holdout_access": "none"
+  },
+  "source_rows": [
+    {
+      "source_row_id": "farooqui_2022_table1_ig210_500C",
+      "table_locator": "PDF p.7, Table 1, Temperature 500 C",
+      "temperature_C": 500.0,
+      "temperature_K": 773.15,
+      "density_kg_per_m3": 1781.0,
+      "specific_heat_Cp_J_per_kg_K": 1549.0,
+      "thermal_diffusivity_m2_per_s": 0.0000246,
+      "alpha_l_from_23C_K^-1": 0.0000050,
+      "thermal_conductivity_W_per_m_K": 68.3,
+      "uncertainty": {
+        "coverage_factor": 2,
+        "density_relative_expanded": 0.003,
+        "specific_heat_relative_expanded": 0.06,
+        "thermal_diffusivity_relative_expanded": 0.04,
+        "alpha_l_relative_expanded": 0.10,
+        "thermal_conductivity_relative_expanded_range": [0.08, 0.10]
+      }
+    },
+    {
+      "source_row_id": "farooqui_2022_table1_ig210_700C",
+      "table_locator": "PDF p.7, Table 1, Temperature 700 C",
+      "temperature_C": 700.0,
+      "temperature_K": 973.15,
+      "density_kg_per_m3": 1775.0,
+      "specific_heat_Cp_J_per_kg_K": 1807.0,
+      "thermal_diffusivity_m2_per_s": 0.0000195,
+      "alpha_l_from_23C_K^-1": 0.0000052,
+      "thermal_conductivity_W_per_m_K": 59.2,
+      "uncertainty": {
+        "coverage_factor": 2,
+        "density_relative_expanded": 0.003,
+        "specific_heat_relative_expanded": 0.06,
+        "thermal_diffusivity_relative_expanded": 0.04,
+        "alpha_l_relative_expanded": 0.10,
+        "thermal_conductivity_relative_expanded_range": [0.08, 0.10]
+      }
+    },
+    {
+      "source_row_id": "farooqui_2022_table1_ig210_1000C",
+      "table_locator": "PDF p.7, Table 1, Temperature 1000 C",
+      "temperature_C": 1000.0,
+      "temperature_K": 1273.15,
+      "density_kg_per_m3": 1765.0,
+      "specific_heat_Cp_J_per_kg_K": 1892.0,
+      "thermal_diffusivity_m2_per_s": 0.0000152,
+      "alpha_l_from_23C_K^-1": 0.0000055,
+      "thermal_conductivity_W_per_m_K": 51.5,
+      "uncertainty": {
+        "coverage_factor": 2,
+        "density_relative_expanded": 0.003,
+        "specific_heat_relative_expanded": 0.06,
+        "thermal_diffusivity_relative_expanded": 0.04,
+        "alpha_l_relative_expanded": 0.10,
+        "thermal_conductivity_relative_expanded_range": [0.08, 0.10]
+      }
+    }
+  ],
+  "derived_comparator": {
+    "row_count": 3,
+    "same_grade_ig210_source": true,
+    "density_present": true,
+    "density_uncertainty_source_locked": true,
+    "specific_heat_Cp_present": true,
+    "specific_heat_uncertainty_source_locked": true,
+    "thermal_expansion_alpha_l_present": true,
+    "conditional_alpha_V_relation": "alpha_V = 3*alpha_l under isotropic geometry",
+    "same_state_K_T_present": false,
+    "c_v_present": false,
+    "Ding_TTG_material_match_closed": false,
+    "alpha_Phi_K_calibration_emitted": false,
+    "cp_to_cv_contract": "c_v^V = rho*(C_p - T*alpha_V^2*K_T)",
+    "project_lineage_to_other_Hi_Trace_sources": "project-level lineage only; no silent row-level identity is asserted"
+  },
+  "holdout_policy": {
+    "xie_2026_accessed": false,
+    "xie_2026_source_data_consumed": false,
+    "calibration_path_may_read_holdout": false,
+    "target_curve_used": false,
+    "alpha_Phi_K_fit_used": false
+  },
+  "claim_boundary": "This package closes only a source-traceable IG-210 thermophysical comparator with density, C_p, diffusivity, alpha_l, and stated source uncertainty. It is not C_v, not a same-state K_T pair, not Ding C_src, not alpha_Phi_K calibration, and not Full Topic 13 closure."
+}

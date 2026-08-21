@@ -1,7 +1,7 @@
 {
   "schema_version": "t13-berut-figure3-remote-binary-identity-v1",
   "artifact": "t13_berut_figure3_remote_binary_identity",
-  "generated_at": "2026-08-12",
+  "generated_at": "2026-08-20",
   "status": "PASS_REMOTE_FIGURE3_BINARY_IDENTITY",
   "claim_promotion": false,
   "major_result": {
@@ -11,7 +11,8 @@
     "what_is_closed": [
       "The official publisher Figure 3 download route is identified and download-tested.",
       "The remote binary identity is pinned by byte size, OLE signature, SHA-256, and retrieval date.",
-      "The embedded raster inventory is explicit; no raster is accepted as a numeric row before panel, axis, and point mapping."
+      "The embedded raster inventory is explicit; no raster is accepted as a numeric row before panel, axis, and point mapping.",
+      "The official Figure 3 binary is archived locally with the remote identity hash; its rows remain figure-derived until source-grade uncertainty is available."
     ],
     "equation_or_mapping": "Figure 3 is a source-surface asset for the Berut heat-versus-erasure-duration observable; no numeric mapping is emitted.",
     "units": "Figure labels and units remain unaccepted until selected-panel locator and axis mapping are recorded.",
@@ -29,29 +30,42 @@
         "sha256": "e4bab6be849a093b7578bc52ce6df9be95dc25d83d51ecb718b4f798a37d50fa",
         "bytes": 479744,
         "signature": "D0 CF 11 E0 A1 B1 1A E1"
+      },
+      {
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/berut_2012_figure3_source.ppt",
+        "role": "archived official Figure 3 binary; not a raw numeric table",
+        "sha256": "e4bab6be849a093b7578bc52ce6df9be95dc25d83d51ecb718b4f798a37d50fa",
+        "bytes": 479744
       }
     ],
     "verification_status": "PASS_REMOTE_FIGURE3_BINARY_IDENTITY",
     "open_blockers": [
       "berut_selected_panel_and_axis_tick_mapping_missing",
       "berut_numeric_point_or_curve_selection_missing",
-      "berut_source_row_uncertainty_and_preprocessing_not_closed",
-      "berut_binary_not_stored_in_repo_remote_identity_hash_pinned_only"
+      "berut_source_row_uncertainty_and_preprocessing_not_closed"
     ],
     "dependency_unlocked": "Berut figure-acquisition route only; no numeric source, alpha, Full Topic 13, Core, Gravity, or transport dependency is unlocked.",
-    "claim_boundary": "This closes only remote binary identity and embedded-asset inventory. It is not a source-normalized numeric row, uncertainty result, calibration, prediction, or external validation."
+    "claim_boundary": "This closes official figure-binary provenance only. It is not a raw source table, source-grade uncertainty result, calibration, prediction, or external validation."
   },
   "source_locator": {
     "article_url": "https://www.nature.com/articles/nature10872",
     "download_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fnature10872/MediaObjects/41586_2012_BFnature10872_MOESM77_ESM.ppt",
     "retrieved_on": "2026-08-12",
-    "retrieval_scope": "temporary verification download; binary not stored in repository"
+    "retrieval_scope": "official binary archived in repository; numeric rows remain figure-derived only",
+    "local_archive_path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/berut_2012_figure3_source.ppt"
   },
   "binary_identity": {
     "sha256": "e4bab6be849a093b7578bc52ce6df9be95dc25d83d51ecb718b4f798a37d50fa",
     "bytes": 479744,
     "signature": "D0 CF 11 E0 A1 B1 1A E1",
     "format": "OLE Compound File / legacy PowerPoint .ppt"
+  },
+  "local_archive": {
+    "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/berut_2012_figure3_source.ppt",
+    "present": true,
+    "bytes": 479744,
+    "sha256": "e4bab6be849a093b7578bc52ce6df9be95dc25d83d51ecb718b4f798a37d50fa",
+    "hash_matches_remote_identity": true
   },
   "embedded_assets": [
     {
@@ -115,6 +129,7 @@
     "remote_binary_size_recorded": true,
     "ole_compound_file_signature_recorded": true,
     "embedded_asset_inventory_is_explicit": true,
+    "local_archive_present_and_hash_matches": true,
     "large_raster_candidates_not_auto_accepted": true,
     "numeric_rows_emitted": false,
     "digitization_ready": false,
@@ -128,8 +143,7 @@
   "open_blockers": [
     "berut_selected_panel_and_axis_tick_mapping_missing",
     "berut_numeric_point_or_curve_selection_missing",
-    "berut_source_row_uncertainty_and_preprocessing_not_closed",
-    "berut_binary_not_stored_in_repo_remote_identity_hash_pinned_only"
+    "berut_source_row_uncertainty_and_preprocessing_not_closed"
   ],
   "controlling_blocker": "berut_selected_panel_and_axis_tick_mapping_missing",
   "next_action": "Select one quantitative panel, record axis ticks and units, map selected points or curve with declared digitization uncertainty, and archive row identity and preprocessing before source-normalized use.",

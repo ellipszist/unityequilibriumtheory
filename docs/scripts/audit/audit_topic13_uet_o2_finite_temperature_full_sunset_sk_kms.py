@@ -71,6 +71,7 @@ def main() -> int:
         "aggregate_pv_witness_is_conservative": state.aggregate_pv_convergence_is_conservative_bound,
         "state_is_finite": finite_state,
         "full_finite_temperature_1pi_remains_open": not state.full_finite_temperature_1pi_self_energy_completed,
+        "all_finite_temperature_sunset_channels_remain_open": not state.all_finite_temperature_sunset_channels_completed,
         "unique_renormalization_remains_open": not state.unique_physical_renormalization_scheme_match_completed,
         "physical_kubo_not_emitted": not state.physical_kubo_coefficient_emitted,
         "covariant_entropy_remains_open": not state.covariant_entropy_current_completed,

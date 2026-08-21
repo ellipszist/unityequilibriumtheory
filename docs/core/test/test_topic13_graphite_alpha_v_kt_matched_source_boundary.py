@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[3]
 AUDIT_REL = "docs/core/artifacts/t13_graphite_alpha_v_kt_matched_source_boundary_audit.json"
 LOWITZER_REL = "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/lowitzer_2006_graphite_pvt_candidate_source_package.json"
 TOHEI_REL = "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/tohei_2006_graphite_alpha_v_kt_table_comparator_source_package.json"
+FAROOQUI_REL = "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/farooqui_2022_ig210_thermophysical_source_package.json"
 FULL_REL = "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/topic13_full_thermodynamic_bridge_core_ready_gate.json"
 REGISTER_REL = "docs/core/artifacts/uet_major_result_closure_register.json"
 DEPENDENCY_REL = "docs/core/artifacts/uet_major_result_dependency_unlock_gate.json"
@@ -48,6 +49,14 @@ def test_current_alpha_v_kt_inventory_is_closed_as_a_scoped_boundary() -> None:
     assert tohei["pair_contract"]["source_grade_uncertainty_available"] is False
     assert audit["source_pair_observations"]["tohei_table_comparator"]["calculated_graphite_pair"] is True
     assert audit["source_pair_observations"]["tohei_table_comparator"]["experimental_same_specimen_pair"] is False
+    farooqui = load(FAROOQUI_REL)
+    assert farooqui["status"] == "SOURCE_LOCKED_IG210_THERMOPHYSICAL_COMPARATOR_KT_OPEN"
+    assert farooqui["derived_comparator"]["same_grade_ig210_source"] is True
+    assert farooqui["derived_comparator"]["row_count"] == 3
+    assert farooqui["derived_comparator"]["same_state_K_T_present"] is False
+    assert farooqui["derived_comparator"]["c_v_present"] is False
+    assert farooqui["derived_comparator"]["alpha_Phi_K_calibration_emitted"] is False
+    assert audit["source_pair_observations"]["farooqui_ig210_thermophysical"]["same_state_K_T_present"] is False
 
 
 def test_alpha_v_kt_boundary_is_projected_without_full_topic13_promotion() -> None:

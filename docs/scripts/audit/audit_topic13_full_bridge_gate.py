@@ -17,17 +17,25 @@ ROOT = Path(__file__).resolve().parents[3]
 OUT = ROOT / "docs/topics/0.13_Thermodynamic_Bridge/Result/artifacts/topic13_full_thermodynamic_bridge_core_ready_gate.json"
 
 
-LANE_KEY_BY_ID = {'T13_ALPHA_PHI_K_NORMALIZED_SCALE_NO_GO': 'alpha_phi_k_normalized_scale_no_go', 'T13_ALPHA_PHI_K_PAIRED_RECORD_SEARCH': 'alpha_phi_k_paired_record_search', 'T13_BASE_PHI_INDEPENDENT_CALIBRATION_REQUIREMENT': 'base_phi_independent_calibration_requirement', 'T13_BETA_SYMBOL_SEPARATION_NONCIRCULARITY_NO_GO': 'beta_symbol_separation_non_circularity_no_go', 'T13_BETA_ACTION_NORMALIZED_CORRESPONDENCE_NO_GO': 'beta_action_normalized_correspondence_no_go', 'T13_CAUSAL_BRANCH_SELECTION': 'causal_branch_selection', 'T13_CAUSAL_THERMAL_BRANCH_SELECTION': 'causal_branch_selection', 'T13_CAUSAL_FLUX_PHI_COUPLED_LANE': 'causal_flux_phi_coupled_lane', 'T13_CAUSAL_FLUX_TELEGRAPH_BRANCH': 'causal_flux_telegraph_branch', 'T13_COLLECTIVE_RESPONSE_EOS_STABILITY_CONTRACT': 'collective_response_eos_stability_contract', 'T13_COVARIANT_ACTION_SI_ANCHOR_ROUTE': 'covariant_action_si_anchor_route', 'T13_COVARIANT_FIELD_NORMALIZATION_IDENTIFIABILITY_NO_GO': 'covariant_field_normalization_identifiability_no_go', 'T13_COVARIANT_TRANSPORT_IMPLEMENTATION_BOUNDARY': 'covariant_transport_implementation_boundary', 'T13_CP_CV_CORRECTION_CONTRACT': 'cp_cv_correction_contract', 'T13_ALPHA_PHI_K_CONDITIONAL_DERIVATION': 'alpha_phi_k_conditional_derivation', 'T13_DING_PBTE_AUTHOR_REQUEST_PACKAGE': 'ding_pbte_author_request_package', 'T13_DING_FIG1D_NORMALIZED_SOURCE_LANE': 'ding_fig1d_normalized_source_lane', 'T13_DING_C_SRC_INDEPENDENT_REPRODUCTION_BOUNDARY': 'ding_c_src_independent_reproduction_boundary', 'T13_DING_PUBLIC_SUPPLEMENTARY_PAYLOAD_BOUNDARY': 'ding_public_supplementary_payload_boundary', 'T13_DING_PBTE_ENERGY_TEMPERATURE_MAPPING': 'ding_pbte_energy_temperature_mapping', 'T13_DING_PBTE_OA_NUMERIC_INPUT_NO_GO': 'ding_pbte_oa_numeric_input_no_go', 'T13_GATECH_STANDARD_TRANSPORT_COMPARATOR': 'standard_graphite_transport_comparator', 'T13_GATECH_VOLUMETRIC_CP_INDEPENDENCE_NO_GO': 'gatech_volumetric_cp_independence_no_go', 'T13_MP48_INDEPENDENT_GRAPHITE_CV_REPRODUCTION': 'mp48_independent_graphite_cv_reproduction', 'T13_MP48_SPECTRAL_C_SRC_REPRODUCTION': 'mp48_spectral_csrc_reproduction', 'T13_MP48_FORCE_CONSTANT_HARMONIC_RECONSTRUCTION': 'mp48_force_constant_harmonic_reconstruction', 'T13_MP48_FORCE_CONSTANT_C_SRC_MESH_CONVERGENCE': 'mp48_force_constant_csrc_mesh_convergence', 'T13_HUANG_2023_SUPPLEMENTARY_PAYLOAD_BOUNDARY': 'huang_2023_supplementary_payload_boundary', 'T13_NIST_AXM5Q1_DENSITY_SOURCE_BOUNDARY': 'nist_axm5q1_density_source_boundary', 'T13_NIST_GRAPHITE_ALPHA_V_SOURCE_BOUNDARY': 'nist_graphite_alpha_v_source_boundary', 'T13_GRAPHITE_ELASTIC_BULK_MODULUS_SOURCE': 'graphite_elastic_bulk_modulus_source', 'T13_GRAPHITE_ISOTHERMAL_KT_SOURCE': 'graphite_isothermal_kt_source', 'T13_TPG_ANISOTROPIC_ALPHA_V_COMPARATOR': 'tpg_anisotropic_alpha_v_comparator', 'T13_NATURAL_GRAPHITE_NELSON_RILEY_ALPHA_V_COMPARATOR': 'natural_graphite_nelson_riley_alpha_v_comparator', 'T13_BIPM_SPECIFIC_HEAT_CP_COMPARATOR': 'bipm_specific_heat_cp_comparator', 'T13_IAEA_GRAPHITE_TABLE_CV_COMPARATOR': 'iaea_graphite_table_cv_comparator', 'T13_IAEA_CV_UNCERTAINTY_BOUNDARY': 'iaea_cv_uncertainty_boundary', 'T13_DING_MATERIAL_REGIME_BOUNDARY': 'ding_material_regime_boundary', 'T13_MP48_PHI_E_DIMENSIONAL_ANCHOR_COMPARATOR': 'mp48_phi_e_dimensional_anchor_comparator', 'T13_PHYSICAL_KUBO_COEFFICIENT_PROVENANCE_GATE': 'physical_kubo_coefficient_provenance', 'T13_PHI_E_REFERENCE_NORMALIZATION': 'phi_e_reference_normalization', 'T13_PHI_E_TTG_BRIDGE_CONDITIONAL': 'phi_e_ttg_bridge_conditional', 'T13_PHI_ENERGY_ANCHOR_IDENTIFIABILITY_NO_GO': 'phi_energy_anchor_identifiability_no_go', 'T13_SK_KMS_ENTROPY_INTERFACE_CONTRACT': 'sk_kms_entropy_interface_contract', 'T13_SOURCE_CP_95CI_ANCHOR': 'source_cp_95ci_anchor', 'T13_STANDARD_O2_FINITE_TEMPERATURE_NORMAL_COMPARATOR': 'standard_o2_finite_temperature_normal_comparator', 'T13_THERMAL_RESPONSE_BETA_CONTRACT': 'thermal_response_beta_contract', 'T13_FORMAL_NONCIRCULAR_BRIDGE_BOUNDARY': 'formal_non_circular_bridge_boundary', 'T13_UET_O2_CONDENSATE_FLUCTUATION_SPECTRUM': 'uet_o2_condensate_fluctuation_spectrum', 'T13_UET_O2_CONDENSATE_GAUSSIAN_FINITE_T_LANE': 'uet_o2_condensate_gaussian_finite_t_lane','T13_UET_O2_GAUSSIAN_OFFSHELL_BACKGROUND_BOUNDARY': 'uet_o2_gaussian_offshell_background_boundary','T13_TRANSPORT_COEFFICIENT_IDENTIFIABILITY_NO_GO': 'transport_coefficient_identifiability_no_go','T13_UET_O2_NORMAL_RESPONSE_CURVATURE_LANE': 'uet_o2_normal_response_curvature_lane','T13_UET_O2_RENORMALIZED_NORMAL_ONE_LOOP_LANE': 'uet_o2_renormalized_normal_one_loop_lane','T13_UET_O2_THERMAL_STABILITY_BOUNDARY': 'uet_o2_thermal_stability_boundary','T13_UET_O2_GAUSSIAN_THERMAL_STATIONARITY_NO_GO': 'uet_o2_gaussian_thermal_stationarity_no_go',       'T13_UET_O2_CONDENSATE_GOLDSTONE_IDEAL_LANE': 'uet_o2_condensate_goldstone_ideal_lane', 'T13_UET_O2_ONE_LOOP_CONVERGENCE': 'uet_o2_one_loop_convergence', 'T13_UET_O2_ONE_LOOP_NORMAL_BRANCH': 'uet_o2_one_loop_normal_branch', 'T13_UET_O2_ONE_LOOP_THERMAL_UV_BOUNDARY': 'uet_o2_one_loop_uv_boundary', 'T13_UET_O2_NORMAL_THERMODYNAMIC_CONSISTENCY': 'uet_o2_normal_thermodynamic_consistency', 'T13_BERUT_SOURCE_PACKAGE_AVAILABILITY_BOUNDARY': 'berut_source_package_availability_boundary', 'T13_BERUT_FIGURE3_REMOTE_BINARY_IDENTITY': 'berut_figure3_remote_binary_identity', 'T13_BERUT_FIGURE3_DIGITIZATION': 'berut_figure3_digitization', 'T13_OXFORD_TGS_COMPARATOR_PROVENANCE': 'oxford_tgs_comparator_provenance', 'T13_PHONIX_MP47_GRAPHITE_HARMONIC_COMPARATOR': 'phonix_mp47_graphite_harmonic_comparator', 'T13_OXFORD_TGS_NUMERIC_ROWS_COMPARATOR': 'oxford_tgs_numeric_rows_comparator', 'T13_DESORBO_1955_CEYLON_GRAPHITE_CP_COMPARATOR': 'desorbo_1955_ceylon_graphite_cp_comparator', 'T13_UET_O2_FINITE_T_QUASIPARTICLE_EOS_LANE': 'uet_o2_finite_t_quasiparticle_eos_lane', 'T13_UET_O2_EQUILIBRIUM_KMS_LANE': 'uet_o2_equilibrium_kms_lane', 'T13_GRAPHITE_GREEN_KUBO_SOURCE_BOUNDARY': 'graphite_green_kubo_source_boundary', 'T13_UET_O2_OPEN_SYSTEM_SK_KMS_ENTROPY_LANE': 'uet_o2_open_system_sk_kms_entropy_lane', 'T13_INDEPENDENT_C_SRC_ACCEPTANCE_CONTRACT': 'independent_csrc_acceptance_contract', 'T13_CALORINE_ZENODO_NEP_BTE_CANDIDATE_BOUNDARY': 'calorine_zenodo_nep_bte_candidate_boundary', 'T13_NIMS_GRAPHITE_LTC_ROUTE_NO_GO': 'nims_graphite_ltc_route_no_go'}
+LANE_KEY_BY_ID = {'T13_ALPHA_PHI_K_NORMALIZED_SCALE_NO_GO': 'alpha_phi_k_normalized_scale_no_go', 'T13_ALPHA_PHI_K_PAIRED_RECORD_SEARCH': 'alpha_phi_k_paired_record_search', 'T13_BASE_PHI_INDEPENDENT_CALIBRATION_REQUIREMENT': 'base_phi_independent_calibration_requirement', 'T13_BETA_SYMBOL_SEPARATION_NONCIRCULARITY_NO_GO': 'beta_symbol_separation_non_circularity_no_go', 'T13_BETA_ACTION_NORMALIZED_CORRESPONDENCE_NO_GO': 'beta_action_normalized_correspondence_no_go', 'T13_CAUSAL_BRANCH_SELECTION': 'causal_branch_selection', 'T13_CAUSAL_THERMAL_BRANCH_SELECTION': 'causal_branch_selection', 'T13_CAUSAL_FLUX_PHI_COUPLED_LANE': 'causal_flux_phi_coupled_lane', 'T13_CAUSAL_FLUX_TELEGRAPH_BRANCH': 'causal_flux_telegraph_branch', 'T13_COLLECTIVE_RESPONSE_EOS_STABILITY_CONTRACT': 'collective_response_eos_stability_contract', 'T13_COVARIANT_ACTION_SI_ANCHOR_ROUTE': 'covariant_action_si_anchor_route', 'T13_COVARIANT_ACTION_SYMBOLIC_SI_CONVERSION_CONTRACT': 'covariant_action_symbolic_si_conversion_contract', 'T13_COVARIANT_FIELD_NORMALIZATION_IDENTIFIABILITY_NO_GO': 'covariant_field_normalization_identifiability_no_go', 'T13_COVARIANT_TRANSPORT_IMPLEMENTATION_BOUNDARY': 'covariant_transport_implementation_boundary', 'T13_CP_CV_CORRECTION_CONTRACT': 'cp_cv_correction_contract', 'T13_ALPHA_PHI_K_CONDITIONAL_DERIVATION': 'alpha_phi_k_conditional_derivation', 'T13_DING_PBTE_AUTHOR_REQUEST_PACKAGE': 'ding_pbte_author_request_package', 'T13_DING_FIG1D_NORMALIZED_SOURCE_LANE': 'ding_fig1d_normalized_source_lane', 'T13_DING_C_SRC_INDEPENDENT_REPRODUCTION_BOUNDARY': 'ding_c_src_independent_reproduction_boundary', 'T13_DING_PUBLIC_SUPPLEMENTARY_PAYLOAD_BOUNDARY': 'ding_public_supplementary_payload_boundary', 'T13_DING_PBTE_ENERGY_TEMPERATURE_MAPPING': 'ding_pbte_energy_temperature_mapping', 'T13_DING_PBTE_OA_NUMERIC_INPUT_NO_GO': 'ding_pbte_oa_numeric_input_no_go', 'T13_GATECH_STANDARD_TRANSPORT_COMPARATOR': 'standard_graphite_transport_comparator', 'T13_GATECH_VOLUMETRIC_CP_INDEPENDENCE_NO_GO': 'gatech_volumetric_cp_independence_no_go', 'T13_MP48_INDEPENDENT_GRAPHITE_CV_REPRODUCTION': 'mp48_independent_graphite_cv_reproduction', 'T13_MP48_SPECTRAL_C_SRC_REPRODUCTION': 'mp48_spectral_csrc_reproduction', 'T13_MP48_FORCE_CONSTANT_HARMONIC_RECONSTRUCTION': 'mp48_force_constant_harmonic_reconstruction', 'T13_MP48_FORCE_CONSTANT_C_SRC_MESH_CONVERGENCE': 'mp48_force_constant_csrc_mesh_convergence', 'T13_HUANG_2023_SUPPLEMENTARY_PAYLOAD_BOUNDARY': 'huang_2023_supplementary_payload_boundary', 'T13_NIST_AXM5Q1_DENSITY_SOURCE_BOUNDARY': 'nist_axm5q1_density_source_boundary', 'T13_NIST_GRAPHITE_ALPHA_V_SOURCE_BOUNDARY': 'nist_graphite_alpha_v_source_boundary', 'T13_GRAPHITE_ELASTIC_BULK_MODULUS_SOURCE': 'graphite_elastic_bulk_modulus_source', 'T13_GRAPHITE_ISOTHERMAL_KT_SOURCE': 'graphite_isothermal_kt_source', 'T13_TPG_ANISOTROPIC_ALPHA_V_COMPARATOR': 'tpg_anisotropic_alpha_v_comparator', 'T13_NATURAL_GRAPHITE_NELSON_RILEY_ALPHA_V_COMPARATOR': 'natural_graphite_nelson_riley_alpha_v_comparator', 'T13_BIPM_SPECIFIC_HEAT_CP_COMPARATOR': 'bipm_specific_heat_cp_comparator', 'T13_IAEA_GRAPHITE_TABLE_CV_COMPARATOR': 'iaea_graphite_table_cv_comparator', 'T13_IAEA_CV_UNCERTAINTY_BOUNDARY': 'iaea_cv_uncertainty_boundary', 'T13_DING_MATERIAL_REGIME_BOUNDARY': 'ding_material_regime_boundary', 'T13_MP48_PHI_E_DIMENSIONAL_ANCHOR_COMPARATOR': 'mp48_phi_e_dimensional_anchor_comparator', 'T13_PHYSICAL_KUBO_COEFFICIENT_PROVENANCE_GATE': 'physical_kubo_coefficient_provenance', 'T13_PHI_E_REFERENCE_NORMALIZATION': 'phi_e_reference_normalization', 'T13_PHI_E_TTG_BRIDGE_CONDITIONAL': 'phi_e_ttg_bridge_conditional', 'T13_PHI_ENERGY_ANCHOR_IDENTIFIABILITY_NO_GO': 'phi_energy_anchor_identifiability_no_go', 'T13_SK_KMS_ENTROPY_INTERFACE_CONTRACT': 'sk_kms_entropy_interface_contract', 'T13_SOURCE_CP_95CI_ANCHOR': 'source_cp_95ci_anchor', 'T13_STANDARD_O2_FINITE_TEMPERATURE_NORMAL_COMPARATOR': 'standard_o2_finite_temperature_normal_comparator', 'T13_THERMAL_RESPONSE_BETA_CONTRACT': 'thermal_response_beta_contract', 'T13_FORMAL_NONCIRCULAR_BRIDGE_BOUNDARY': 'formal_non_circular_bridge_boundary', 'T13_UET_O2_CONDENSATE_FLUCTUATION_SPECTRUM': 'uet_o2_condensate_fluctuation_spectrum', 'T13_UET_O2_CONDENSATE_GAUSSIAN_FINITE_T_LANE': 'uet_o2_condensate_gaussian_finite_t_lane','T13_UET_O2_GAUSSIAN_OFFSHELL_BACKGROUND_BOUNDARY': 'uet_o2_gaussian_offshell_background_boundary','T13_TRANSPORT_COEFFICIENT_IDENTIFIABILITY_NO_GO': 'transport_coefficient_identifiability_no_go','T13_UET_O2_NORMAL_RESPONSE_CURVATURE_LANE': 'uet_o2_normal_response_curvature_lane','T13_UET_O2_RENORMALIZED_NORMAL_ONE_LOOP_LANE': 'uet_o2_renormalized_normal_one_loop_lane','T13_UET_O2_THERMAL_STABILITY_BOUNDARY': 'uet_o2_thermal_stability_boundary','T13_UET_O2_GAUSSIAN_THERMAL_STATIONARITY_NO_GO': 'uet_o2_gaussian_thermal_stationarity_no_go',       'T13_UET_O2_CONDENSATE_GOLDSTONE_IDEAL_LANE': 'uet_o2_condensate_goldstone_ideal_lane', 'T13_UET_O2_ONE_LOOP_CONVERGENCE': 'uet_o2_one_loop_convergence', 'T13_UET_O2_ONE_LOOP_NORMAL_BRANCH': 'uet_o2_one_loop_normal_branch', 'T13_UET_O2_ONE_LOOP_THERMAL_UV_BOUNDARY': 'uet_o2_one_loop_uv_boundary', 'T13_UET_O2_NORMAL_THERMODYNAMIC_CONSISTENCY': 'uet_o2_normal_thermodynamic_consistency', 'T13_BERUT_SOURCE_PACKAGE_AVAILABILITY_BOUNDARY': 'berut_source_package_availability_boundary', 'T13_BERUT_FIGURE3_REMOTE_BINARY_IDENTITY': 'berut_figure3_remote_binary_identity', 'T13_BERUT_FIGURE3_DIGITIZATION': 'berut_figure3_digitization', 'T13_OXFORD_TGS_COMPARATOR_PROVENANCE': 'oxford_tgs_comparator_provenance', 'T13_PHONIX_MP47_GRAPHITE_HARMONIC_COMPARATOR': 'phonix_mp47_graphite_harmonic_comparator', 'T13_OXFORD_TGS_NUMERIC_ROWS_COMPARATOR': 'oxford_tgs_numeric_rows_comparator', 'T13_DESORBO_1955_CEYLON_GRAPHITE_CP_COMPARATOR': 'desorbo_1955_ceylon_graphite_cp_comparator', 'T13_UET_O2_FINITE_T_QUASIPARTICLE_EOS_LANE': 'uet_o2_finite_t_quasiparticle_eos_lane', 'T13_UET_O2_EQUILIBRIUM_KMS_LANE': 'uet_o2_equilibrium_kms_lane', 'T13_GRAPHITE_GREEN_KUBO_SOURCE_BOUNDARY': 'graphite_green_kubo_source_boundary', 'T13_UET_O2_OPEN_SYSTEM_SK_KMS_ENTROPY_LANE': 'uet_o2_open_system_sk_kms_entropy_lane', 'T13_INDEPENDENT_C_SRC_ACCEPTANCE_CONTRACT': 'independent_csrc_acceptance_contract', 'T13_CALORINE_ZENODO_NEP_BTE_CANDIDATE_BOUNDARY': 'calorine_zenodo_nep_bte_candidate_boundary', 'T13_NIMS_GRAPHITE_LTC_ROUTE_NO_GO': 'nims_graphite_ltc_route_no_go'}
 
 LANE_KEY_BY_ID["T13_DING_2017_ACS_SUPPLEMENTARY_PAYLOAD_BOUNDARY"] = "ding_2017_acs_supplementary_payload_boundary"
+LANE_KEY_BY_ID["T13_HUBERMAN_2019_PUBLIC_PBTE_BOUNDARY"] = "huberman_2019_public_pbte_boundary"
+LANE_KEY_BY_ID["T13_IAEA_GR280_SAME_STATE_CP_COMPARATOR"] = "iaea_gr280_same_state_cp_comparator"
+LANE_KEY_BY_ID["T13_ZENODO_HITRACE_ISOTROPIC_GRAPHITE_CP_COMPARATOR"] = "zenodo_hitrace_isotropic_graphite_cp_comparator"
+LANE_KEY_BY_ID["T13_FAROOQUI_IG210_THERMOPHYSICAL_SOURCE"] = "farooqui_ig210_thermophysical_source"
+LANE_KEY_BY_ID["T13_ZENODO_HITRACE_IG210_ALPHA_L_COMPARATOR"] = "zenodo_hitrace_ig210_alpha_l_comparator"
 LANE_KEY_BY_ID["T13_PHI_SI_ANCHOR_PUBLIC_SOURCE_BOUNDARY"] = "phi_si_anchor_public_source_boundary"
 LANE_KEY_BY_ID["T13_UET_O2_MICROSCOPIC_FINITE_CUTOFF_KUBO_MATCH"] = "uet_o2_microscopic_finite_cutoff_kubo_match"
 LANE_KEY_BY_ID["T13_UET_O2_HEAT_CURRENT_KUBO_MATCH"] = "uet_o2_heat_current_kubo_match"
 LANE_KEY_BY_ID["T13_UET_O2_HEAT_CURRENT_KUBO_CONTINUUM_BOUNDARY"] = "uet_o2_heat_current_kubo_continuum_boundary"
+LANE_KEY_BY_ID["T13_UET_O2_REGULARIZED_CONTINUUM_HEAT_CURRENT_LANE"] = "uet_o2_regularized_continuum_heat_current_lane"
 LANE_KEY_BY_ID["T13_UET_O2_CONDENSED_RELATIVE_FLOW_COLLISION_KERNEL_LANE"] = "uet_o2_condensed_relative_flow_collision_kernel_lane"
 LANE_KEY_BY_ID["T13_UET_O2_CONTINUUM_RELATIVE_FLOW_KUBO_LANE"] = "uet_o2_continuum_relative_flow_kubo_lane"
 LANE_KEY_BY_ID["T13_UET_O2_CONDENSED_LOOP_RENORMALIZED_CONTACT_VERTEX_LANE"] = "uet_o2_condensed_loop_renormalized_contact_vertex_lane"
 LANE_KEY_BY_ID["T13_UET_O2_CONDENSED_RELATIVE_FLOW_KUBO_ADMISSION_LANE"] = "uet_o2_condensed_relative_flow_kubo_admission_lane"
+LANE_KEY_BY_ID["T13_UET_O2_CONDENSED_SK_KMS_KUBO_MATCH_LANE"] = "uet_o2_condensed_sk_kms_kubo_match_lane"
+LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_DECLARED_RETARDED_1PI_RESPONSE_GRID_LANE"] = "uet_o2_finite_t_declared_retarded_1pi_response_grid_lane"
 LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_SELF_ENERGY_HARTREE_LANE"] = "uet_o2_finite_t_self_energy_hartree_lane"
 LANE_KEY_BY_ID["T13_UET_O2_HARTREE_EQUILIBRIUM_THERMODYNAMIC_LANE"] = "uet_o2_hartree_equilibrium_thermodynamic_lane"
 LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_SCHEME_IDENTIFIABILITY_NO_GO"] = "uet_o2_finite_t_scheme_identifiability_no_go"
@@ -46,6 +54,13 @@ LANE_KEY_BY_ID["T13_DING_ALTERNATE_PUBLIC_DATASET_DISCOVERY_BOUNDARY"] = "ding_a
 LANE_KEY_BY_ID["T13_CALORINE_ZENODO_NEP_BTE_NUMERIC_REPRODUCTION"] = "calorine_zenodo_nep_bte_numeric_reproduction"
 LANE_KEY_BY_ID["T13_CALORINE_ISOTOPE_MASS_SENSITIVITY"] = "calorine_isotope_mass_sensitivity"
 LANE_KEY_BY_ID["T13_CALORINE_STATE_UNCERTAINTY_DECOMPOSITION"] = "calorine_state_uncertainty_decomposition"
+LANE_KEY_BY_ID["T13_CALORINE_C_SRC_EQUILIBRIUM_CROSSCHECK"] = "calorine_csrc_equilibrium_crosscheck"
+LANE_KEY_BY_ID["T13_FIGSHARE_DFT_FORCE_DATA_BOUNDARY"] = "figshare_dft_force_data_boundary"
+LANE_KEY_BY_ID["T13_HUANG_2023_NIMS_MDR_PAYLOAD_BOUNDARY"] = "huang_2023_nims_mdr_payload_boundary"
+LANE_KEY_BY_ID["T13_CALORINE_PUBLIC_MODEL_VARIANT_BOUNDARY"] = "calorine_public_model_variant_boundary"
+LANE_KEY_BY_ID["T13_CALORINE_NEP1_BACKEND_COMPATIBILITY_BOUNDARY"] = "calorine_nep1_backend_compatibility"
+LANE_KEY_BY_ID["T13_CALORINE_LEGACY_NEP2_BACKEND_PROBE"] = "calorine_legacy_nep2_backend_probe"
+LANE_KEY_BY_ID["T13_CALORINE_LEGACY_NEP2_PBTE_REPRODUCTION"] = "calorine_legacy_nep2_pbte_reproduction"
 LANE_KEY_BY_ID["T13_UET_O2_FORMAL_TRANSVERSE_RESPONSE_LANE"] = "uet_o2_formal_transverse_response_lane"
 LANE_KEY_BY_ID["T13_UET_O2_KINETIC_COLLISION_KERNEL_LANE"] = "uet_o2_kinetic_collision_kernel_lane"
 LANE_KEY_BY_ID["T13_UET_O2_QUANTUM_COLLISION_ENHANCEMENT_LANE"] = "uet_o2_quantum_collision_enhancement_lane"
@@ -87,6 +102,12 @@ LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_THREE_BODY_SUNSET_SK_KMS_LANE"] = "uet_o2_fi
 LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_SCATTERING_SUNSET_SK_KMS_LANE"] = "uet_o2_finite_t_scattering_sunset_sk_kms_lane"
 
 LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_DECLARED_FULL_SUNSET_SK_KMS_LANE"] = "uet_o2_finite_t_declared_full_sunset_sk_kms_lane"
+LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_SIGNED_CUT_KINEMATIC_TAXONOMY_LANE"] = "uet_o2_finite_t_signed_cut_kinematic_taxonomy_lane"
+LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_SUNSET_CUT_MULTIPLICITY_LANE"] = "uet_o2_finite_t_sunset_cut_multiplicity_lane"
+LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_ALL_ONSHELL_CUT_SPECTRAL_RESPONSE_LANE"] = "uet_o2_finite_t_all_onshell_cut_spectral_response_lane"
+LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_DECLARED_CHANNEL_RETARDED_ADVANCED_KELDYSH_1PI_LANE"] = "uet_o2_finite_t_declared_channel_retarded_advanced_keldysh_1pi_lane"
+LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_OFFSHELL_THRESHOLD_CROSSING_1PI_LANE"] = "uet_o2_finite_t_offshell_threshold_crossing_1pi_lane"
+LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_ALL_22_PERMUTATION_IDENTITY_LANE"] = "uet_o2_finite_t_all_22_permutation_identity_lane"
 LANE_KEY_BY_ID["T13_UET_O2_FINITE_T_OFFSHELL_1PI_FORMAL_LANE"] = "uet_o2_finite_t_offshell_1pi_formal_lane"
 
 LANE_KEY_BY_ID["T13_UET_O2_ON_SHELL_SUNSET_COLLISION_WIDTH_LANE"] = "uet_o2_on_shell_sunset_collision_width_lane"
@@ -100,6 +121,9 @@ LANE_KEY_BY_ID["T13_UET_O2_COVARIANT_ENTROPY_HEAT_FLUX_BALANCE_LANE"] = "uet_o2_
 LANE_KEY_BY_ID["T13_UET_O2_ACTION_THERMAL_STIFFNESS_BETA_LANE"] = "uet_o2_action_thermal_stiffness_beta_lane"
 LANE_KEY_BY_ID["T13_UET_O2_ACTION_NATURAL_PHI_THERMAL_BRIDGE_LANE"] = "uet_o2_action_natural_phi_thermal_bridge_lane"
 LANE_KEY_BY_ID["T13_TRANSPORT_KMS_ENTROPY_STATUS_BOUNDARY"] = "transport_kms_entropy_status_boundary"
+LANE_KEY_BY_ID["T13_JUN_FINAL_SOURCE_BOUNDARY"] = "jun_final_source_boundary"
+LANE_KEY_BY_ID["T13_HONG_FINAL_SOURCE_BOUNDARY"] = "hong_final_source_boundary"
+LANE_KEY_BY_ID["T13_PETERSON_SOURCE_IDENTITY_NO_GO"] = "peterson_source_identity_no_go"
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -193,6 +217,9 @@ def main() -> int:
     huang_supplementary_path, huang_supplementary = load(
         "docs/core/artifacts/t13_huang_2023_supplementary_payload_boundary_audit.json"
     )
+    huberman_public_pbte_path, huberman_public_pbte = load(
+        "docs/core/artifacts/t13_huberman_2019_public_pbte_boundary_audit.json"
+    )
     nist_density_path, nist_density = load(
         "docs/core/artifacts/t13_nist_axm5q1_density_source_boundary_audit.json"
     )
@@ -228,6 +255,18 @@ def main() -> int:
     )
     cv_uncertainty_package_path, cv_uncertainty_package = load(
         "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/iaea_graphite_cv_uncertainty_boundary_source_package.json"
+    )
+    iaea_gr280_path, iaea_gr280 = load(
+        "docs/core/artifacts/t13_iaea_gr280_same_state_cp_source_audit.json"
+    )
+    iaea_gr280_package_path, iaea_gr280_package = load(
+        "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/iaea_gr280_same_state_cp_source_package.json"
+    )
+    farooqui_source_path, farooqui_source = load(
+        "docs/core/artifacts/t13_farooqui_ig210_thermophysical_source_audit.json"
+    )
+    farooqui_package_path, farooqui_package = load(
+        "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/farooqui_2022_ig210_thermophysical_source_package.json"
     )
     phonix_path, phonix = load(
         "docs/core/artifacts/t13_phonix_mp47_graphite_comparator_audit.json"
@@ -418,6 +457,24 @@ def main() -> int:
             discovered_lane_integrations[key] = lane_record
     previous_major = previous_gate.get("major_result", {})
 
+    normalized_beta_correspondence_open = (
+        not bridge_derived
+        and action_natural_bridge_pass
+        and discovered_lane_integrations.get(
+            "beta_action_normalized_correspondence_no_go", {}
+        ).get("closure_level")
+        == "CLOSED_AS_NO_GO"
+    )
+    bridge_controlling_blocker = (
+        None
+        if bridge_derived
+        else (
+            "normalized_beta_and_SI_scale_correspondence_missing"
+            if normalized_beta_correspondence_open
+            else "non_circular_uet_bridge_and_beta_derivation_missing"
+        )
+    )
+
     gates = {
         "causal_full_candidate_or_formal_no_go_branch": {
             # The named lane may close without promoting the original
@@ -499,8 +556,8 @@ def main() -> int:
             "natural_action_derivation_status": "PASS" if action_natural_bridge_pass else "BLOCKED",
             "physical_dimensional_bridge_status": "BLOCKED_PHI_SI_ANCHOR_OR_ALPHA_OPEN",
             "physical_derivation_status": "PASS_NATURAL_UNIT_ONLY" if action_natural_bridge_pass else "BLOCKED",
-            "physical_derivation_controlling_blocker": None if action_natural_bridge_pass else "non_circular_uet_bridge_and_beta_derivation_missing",
-            "controlling_blocker": None if bridge_derived else "non_circular_uet_bridge_and_beta_derivation_missing",
+            "physical_derivation_controlling_blocker": bridge_controlling_blocker,
+            "controlling_blocker": bridge_controlling_blocker,
         },
         "eos_transport_kms_entropy": {
             "status": "PASS" if eos_transport_entropy_ready else "BLOCKED",
@@ -620,7 +677,20 @@ def main() -> int:
             evidence(rel(eos_path), eos, {"audit_status": eos.get("audit_status"), "evidence_status": eos.get("evidence_status")}),
             evidence(rel(causal_path), causal, {"audit_status": causal.get("audit_status"), "structural_blocker": causal.get("structural_blocker")}),
             evidence(rel(source_package_path), source_package, {"status": source_package.get("status")}),
-            evidence(rel(ding_source_mapping_path), ding_source_mapping, {
+            evidence(rel(farooqui_source_path), farooqui_source, {
+                "status": farooqui_source.get("status"),
+                "closure_level": farooqui_source.get("major_result", {}).get("closure_level"),
+                "density_uncertainty_locked": farooqui_source.get("row_summary", {}).get("density_uncertainty_locked"),
+                "specific_heat_uncertainty_locked": farooqui_source.get("row_summary", {}).get("specific_heat_uncertainty_locked"),
+                "K_T_present": farooqui_source.get("row_summary", {}).get("K_T_present"),
+            }),
+            evidence(rel(farooqui_package_path), farooqui_package, {
+                "status": farooqui_package.get("status"),
+                "data_role": "COMPARISON_ONLY_NOT_CALIBRATION",
+                "raw_sha256": farooqui_package.get("source", {}).get("local_raw_sha256"),
+                "same_state_K_T_present": farooqui_package.get("derived_comparator", {}).get("same_state_K_T_present"),
+                "Ding_TTG_material_match_closed": farooqui_package.get("derived_comparator", {}).get("Ding_TTG_material_match_closed"),
+            }),            evidence(rel(ding_source_mapping_path), ding_source_mapping, {
                 "status": ding_source_mapping.get("status"),
                 "raw_author_numeric_source_present": ding_source_mapping.get("checks", {}).get("raw_author_numeric_source_present"),
                 "permitted_figure_numeric_route_ready": ding_source_mapping.get("checks", {}).get("permitted_figure_numeric_route_ready"),
@@ -756,7 +826,7 @@ def main() -> int:
         artifact["verification_status"]["eos_transport_kms_entropy"].pop(
             "calorine_zenodo_nep_bte_numeric_reproduction", None
         )
-    for lane_key in ("calorine_isotope_mass_sensitivity", "calorine_state_uncertainty_decomposition"):
+    for lane_key in ("calorine_isotope_mass_sensitivity", "calorine_state_uncertainty_decomposition", "calorine_csrc_equilibrium_crosscheck", "figshare_dft_force_data_boundary", "huang_2023_nims_mdr_payload_boundary", "calorine_public_model_variant_boundary", "calorine_nep1_backend_compatibility", "calorine_legacy_nep2_backend_probe", "calorine_legacy_nep2_pbte_reproduction"):
         lane = discovered_lane_integrations.get(lane_key)
         if lane:
             artifact["verification_status"]["source_package"][lane_key] = lane
@@ -863,6 +933,16 @@ def main() -> int:
     huang_supplementary_lane = discovered_lane_integrations.get(
         "huang_2023_supplementary_payload_boundary"
     )
+    huberman_public_pbte_lane = discovered_lane_integrations.get(
+        "huberman_2019_public_pbte_boundary"
+    )
+    if huberman_public_pbte_lane:
+        artifact["verification_status"]["source_package"][
+            "huberman_2019_public_pbte_boundary"
+        ] = huberman_public_pbte_lane
+        artifact["verification_status"]["eos_transport_kms_entropy"].pop(
+            "huberman_2019_public_pbte_boundary", None
+        )
     nist_density_lane = discovered_lane_integrations.get(
         "nist_axm5q1_density_source_boundary"
     )
@@ -959,6 +1039,45 @@ def main() -> int:
         ] = iaea_graphite_cv_lane
         artifact["verification_status"]["eos_transport_kms_entropy"].pop(
             "iaea_graphite_table_cv_comparator", None
+        )
+    iaea_gr280_lane = discovered_lane_integrations.get(
+        "iaea_gr280_same_state_cp_comparator"
+    )
+    if iaea_gr280_lane:
+        artifact["verification_status"]["source_package"][
+            "iaea_gr280_same_state_cp_comparator"
+        ] = iaea_gr280_lane
+        artifact["verification_status"]["eos_transport_kms_entropy"].pop(
+            "iaea_gr280_same_state_cp_comparator", None
+        )
+    zenodo_hitrace_lane = discovered_lane_integrations.get(
+        "zenodo_hitrace_isotropic_graphite_cp_comparator"
+    )
+    if zenodo_hitrace_lane:
+        artifact["verification_status"]["source_package"][
+            "zenodo_hitrace_isotropic_graphite_cp_comparator"
+        ] = zenodo_hitrace_lane
+        artifact["verification_status"]["eos_transport_kms_entropy"].pop(
+            "zenodo_hitrace_isotropic_graphite_cp_comparator", None
+        )
+    zenodo_ig210_alpha_l_lane = discovered_lane_integrations.get(
+        "zenodo_hitrace_ig210_alpha_l_comparator"
+    )
+    if zenodo_ig210_alpha_l_lane:
+        artifact["verification_status"]["source_package"][
+            "zenodo_hitrace_ig210_alpha_l_comparator"
+        ] = zenodo_ig210_alpha_l_lane
+        artifact["verification_status"]["eos_transport_kms_entropy"].pop(
+            "zenodo_hitrace_ig210_alpha_l_comparator", None
+        )
+    farooqui_ig210_lane = discovered_lane_integrations.get(
+        "farooqui_ig210_thermophysical_source"
+    )
+    if farooqui_ig210_lane:
+        artifact["verification_status"]["source_package"]["farooqui_ig210_thermophysical_source"
+        ] = farooqui_ig210_lane
+        artifact["verification_status"]["eos_transport_kms_entropy"].pop(
+            "farooqui_ig210_thermophysical_source", None
         )
     cv_uncertainty_lane = discovered_lane_integrations.get(
         "iaea_cv_uncertainty_boundary"
@@ -1070,6 +1189,30 @@ def main() -> int:
                 artifact["verification_status"]["eos_transport_kms_entropy"].pop(
                     "berut_figure3_digitization", None
                 )
+    jun_source_lane = discovered_lane_integrations.get("jun_final_source_boundary")
+    if jun_source_lane:
+        artifact["verification_status"]["source_package"][
+            "jun_final_source_boundary"
+        ] = jun_source_lane
+        artifact["verification_status"]["eos_transport_kms_entropy"].pop(
+            "jun_final_source_boundary", None
+        )
+    hong_source_lane = discovered_lane_integrations.get("hong_final_source_boundary")
+    if hong_source_lane:
+        artifact["verification_status"]["source_package"][
+            "hong_final_source_boundary"
+        ] = hong_source_lane
+        artifact["verification_status"]["eos_transport_kms_entropy"].pop(
+            "hong_final_source_boundary", None
+        )
+    peterson_source_lane = discovered_lane_integrations.get("peterson_source_identity_no_go")
+    if peterson_source_lane:
+        artifact["verification_status"]["source_package"][
+            "peterson_source_identity_no_go"
+        ] = peterson_source_lane
+        artifact["verification_status"]["eos_transport_kms_entropy"].pop(
+            "peterson_source_identity_no_go", None
+        )
     # Keep the historical top-level names as read-only aliases.  The canonical
     # lane payload remains nested above; aliases prevent downstream readers from
     # mistaking a schema migration for loss of evidence.
@@ -1116,6 +1259,8 @@ def main() -> int:
         lane_closures.append("MP48 force-constant C_src mesh convergence is closed for the independent harmonic lane; the source remains unaccepted for Ding closure")
     if discovered_lane_integrations.get("huang_2023_supplementary_payload_boundary", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("Huang 2023 graphite supplementary boundary is closed for lane without numeric PBTE, Ding C_src, or alpha promotion")
+    if discovered_lane_integrations.get("huberman_2019_public_pbte_boundary", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("Huberman 2019 public PBTE boundary is closed for lane without machine-readable C_src, raw force constants, accepted reproduction, or alpha promotion")
     if discovered_lane_integrations.get("nist_axm5q1_density_source_boundary", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("NIST AXM-5Q1 same-grade density availability is closed for lane; density uncertainty, c_v, and Ding mapping remain open")
     if discovered_lane_integrations.get("nist_graphite_alpha_v_source_boundary", {}).get("closure_level") == "CLOSED_FOR_LANE":
@@ -1132,6 +1277,14 @@ def main() -> int:
         lane_closures.append("BIPM ultra-pure graphite volumetric c_p comparator is closed for lane without c_v conversion or Ding material-match promotion")
     if discovered_lane_integrations.get("iaea_graphite_table_cv_comparator", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("IAEA manufactured-graphite table-derived mass-specific c_v comparator is closed for lane without source-grade uncertainty, density conversion, or Ding material-match promotion")
+    if discovered_lane_integrations.get("iaea_gr280_same_state_cp_comparator", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("IAEA GR-280 same-state Cp and density availability is closed for lane; density standard uncertainty, c_v correction, and Ding material-match promotion remain open")
+    if discovered_lane_integrations.get("zenodo_hitrace_isotropic_graphite_cp_comparator", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("Zenodo Hi-Trace same-block isotropic-graphite high-temperature Cp comparator is closed for lane; c_v conversion, density/alpha_V/K_T, Ding material-match, and alpha_Phi_K promotion remain open")
+    if discovered_lane_integrations.get("zenodo_hitrace_ig210_alpha_l_comparator", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("Zenodo Hi-Trace IG210 mean alpha_l source comparator is closed for lane; alpha_V is conditional, same-state K_T/Cp-Cv, Ding material-match, and alpha_Phi_K promotion remain open")
+    if discovered_lane_integrations.get("farooqui_ig210_thermophysical_source", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("NPL/Hi-Trace published IG210 thermophysical source lane is closed: density, C_p, diffusivity, alpha_l, and source uncertainty are archived; K_T, C_v, Ding material-match, and alpha_Phi_K remain open")
     if discovered_lane_integrations.get("desorbo_1955_ceylon_graphite_cp_comparator", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("DeSorbo 1955 Ceylon natural-graphite numeric Cp comparator is closed for lane without standard uncertainty, volumetric c_v conversion, or Ding material-match promotion")
     if discovered_lane_integrations.get("uet_o2_finite_t_quasiparticle_eos_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
@@ -1150,6 +1303,8 @@ def main() -> int:
         lane_closures.append("loop-renormalized condensed contact-channel vertex and state-matched natural retarded response are closed for lane; physical Kubo admission, complete condensed 1PI/scattering, SI, alpha, and external validation remain open")
     if discovered_lane_integrations.get("uet_o2_condensed_relative_flow_kubo_admission_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("state-matched Kubo coefficient admission is closed for the declared condensed relative-flow natural-unit channel; independent physical anchor, complete SK/KMS/1PI transport, SI, alpha, and external validation remain open")
+    if discovered_lane_integrations.get("uet_o2_condensed_sk_kms_kubo_match_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("state-matched condensed SK/KMS/FDT interface and zero-frequency Kubo match are closed for lane; full retarded 1PI self-energy, all-channel renormalization, complete transport, SI, alpha, and external validation remain open")
     if discovered_lane_integrations.get("condensed_dissipative_transport_identifiability_no_go", {}).get("closure_level") == "CLOSED_AS_NO_GO":
         lane_closures.append("condensed dissipative transport identifiability is closed as a scoped no-go; the current static lane cannot identify a unique dissipative matrix without relative-flow/collision or retarded-correlator evidence")
     if discovered_lane_integrations.get("uet_o2_condensed_retarded_dissipation_no_go", {}).get("closure_level") == "CLOSED_AS_NO_GO":
@@ -1184,6 +1339,8 @@ def main() -> int:
         lane_closures.append("state-matched finite-cutoff retarded heat-current response matches the covariant natural moment lane; continuum, physical Kubo, SI, alpha, and external validation remain open")
     if discovered_lane_integrations.get("uet_o2_heat_current_kubo_continuum_boundary", {}).get("closure_level") == "CLOSED_AS_NO_GO":
         lane_closures.append("declared heat-current cutoff/order sequence is closed as a scoped continuum no-go; no extrapolated or physical Kubo coefficient is promoted")
+    if discovered_lane_integrations.get("uet_o2_regularized_continuum_heat_current_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("named normal-branch compactified regularized continuum heat-current lane is closed for lane; loop-renormalized self-energy, physical Kubo, SI, condensed two-fluid, alpha, and external validation remain open")
     if discovered_lane_integrations.get("uet_o2_covariant_entropy_heat_flux_balance_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("action-derived Landau heat-current subtraction, positive finite-cutoff moment response, covariant entropy-current lift, and charge/energy/momentum dissipative balance are closed for lane; physical Kubo, SI heat flux, finite-temperature two-fluid completion, curved 3+1 transport, alpha, and external validation remain open")
     if discovered_lane_integrations.get("uet_o2_action_thermal_stiffness_beta_lane", {}).get("closure_level") == "CLOSED_FOR_LANE":
@@ -1269,6 +1426,17 @@ def main() -> int:
         lane_closures.append("current alternate public Ding dataset inventory is closed as a scoped no-go; ISIS PDOS and Caltech c-axis MFP routes do not supply Ding mode-resolved volumetric C_src(T)")
     if discovered_lane_integrations.get("calorine_zenodo_nep_bte_numeric_reproduction", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("Calorine/Zenodo graphite NEP PBTE numeric C_src reproduction is closed for lane; latest q-mesh pair is numerically stable, but Ding material equivalence, source-grade uncertainty, and UET calibration remain open")
+    if discovered_lane_integrations.get("figshare_dft_force_data_boundary", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("public Figshare DFT energy/force archive provenance and PBTE-capability boundary are closed for lane; C_src, force-constant/scattering derivation, alpha, and Ding mapping remain open")
+    if discovered_lane_integrations.get("huang_2023_nims_mdr_payload_boundary", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("public NIMS MDR Huang 2023 payload boundary is closed for lane; the downloadable archive contains the article PDF only, so numeric PBTE C_src, Ding mapping, and alpha remain open")
+    if discovered_lane_integrations.get("calorine_public_model_variant_boundary", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("public Calorine C-CX model-variant provenance is closed for lane; model-form spread still requires a same-workflow rerun and is not source-grade uncertainty")
+    if discovered_lane_integrations.get("calorine_nep1_backend_compatibility", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("public Calorine C-CX is identified as legacy NEP1; the current Calorine 3.5 backend rejects the model, so a legacy-compatible backend is required before a same-workflow C_src rerun")
+    if discovered_lane_integrations.get("calorine_legacy_nep2_backend_probe", {}).get("closure_level") == "CLOSED_FOR_LANE":
+        lane_closures.append("legacy NEP2 C-CX PBTE candidate rows and q-mesh preflight are closed for lane; source-grade uncertainty, Ding material mapping, alpha_Phi_K, and full bridge remain open")
+        lane_closures.append("pinned Calorine 1.0 legacy NEP2 engine accepts the hash-locked C-CX model; same-workflow fc2/fc3, PBTE C_src, convergence, and uncertainty remain open")
     if discovered_lane_integrations.get("calorine_isotope_mass_sensitivity", {}).get("closure_level") == "CLOSED_FOR_LANE":
         lane_closures.append("Calorine natural-isotope mass sensitivity is closed for lane; composition bounds do not close defect, morphology, isotope-scattering, or Ding-state uncertainty")
     if discovered_lane_integrations.get("calorine_state_uncertainty_decomposition", {}).get("closure_level") == "CLOSED_FOR_LANE":
@@ -1327,14 +1495,85 @@ def main() -> int:
         if blocker == "independent_same_grade_density_or_direct_volumetric_heat_capacity_missing" and density_availability_closed:
             continue
         blockers.append(blocker)
+    same_state_cp_lane = discovered_lane_integrations.get(
+        "iaea_gr280_same_state_cp_comparator", {}
+    )
+    same_state_cp_availability_closed = (
+        same_state_cp_lane.get("closure_level") == "CLOSED_FOR_LANE"
+        and str(same_state_cp_lane.get("status", "")).startswith("PASS_")
+        and same_state_cp_lane.get("same_state_cp_and_density_rows") is True
+    )
     if density_availability_closed:
         for blocker in nist_density_lane.get("open_blockers", []):
             if blocker in source_level_blockers:
+                if (
+                    blocker == "direct_volumetric_c_v_or_same_state_Cp_source_missing"
+                    and same_state_cp_availability_closed
+                ):
+                    continue
                 blockers.append(blocker)
     # Keep the major-result projection readable: only the full-gate
     # controllers and explicit source prerequisites belong here. Lane-specific
     # diagnostics remain nested in verification_status and evidence artifacts.
-    artifact["major_result"]["what_remains_open"] = list(dict.fromkeys(blockers))
+    open_blockers = list(dict.fromkeys(blockers))
+    artifact["major_result"]["what_remains_open"] = open_blockers
+    closed_lane_records = [
+        record
+        for _, record in sorted(discovered_lane_integrations.items())
+        if record.get("closure_level")
+        in {
+            "CLOSED_AS_NO_GO",
+            "CLOSED_FOR_LANE",
+            "CLOSED_FOR_CORE",
+            "CLOSED_FOR_EXTERNAL_CLAIM",
+        }
+    ]
+    source_blockers = {
+        "ding_pbte_C_src_numeric_or_accepted_independent_reproduction_missing",
+        "same_grade_alpha_V_and_K_T_missing",
+        "material_regime_mapping_to_TTG_not_closed",
+        "density_uncertainty_not_source_locked",
+        "c_v_source_uncertainty_not_closed",
+    }
+    dimensional_blockers = {
+        "alpha_Phi_K_independent_calibration_missing",
+        "normalized_beta_and_SI_scale_correspondence_missing",
+        "dimensional_phi_to_thermal_observable_map_missing",
+    }
+    transport_blockers = {
+        "eos_transport_kms_entropy_completion_missing",
+        "physical_Kubo_coefficient_record_missing",
+    }
+    blocker_groups = {
+        "source_and_material": [item for item in open_blockers if item in source_blockers],
+        "dimensional_and_calibration": [
+            item for item in open_blockers if item in dimensional_blockers
+        ],
+        "thermodynamic_transport": [
+            item for item in open_blockers if item in transport_blockers
+        ],
+        "unclassified": [
+            item
+            for item in open_blockers
+            if item not in source_blockers | dimensional_blockers | transport_blockers
+        ],
+    }
+    artifact["major_result"]["closure_summary"] = {
+        "closed_lane_count": len(closed_lane_records),
+        "closed_as_no_go_count": sum(
+            record.get("closure_level") == "CLOSED_AS_NO_GO"
+            for record in closed_lane_records
+        ),
+        "closed_lane_result_ids": [
+            record.get("major_result_id")
+            for record in closed_lane_records
+            if record.get("major_result_id")
+        ],
+        "open_blocker_count": len(open_blockers),
+        "open_blocker_groups": blocker_groups,
+        "dependency_gate_state": "NORMALIZED_INTERNAL_TOPIC13_LANES_ONLY",
+        "downstream_dependency_unlocked": False,
+    }
     oxford_package_path = ROOT / "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/oxford_tgs_figure1_source_package.json"
     if oxford_package_path.is_file() and not any(
         item.get("path") == rel(oxford_package_path)
@@ -1566,6 +1805,25 @@ def main() -> int:
                     "reviewed_page_count": huang_supplementary.get("source", {}).get("reviewed_page_count"),
                     "machine_readable_payload_files": len(huang_supplementary.get("source", {}).get("machine_readable_payload_files", [])),
                     "controlling_blocker": huang_supplementary.get("controlling_blocker"),
+                },
+            )
+        )
+    huberman_public_pbte_rel = rel(huberman_public_pbte_path)
+    if huberman_public_pbte_rel not in {
+        item.get("path") for item in artifact.get("evidence_artifacts", [])
+        if isinstance(item, dict)
+    }:
+        artifact["evidence_artifacts"].append(
+            evidence(
+                huberman_public_pbte_rel,
+                huberman_public_pbte,
+                {
+                    "status": huberman_public_pbte.get("status"),
+                    "closure_level": huberman_public_pbte.get("major_result", {}).get("closure_level"),
+                    "data_role": huberman_public_pbte.get("major_result", {}).get("data_role"),
+                    "reviewed_page_count": huberman_public_pbte.get("source", {}).get("reviewed_page_count"),
+                    "machine_readable_payload_files": len(huberman_public_pbte.get("source", {}).get("machine_readable_payload_files", [])),
+                    "controlling_blocker": huberman_public_pbte.get("controlling_blocker"),
                 },
             )
         )
@@ -1826,6 +2084,44 @@ def main() -> int:
                     "data_role": "COMPARISON_ONLY_NOT_CALIBRATION",
                     "raw_sha256": iaea_graphite_cv_package.get("source", {}).get("local_raw_sha256"),
                     "material_match_to_Ding_TTG": iaea_graphite_cv_package.get("derived_comparator", {}).get("material_match_to_Ding_TTG"),
+                },
+            )
+        )
+    iaea_gr280_rel = rel(iaea_gr280_path)
+    if iaea_gr280_rel not in {
+        item.get("path") for item in artifact.get("evidence_artifacts", [])
+        if isinstance(item, dict)
+    }:
+        artifact["evidence_artifacts"].append(
+            evidence(
+                iaea_gr280_rel,
+                iaea_gr280,
+                {
+                    "status": iaea_gr280.get("status"),
+                    "closure_level": iaea_gr280.get("major_result", {}).get("closure_level"),
+                    "data_role": iaea_gr280.get("major_result", {}).get("data_role"),
+                    "same_state_cp_and_density_rows": iaea_gr280.get("same_state_cp_and_density_rows"),
+                    "cp_volumetric_J_per_m3_K": iaea_gr280.get("derived_comparator", {}).get("cp_volumetric_J_per_m3_K"),
+                    "density_standard_uncertainty_reported": iaea_gr280.get("derived_comparator", {}).get("density_standard_uncertainty_reported"),
+                    "controlling_blocker": iaea_gr280.get("controlling_blocker"),
+                },
+            )
+        )
+    iaea_gr280_package_rel = rel(iaea_gr280_package_path)
+    if iaea_gr280_package_rel not in {
+        item.get("path") for item in artifact.get("evidence_artifacts", [])
+        if isinstance(item, dict)
+    }:
+        artifact["evidence_artifacts"].append(
+            evidence(
+                iaea_gr280_package_rel,
+                iaea_gr280_package,
+                {
+                    "status": iaea_gr280_package.get("status"),
+                    "data_role": "COMPARISON_ONLY_NOT_CALIBRATION",
+                    "raw_sha256": iaea_gr280_package.get("source", {}).get("local_raw_sha256"),
+                    "same_state_cp_density_rows": iaea_gr280_package.get("derived_comparator", {}).get("same_state_cp_density_rows"),
+                    "material_match_to_Ding_TTG": iaea_gr280_package.get("derived_comparator", {}).get("material_match_to_Ding_TTG"),
                 },
             )
         )

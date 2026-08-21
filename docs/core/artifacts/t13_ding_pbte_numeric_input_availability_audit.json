@@ -1,7 +1,7 @@
 {
   "schema_version": "t13-ding-pbte-numeric-input-availability-audit-v1",
   "artifact": "t13_ding_pbte_numeric_input_availability_audit",
-  "generated_at": "2026-08-15",
+  "generated_at": "2026-08-20",
   "status": "PASS_SCOPED_OA_NUMERIC_INPUT_AVAILABILITY_NO_GO",
   "major_result": {
     "major_result_id": "T13_DING_PBTE_OA_NUMERIC_INPUT_NO_GO",

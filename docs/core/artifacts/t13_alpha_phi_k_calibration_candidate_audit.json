@@ -1,7 +1,7 @@
 {
   "schema_version": "t13-alpha-phi-k-calibration-candidate-audit-v1",
   "artifact": "t13_alpha_phi_k_calibration_candidate_audit",
-  "generated_at": "2026-08-15",
+  "generated_at": "2026-08-20",
   "status": "PASS_SCOPED_NO_ELIGIBLE_PAIRED_ALPHA_RECORD",
   "major_result": {
     "major_result_id": "T13_ALPHA_PHI_K_PAIRED_RECORD_SEARCH",
@@ -70,7 +70,7 @@
       "Landauer k_B T ln(2) as a UET alpha derivation"
     ]
   },
-  "candidate_count": 10,
+  "candidate_count": 11,
   "eligible_candidate_count": 0,
   "candidates": [
     {
@@ -314,6 +314,33 @@
       "holdout_policy_mentioned_in_package": false,
       "target_fit_input_detected_by_audit": false,
       "target_fit_language_present_in_package": true,
+      "controlling_blocker": "independent_paired_base_Phi_amplitude_and_SI_observable_record_missing"
+    },
+    {
+      "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/calorine_legacy_nep2_pbte_reproduction_source_package.json",
+      "description": "Calorine C-CX legacy NEP2 PBTE candidate reproduction",
+      "present": true,
+      "sha256": "b7da7ab6931bba4d5c9cb5a8112873c4f1f7da46e0b2945d90f0c9cd0555109b",
+      "data_role": null,
+      "status": "PASS_SCOPED_CALORINE_LEGACY_NEP2_PBTE_REPRODUCTION",
+      "required_field_presence": {
+        "source_identity": false,
+        "locator": true,
+        "matched_material_state_geometry": false,
+        "base_Phi_amplitude": false,
+        "SI_energy_or_response_amplitude": false,
+        "units": true,
+        "uncertainty": true,
+        "preprocessing": false,
+        "row_identity": false,
+        "source_hash": false,
+        "independence_statement": false
+      },
+      "eligible_paired_record": false,
+      "holdout_read_by_audit": false,
+      "holdout_policy_mentioned_in_package": true,
+      "target_fit_input_detected_by_audit": false,
+      "target_fit_language_present_in_package": false,
       "controlling_blocker": "independent_paired_base_Phi_amplitude_and_SI_observable_record_missing"
     },
     {

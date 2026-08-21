@@ -1,13 +1,13 @@
 {
   "schema_version": "t13-graphite-alpha-v-kt-matched-source-boundary-v1",
   "artifact": "t13_graphite_alpha_v_kt_matched_source_boundary_audit",
-  "generated_at": "2026-08-18",
+  "generated_at": "2026-08-20",
   "status": "PASS_SCOPED_GRAPHITE_ALPHA_V_K_T_MATCHED_SOURCE_BOUNDARY_NO_GO",
   "major_result": {
     "major_result_id": "T13_GRAPHITE_ALPHA_V_K_T_MATCHED_SOURCE_BOUNDARY",
     "topic": "0.13_Thermodynamic_Bridge",
     "closure_level": "CLOSED_FOR_LANE",
-    "what_is_closed": "The current archived graphite source inventory, including the screened Lowitzer P-V-T candidate and Tohei table comparator, cannot form a same-state, same-grade alpha_V/K_T pair with source-grade uncertainty for the Cp-to-Cv correction. The individual alpha_V and K_T comparator lanes remain separate. Tohei supplies a numeric same-calculation QHA pair and separately sourced experimental table values, but neither closes the source-grade correction contract.",
+    "what_is_closed": "The current archived graphite source inventory, including the screened Lowitzer P-V-T candidate, Tohei table comparator, and source-locked IG210 thermophysical comparator, cannot form a same-state, same-grade alpha_V/K_T pair with source-grade uncertainty for the Cp-to-Cv correction. The individual alpha_V and K_T comparator lanes remain separate. Tohei supplies a numeric same-calculation QHA pair and separately sourced experimental table values, but neither closes the source-grade correction contract. The IG210 rows supply same-grade C_p and alpha_l values but no same-state K_T.",
     "equation_or_mapping": {
       "cp_cv_correction": "c_p^V - c_v^V = T * alpha_V^2 * K_T",
       "volumetric_conversion": "c_p^V = rho * c_p; c_v^V = c_p^V - T * alpha_V^2 * K_T"
@@ -81,11 +81,17 @@
         "role": "tohei_table_comparator",
         "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/tohei_2006_graphite_alpha_v_kt_table_comparator_source_package.json",
         "sha256": "7a8dfafd8c06145e08194505aeca933b6f90c27e184cf4db45b56d9375b140c9"
+      },
+      {
+        "role": "farooqui_ig210_thermophysical",
+        "path": "docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/farooqui_2022_ig210_thermophysical_source_package.json",
+        "sha256": "e4bd7e50b5d5e9025eae9bd410f74c3bb5699a8f22f32c4fc5c7994978d9d266"
       }
     ],
     "verification_status": "PASS_SCOPED_GRAPHITE_ALPHA_V_K_T_MATCHED_SOURCE_BOUNDARY_NO_GO",
     "open_blockers": [
       "same_grade_alpha_V_and_K_T_missing",
+      "same_state_IG210_K_T_missing",
       "density_uncertainty_not_source_locked",
       "material_regime_mapping_to_TTG_not_closed",
       "c_v_source_uncertainty_not_closed",
@@ -163,6 +169,17 @@
       "source_grade_uncertainty_available": false,
       "Ding_material_regime_mapping_closed": false,
       "source_sha256": null
+    },
+    "farooqui_ig210_thermophysical": {
+      "source_id": "farooqui_2022_npl_ig210_thermophysical_table",
+      "material": "IG-210 grade isotropic graphite from Toyo Tanso",
+      "temperature_scope": "500 C, 700 C, and 1000 C Table 1 thermophysical values",
+      "row_count": 3,
+      "same_grade_source": true,
+      "same_state_K_T_present": false,
+      "c_v_present": false,
+      "Ding_material_regime_mapping_closed": false,
+      "source_sha256": "e4bd7e50b5d5e9025eae9bd410f74c3bb5699a8f22f32c4fc5c7994978d9d266"
     }
   },
   "checks": {
@@ -196,9 +213,16 @@
     "tohei_uncertainty_is_not_promoted": true,
     "tohei_ding_mapping_is_open": true,
     "tohei_does_not_emit_correction": true,
+    "farooqui_source_is_lane_locked": true,
+    "farooqui_has_same_grade_rows": true,
+    "farooqui_has_alpha_l_cp_and_k": true,
+    "farooqui_same_state_kt_is_missing": true,
+    "farooqui_cv_is_missing": true,
+    "farooqui_ding_mapping_is_open": true,
+    "farooqui_does_not_emit_alpha": true,
     "holdout_is_unconsumed": true
   },
   "controlling_blocker": "same_grade_alpha_V_and_K_T_missing",
-  "next_controller": "Acquire a permitted full Lowitzer P-V-T payload, a source-grade same-specimen/state-matched alpha_V and isothermal K_T source with uncertainty and Ding-regime mapping. The Tohei table may remain a comparator, but its calculated pair and separately cited experimental values must not be combined into a source-grade correction by assumption.",
+  "next_controller": "Acquire a permitted full Lowitzer P-V-T payload or a permitted same-state IG210 K_T record, then seek a source-grade same-specimen/state-matched alpha_V and isothermal K_T source with uncertainty and Ding-regime mapping. The Tohei table may remain a comparator, and the Farooqui IG210 rows remain a thermophysical comparator; neither may be combined into a source-grade correction by assumption.",
   "claim_boundary": "No numeric Cp-to-Cv correction, Ding C_src, alpha_Phi_K, TTG prediction, or Full Topic 13 closure is emitted."
 }

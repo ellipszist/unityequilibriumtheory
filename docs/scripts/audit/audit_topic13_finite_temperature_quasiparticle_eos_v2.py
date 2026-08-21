@@ -196,6 +196,11 @@ def main() -> int:
         "no_SI_alpha_emitted": "alpha_Phi_K" in contract["excluded_scope"],
         "no_target_or_holdout": True,
     }
+    failures.extend(
+        f"contract check failed: {key}"
+        for key, passed in checks.items()
+        if not passed
+    )
     check(not failures, "audit has failed checks", failures)
 
     audit_status = (

@@ -19,6 +19,7 @@ LANES = (
     ("T13_GRAPHITE_ALPHA_V_K_T_MATCHED_SOURCE_BOUNDARY", "graphite_alpha_v_kt_matched_source_boundary"),
     ("T13_DING_ALTERNATE_PUBLIC_DATASET_DISCOVERY_BOUNDARY", "ding_alternate_public_dataset_discovery_boundary"),
     ("T13_HUANG_2023_SUPPLEMENTARY_PAYLOAD_BOUNDARY", "huang_2023_supplementary_payload_boundary"),
+    ("T13_HUBERMAN_2019_PUBLIC_PBTE_BOUNDARY", "huberman_2019_public_pbte_boundary"),
     ("T13_NIST_AXM5Q1_DENSITY_SOURCE_BOUNDARY", "nist_axm5q1_density_source_boundary"),
     ("T13_TPG_ANISOTROPIC_ALPHA_V_COMPARATOR", "tpg_anisotropic_alpha_v_comparator"),
     (
@@ -27,6 +28,11 @@ LANES = (
     ),
     ("T13_BIPM_SPECIFIC_HEAT_CP_COMPARATOR", "bipm_specific_heat_cp_comparator"),
     ("T13_IAEA_GRAPHITE_TABLE_CV_COMPARATOR", "iaea_graphite_table_cv_comparator"),
+    ("T13_IAEA_GR280_SAME_STATE_CP_COMPARATOR", "iaea_gr280_same_state_cp_comparator"),
+    ("T13_ZENODO_HITRACE_ISOTROPIC_GRAPHITE_CP_COMPARATOR", "zenodo_hitrace_isotropic_graphite_cp_comparator"),
+    ("T13_ZENODO_HITRACE_IG210_ALPHA_L_COMPARATOR", "zenodo_hitrace_ig210_alpha_l_comparator"),
+
+    ("T13_FAROOQUI_IG210_THERMOPHYSICAL_SOURCE", "farooqui_ig210_thermophysical_source"),
     ("T13_IAEA_CV_UNCERTAINTY_BOUNDARY", "iaea_cv_uncertainty_boundary"),
     ("T13_DING_MATERIAL_REGIME_BOUNDARY", "ding_material_regime_boundary"),
     ("T13_PHONIX_MP47_GRAPHITE_HARMONIC_COMPARATOR", "phonix_mp47_graphite_harmonic_comparator"),
@@ -54,10 +60,21 @@ LANES = (
     ("T13_UET_O2_ONE_LOOP_RETARDED_SELF_ENERGY_NO_GO", "uet_o2_one_loop_retarded_self_energy_no_go"),
     ("T13_UET_O2_TWO_LOOP_SUNSET_CUT_LANE", "uet_o2_two_loop_sunset_cut_lane"),
     ("T13_UET_O2_FINITE_CHANNEL_ENTROPY_BALANCE_LANE", "uet_o2_finite_channel_entropy_balance_lane"),
+    ("T13_JUN_FINAL_SOURCE_BOUNDARY", "jun_final_source_boundary"),
+    ("T13_HONG_FINAL_SOURCE_BOUNDARY", "hong_final_source_boundary"),
+    ("T13_PETERSON_SOURCE_IDENTITY_NO_GO", "peterson_source_identity_no_go"),
     ("T13_CALORINE_ISOTOPE_MASS_SENSITIVITY", "calorine_isotope_mass_sensitivity"),
     ("T13_CALORINE_STATE_UNCERTAINTY_DECOMPOSITION", "calorine_state_uncertainty_decomposition"),
+    ("T13_CALORINE_C_SRC_EQUILIBRIUM_CROSSCHECK", "calorine_csrc_equilibrium_crosscheck"),
+    ("T13_FIGSHARE_DFT_FORCE_DATA_BOUNDARY", "figshare_dft_force_data_boundary"),
+    ("T13_HUANG_2023_NIMS_MDR_PAYLOAD_BOUNDARY", "huang_2023_nims_mdr_payload_boundary"),
+    ("T13_CALORINE_PUBLIC_MODEL_VARIANT_BOUNDARY", "calorine_public_model_variant_boundary"),
+    ("T13_CALORINE_NEP1_BACKEND_COMPATIBILITY_BOUNDARY", "calorine_nep1_backend_compatibility"),
+    ("T13_CALORINE_LEGACY_NEP2_BACKEND_PROBE", "calorine_legacy_nep2_backend_probe"),
+    ("T13_CALORINE_LEGACY_NEP2_PBTE_REPRODUCTION", "calorine_legacy_nep2_pbte_reproduction"),
     ("T13_DING_2017_ACS_SUPPLEMENTARY_PAYLOAD_BOUNDARY", "ding_2017_acs_supplementary_payload_boundary"),
     ("T13_PHI_SI_ANCHOR_PUBLIC_SOURCE_BOUNDARY", "phi_si_anchor_public_source_boundary"),
+    ("T13_COVARIANT_ACTION_SYMBOLIC_SI_CONVERSION_CONTRACT", "covariant_action_symbolic_si_conversion_contract"),
     ("T13_UET_O2_FINITE_T_SELF_ENERGY_HARTREE_LANE", "uet_o2_finite_t_self_energy_hartree_lane"),
     ("T13_UET_O2_HARTREE_EQUILIBRIUM_THERMODYNAMIC_LANE", "uet_o2_hartree_equilibrium_thermodynamic_lane"),
     ("T13_UET_O2_FINITE_T_SCHEME_IDENTIFIABILITY_NO_GO", "uet_o2_finite_t_scheme_identifiability_no_go"),
@@ -68,6 +85,14 @@ LANES = (
     ("T13_UET_O2_CONTINUUM_RELATIVE_FLOW_KUBO_LANE", "uet_o2_continuum_relative_flow_kubo_lane"),
     ("T13_UET_O2_CONDENSED_LOOP_RENORMALIZED_CONTACT_VERTEX_LANE", "uet_o2_condensed_loop_renormalized_contact_vertex_lane"),
     ("T13_UET_O2_CONDENSED_RELATIVE_FLOW_KUBO_ADMISSION_LANE", "uet_o2_condensed_relative_flow_kubo_admission_lane"),
+    ("T13_UET_O2_CONDENSED_SK_KMS_KUBO_MATCH_LANE", "uet_o2_condensed_sk_kms_kubo_match_lane"),
+    ("T13_UET_O2_FINITE_T_DECLARED_RETARDED_1PI_RESPONSE_GRID_LANE", "uet_o2_finite_t_declared_retarded_1pi_response_grid_lane"),
+    ("T13_UET_O2_FINITE_T_SIGNED_CUT_KINEMATIC_TAXONOMY_LANE", "uet_o2_finite_t_signed_cut_kinematic_taxonomy_lane"),
+    ("T13_UET_O2_FINITE_T_SUNSET_CUT_MULTIPLICITY_LANE", "uet_o2_finite_t_sunset_cut_multiplicity_lane"),
+    ("T13_UET_O2_FINITE_T_ALL_ONSHELL_CUT_SPECTRAL_RESPONSE_LANE", "uet_o2_finite_t_all_onshell_cut_spectral_response_lane"),
+    ("T13_UET_O2_FINITE_T_DECLARED_CHANNEL_RETARDED_ADVANCED_KELDYSH_1PI_LANE", "uet_o2_finite_t_declared_channel_retarded_advanced_keldysh_1pi_lane"),
+    ("T13_UET_O2_FINITE_T_OFFSHELL_THRESHOLD_CROSSING_1PI_LANE", "uet_o2_finite_t_offshell_threshold_crossing_1pi_lane"),
+    ("T13_UET_O2_FINITE_T_ALL_22_PERMUTATION_IDENTITY_LANE", "uet_o2_finite_t_all_22_permutation_identity_lane"),
     ("T13_UET_O2_COLLISIONLESS_KUBO_NO_GO", "uet_o2_collisionless_kubo_no_go"),
     ("T13_UET_O2_HARTREE_NORMAL_STABILITY_BOUNDARY_LANE", "uet_o2_hartree_normal_stability_boundary_lane"),
     ("T13_UET_O2_RENORMALIZED_CONDENSATE_STATIONARITY_SCHEME_DEPENDENCE", "uet_o2_renormalized_condensate_stationarity_scheme_dependence"),
@@ -192,6 +217,24 @@ def main() -> int:
             if item.get("major_result_id") == "T13_FULL_THERMODYNAMIC_BRIDGE"
         )
         entries[full_index + 1 : full_index + 1] = new_records
+    refreshed_records = 0
+    for major_result_id, lane_key in LANES:
+        if major_result_id not in existing:
+            continue
+        projection = projection_for_lane(lane_key)
+        if not isinstance(projection, dict):
+            raise SystemExit(f"missing full-gate projection: {lane_key}")
+        audit_path = projection.get("audit", {}).get("path")
+        if not audit_path:
+            raise SystemExit(f"missing audit path: {lane_key}")
+        lane_artifact = load(audit_path)
+        major = lane_artifact.get("major_result")
+        if not isinstance(major, dict) or major.get("major_result_id") != major_result_id:
+            raise SystemExit(f"major-result identity mismatch: {lane_key}")
+        current = next(item for item in entries if item.get("major_result_id") == major_result_id)
+        current.update(lane_register_record(major, full_hash))
+        refreshed_records += 1
+
 
     register["generated_at"] = date.today().isoformat()
     register["claim_promotion"] = False
@@ -199,6 +242,7 @@ def main() -> int:
         "full_gate": {"path": FULL_REL, "sha256": full_hash},
         "major_result_ids": [item[0] for item in LANES],
         "added_count": len(new_records),
+        "refreshed_count": refreshed_records,
         "full_core_unlock": False,
     }
     register_path = ROOT / REGISTER_REL
@@ -228,6 +272,7 @@ def main() -> int:
             {
                 "status": "PASS_TOPIC13_MAJOR_RESULT_REGISTER_SYNC",
                 "added_count": len(new_records),
+        "refreshed_count": refreshed_records,
                 "full_gate_sha256": full_hash,
                 "register_sha256": register_hash,
                 "full_core_unlock": False,

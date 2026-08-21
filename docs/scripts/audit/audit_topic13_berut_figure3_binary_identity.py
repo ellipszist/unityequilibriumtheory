@@ -11,6 +11,10 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[3]
 OUT = ROOT / 'docs/core/artifacts/t13_berut_figure3_remote_binary_identity.json'
+LOCAL_ARCHIVE_REL = (
+    'docs/topics/0.13_Thermodynamic_Bridge/Data/03_Research/raw/'
+    'berut_2012_figure3_source.ppt'
+)
 
 ARTICLE_URL = 'https://www.nature.com/articles/nature10872'
 DOWNLOAD_URL = (
@@ -21,6 +25,14 @@ DOWNLOAD_URL = (
 SOURCE_SHA256 = 'e4bab6be849a093b7578bc52ce6df9be95dc25d83d51ecb718b4f798a37d50fa'
 SOURCE_BYTES = 479744
 SOURCE_SIGNATURE = 'D0 CF 11 E0 A1 B1 1A E1'
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open('rb') as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b''):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 ASSETS = [
     {
@@ -59,6 +71,10 @@ ASSETS = [
 
 
 def build_artifact() -> dict[str, Any]:
+    local_archive = ROOT / LOCAL_ARCHIVE_REL
+    local_archive_present = local_archive.is_file()
+    local_archive_sha256 = sha256(local_archive) if local_archive_present else None
+    local_archive_bytes = local_archive.stat().st_size if local_archive_present else None
     checks = {
         'official_article_locator_present': True,
         'official_download_locator_present': True,
@@ -67,6 +83,11 @@ def build_artifact() -> dict[str, Any]:
         'remote_binary_size_recorded': SOURCE_BYTES == 479744,
         'ole_compound_file_signature_recorded': SOURCE_SIGNATURE.startswith('D0 CF 11 E0'),
         'embedded_asset_inventory_is_explicit': len(ASSETS) == 4,
+        'local_archive_present_and_hash_matches': (
+            local_archive_present
+            and local_archive_sha256 == SOURCE_SHA256
+            and local_archive_bytes == SOURCE_BYTES
+        ),
         'large_raster_candidates_not_auto_accepted': all(
             'not_yet' in item['role'] or 'not_accepted' in item['role']
             for item in ASSETS
@@ -85,7 +106,6 @@ def build_artifact() -> dict[str, Any]:
         'berut_selected_panel_and_axis_tick_mapping_missing',
         'berut_numeric_point_or_curve_selection_missing',
         'berut_source_row_uncertainty_and_preprocessing_not_closed',
-        'berut_binary_not_stored_in_repo_remote_identity_hash_pinned_only',
     ]
     evidence = [
         {'locator': ARTICLE_URL, 'role': 'official publisher article page'},
@@ -95,6 +115,12 @@ def build_artifact() -> dict[str, Any]:
             'sha256': SOURCE_SHA256,
             'bytes': SOURCE_BYTES,
             'signature': SOURCE_SIGNATURE,
+        },
+        {
+            'path': LOCAL_ARCHIVE_REL,
+            'role': 'archived official Figure 3 binary; not a raw numeric table',
+            'sha256': local_archive_sha256,
+            'bytes': local_archive_bytes,
         },
     ]
     return {
@@ -111,6 +137,7 @@ def build_artifact() -> dict[str, Any]:
                 'The official publisher Figure 3 download route is identified and download-tested.',
                 'The remote binary identity is pinned by byte size, OLE signature, SHA-256, and retrieval date.',
                 'The embedded raster inventory is explicit; no raster is accepted as a numeric row before panel, axis, and point mapping.',
+                'The official Figure 3 binary is archived locally with the remote identity hash; its rows remain figure-derived until source-grade uncertainty is available.',
             ],
             'equation_or_mapping': 'Figure 3 is a source-surface asset for the Berut heat-versus-erasure-duration observable; no numeric mapping is emitted.',
             'units': 'Figure labels and units remain unaccepted until selected-panel locator and axis mapping are recorded.',
@@ -121,19 +148,27 @@ def build_artifact() -> dict[str, Any]:
             'verification_status': 'PASS_REMOTE_FIGURE3_BINARY_IDENTITY',
             'open_blockers': blockers,
             'dependency_unlocked': 'Berut figure-acquisition route only; no numeric source, alpha, Full Topic 13, Core, Gravity, or transport dependency is unlocked.',
-            'claim_boundary': 'This closes only remote binary identity and embedded-asset inventory. It is not a source-normalized numeric row, uncertainty result, calibration, prediction, or external validation.',
+            'claim_boundary': 'This closes official figure-binary provenance only. It is not a raw source table, source-grade uncertainty result, calibration, prediction, or external validation.',
         },
         'source_locator': {
             'article_url': ARTICLE_URL,
             'download_url': DOWNLOAD_URL,
             'retrieved_on': '2026-08-12',
-            'retrieval_scope': 'temporary verification download; binary not stored in repository',
+            'retrieval_scope': 'official binary archived in repository; numeric rows remain figure-derived only',
+            'local_archive_path': LOCAL_ARCHIVE_REL,
         },
         'binary_identity': {
             'sha256': SOURCE_SHA256,
             'bytes': SOURCE_BYTES,
             'signature': SOURCE_SIGNATURE,
             'format': 'OLE Compound File / legacy PowerPoint .ppt',
+        },
+        'local_archive': {
+            'path': LOCAL_ARCHIVE_REL,
+            'present': local_archive_present,
+            'bytes': local_archive_bytes,
+            'sha256': local_archive_sha256,
+            'hash_matches_remote_identity': local_archive_sha256 == SOURCE_SHA256,
         },
         'embedded_assets': ASSETS,
         'numeric_rows_emitted': 0,

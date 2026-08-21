@@ -1,0 +1,62 @@
+{
+  "schema_version": "t13-peterson-source-identity-no-go-v1",
+  "source_id": "peterson_legacy_quantum_landauer_label_conflict",
+  "topic": "0.13_Thermodynamic_Bridge",
+  "question": "Can the local Peterson 2018 quantum-Landauer label be admitted as one exact source row?",
+  "local_claim_surface": {
+    "label": "Peterson et al. Nature Physics (2018)",
+    "doi": "10.1038/s41567-018-0250-5",
+    "system": "Trapped Ca-40 ion",
+    "role": "legacy source label; not admitted"
+  },
+  "identity_checks": [
+    {
+      "candidate": "10.1038/s41567-018-0250-5",
+      "resolved_title": "Direct entropy measurement in a mesoscopic quantum system",
+      "resolved_authors": "Hartman, Olsen, Luscher, Samani, Fallahi, Gardner, Manfra, Folk",
+      "resolved_publisher_url": "https://www.nature.com/articles/s41567-018-0250-5",
+      "identity_matches_local_peterson_quantum_landauer_label": false,
+      "reason": "The DOI resolves to a Hartman et al. mesoscopic entropy-measurement article, not a Peterson quantum-Landauer erasure article."
+    },
+    {
+      "candidate": "Peterson et al. quantum information-to-energy experiment",
+      "resolved_title": "Experimental demonstration of information to energy conversion in a quantum system at the Landauer limit",
+      "resolved_doi": "10.1098/rspa.2015.0813",
+      "resolved_publisher_url": "https://doi.org/10.1098/rspa.2015.0813",
+      "identity_matches_local_peterson_quantum_landauer_label": false,
+      "reason": "The Peterson experiment is a 2016 Royal Society paper with a different source identity; it cannot silently inherit the local 2018/Ca-40 label."
+    },
+    {
+      "candidate": "Single-atom quantum Landauer experiment",
+      "resolved_title": "Single-Atom Demonstration of the Quantum Landauer Principle",
+      "resolved_doi": "10.1103/PhysRevLett.120.210601",
+      "resolved_publisher_url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.120.210601",
+      "identity_matches_local_peterson_quantum_landauer_label": false,
+      "reason": "The trapped-ion single-atom paper is a separate Yan et al. PRL identity, not Peterson et al."
+    }
+  ],
+  "observable": "quantum information-erasure energy/entropy relation; no local row admitted",
+  "equation_or_mapping": {
+    "landauer_constraint": "Delta_Q >= k_B T Delta_S",
+    "uet_mapping": "No Delta_Tq = alpha_Phi_K * Delta_Phi calibration is emitted from the conflicted Peterson label."
+  },
+  "units": {
+    "temperature": "not admitted",
+    "energy": "not admitted",
+    "entropy": "not admitted",
+    "alpha_Phi_K": "not emitted"
+  },
+  "preprocessing": {
+    "source_identity_crosscheck_performed": true,
+    "numeric_table_transcribed": false,
+    "unit_conversion_performed": false,
+    "legacy_row_selected": false,
+    "target_curve_read": false,
+    "holdout_read": false
+  },
+  "data_role": "SOURCE_IDENTITY_NO_GO; NO_ROW_ADMITTED",
+  "numeric_rows_emitted": 0,
+  "numeric_alpha_Phi_K_emitted": false,
+  "parameter_fitting_performed": false,
+  "claim_boundary": "This no-go closes only the current Peterson legacy-label admission question. It does not reject the underlying experiments, choose a replacement source row, validate quantum Landauer physics, derive alpha_Phi_K, or close Topic 13."
+}
